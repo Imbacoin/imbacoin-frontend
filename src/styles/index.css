@@ -1,0 +1,24 @@
+.Form {
+  margin: 10% 30%;
+}
+
+.country-icons {
+  width: 40px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.StripeElement.IdealBankElement,
+.StripeElement.FpxBankElement,
+.StripeElement.PaymentRequestButton {
+  padding: 0;
+}
+
+.StripeElement.PaymentRequestButton {
+  height: 40px;
+}
+
+.cardInput {
+  margin-top: 20px;
+  margin-bottom: 15px;
+}

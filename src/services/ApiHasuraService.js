@@ -9,7 +9,7 @@ class ApiServiceHasura {
     query Orders {
       Order {
         id
-        customerEmail
+        customerId
         orderSize
         status
         recipientCredentials {

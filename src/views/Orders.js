@@ -93,7 +93,7 @@ const Orders = () => {
             renderedOrders.push(
               <Card style={{ width: '25rem' }}>
                 <Card.Body>
-                  <Card.Title>{order.status}</Card.Title>
+                  <Card.Title>Status: {order.status}</Card.Title>
                   <Card.Text>
                     <a
                       target="_blank"

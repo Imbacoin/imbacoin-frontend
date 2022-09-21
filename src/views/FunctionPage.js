@@ -6,13 +6,7 @@ import { Trans, t } from '@lingui/macro';
 import { activate } from '../services/utils/activate';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-import {
-  PayPalScriptProvider,
-  PayPalButtons,
-  PayPalHostedFieldsProvider,
-  PayPalHostedField,
-  usePayPalHostedFields,
-} from '@paypal/react-paypal-js';
+import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 
 const clientSecret =
   'pk_test_51IY80XGdYFPvGwAahWAIdlKSo0PX60zvqEXKp8tBrJ43Sk4VxLMdF8LfTczCsq0neAddo1hTCPsWJAmnpQJFn9Mk00UVSjHAhO';
@@ -198,52 +192,30 @@ const PageFunction = () => {
           </Button>
         </div>
         <div className="cardInput" id="card-element"></div>
-        <PayPalScriptProvider options={{ 'client-id': 'test' }}>
-          <PayPalButtons style={{ layout: 'horizontal' }} />
-        </PayPalScriptProvider>
         <PayPalScriptProvider
           options={{
-            'client-id': 'your-client-id',
-            'data-client-token': 'your-data-client-token',
+            'client-id': process.env.REACT_APP_PAYPAL_ID,
           }}
         >
-          <PayPalHostedFieldsProvider
-            createOrder={() => {
-              // Here define the call to create and order
-              return fetch('/your-server-side-integration-endpoint/orders')
-                .then((response) => response.json())
-                .then((order) => order.id)
-                .catch((err) => {
-                  // Handle any error
-                });
+          <PayPalButtons
+            createOrder={(data, actions) => {
+              return actions.order.create({
+                purchase_units: [
+                  {
+                    amount: {
+                      value: '1.99',
+                    },
+                  },
+                ],
+              });
             }}
-          >
-            <PayPalHostedField
-              id="card-number"
-              hostedFieldType="number"
-              options={{ selector: '#card-number' }}
-            />
-            <PayPalHostedField
-              id="cvv"
-              hostedFieldType="cvv"
-              options={{ selector: '#cvv' }}
-            />
-            <PayPalHostedField
-              id="expiration-date"
-              hostedFieldType="expirationDate"
-              options={{
-                selector: '#expiration-date',
-                placeholder: 'MM/YY',
-              }}
-            />
-            {formFilled ? (
-              <div className="d-grid gap-2" show={formFilled}>
-                <Button className="modalButton" variant="primary" type="submit">
-                  Purchase with paypal
-                </Button>
-              </div>
-            ) : null}
-          </PayPalHostedFieldsProvider>
+            onApprove={(data, actions) => {
+              return actions.order.capture().then((details) => {
+                const name = details.payer.name.given_name;
+                alert(`Transaction completed by ${name}`);
+              });
+            }}
+          />
         </PayPalScriptProvider>
         {formFilled ? (
           <div className="d-grid gap-2" show={formFilled}>

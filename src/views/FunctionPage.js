@@ -154,9 +154,7 @@ const PageFunction = () => {
               alt="..."
             />
           </div>
-          <Form.Label>
-            <Trans>{t`The coins you will get`}</Trans>
-          </Form.Label>
+          <Form.Label>The coins you will get</Form.Label>
           <Form.Control
             disabled={formFilled}
             type="number"
@@ -172,9 +170,7 @@ const PageFunction = () => {
           <Form.Control disabled type="number" value={toPay} />
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label>
-            <Trans>{t`Enter your email`}</Trans>
-          </Form.Label>
+          <Form.Label>Enter your email</Form.Label>
           <Form.Control
             disabled={formFilled}
             type="email"
@@ -188,7 +184,7 @@ const PageFunction = () => {
             variant="primary"
             onClick={payWithCard}
           >
-            <Trans>{t`Pay with card`}</Trans>
+            Pay with card
           </Button>
         </div>
         <div className="cardInput" id="card-element"></div>
@@ -222,7 +218,7 @@ const PageFunction = () => {
         {formFilled ? (
           <div className="d-grid gap-2" show={formFilled}>
             <Button className="modalButton" variant="primary" type="submit">
-              <Trans>{t`Purchase`}</Trans>
+              Purchase
             </Button>
           </div>
         ) : null}

@@ -192,31 +192,33 @@ const PageFunction = () => {
           </Button>
         </div>
         <div className="cardInput" id="card-element"></div>
-        <PayPalScriptProvider
-          options={{
-            'client-id': process.env.REACT_APP_PAYPAL_ID,
-          }}
-        >
-          <PayPalButtons
-            createOrder={(data, actions) => {
-              return actions.order.create({
-                purchase_units: [
-                  {
-                    amount: {
-                      value: '1.99',
+        {formFilled ? (
+          <PayPalScriptProvider
+            options={{
+              'client-id': process.env.REACT_APP_PAYPAL_ID,
+            }}
+          >
+            <PayPalButtons
+              createOrder={(data, actions) => {
+                return actions.order.create({
+                  purchase_units: [
+                    {
+                      amount: {
+                        value: toPay,
+                      },
                     },
-                  },
-                ],
-              });
-            }}
-            onApprove={(data, actions) => {
-              return actions.order.capture().then((details) => {
-                const name = details.payer.name.given_name;
-                alert(`Transaction completed by ${name}`);
-              });
-            }}
-          />
-        </PayPalScriptProvider>
+                  ],
+                });
+              }}
+              onApprove={(data, actions) => {
+                return actions.order.capture().then((details) => {
+                  const name = details.payer.name.given_name;
+                  alert(`Transaction completed by ${name}`);
+                });
+              }}
+            />
+          </PayPalScriptProvider>
+        ) : null}
         {formFilled ? (
           <div className="d-grid gap-2" show={formFilled}>
             <Button className="modalButton" variant="primary" type="submit">

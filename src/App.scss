@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.intro_wrap {
+  background: #0d1335;
+  width: 100%;
+  height: 100vh;
+  color: white;
+  overflow: hidden;
+}
+
+.scene {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.scene img {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inherit;
+}
+
+.path {
+  opacity: 0;
+}
+
+.scene .left_light1 {
+  max-width: 30%;
+  position: absolute;
+  top: -22vh;
+  left: 5vw;
+  transform: rotate(20deg);
+}
+
+.scene .left_light2 {
+  max-width: 25%;
+  position: absolute;
+  top: -22vh;
+  left: 3vw;
+  transform: rotate(-10deg);
+}
+
+.scene .left_light3 {
+  max-width: 25%;
+  position: absolute;
+  top: -10vh;
+  left: -8vw;
+  transform: rotate(-10deg);
+
+}
+
+.bg,
+.zritel,
+.path,
+.path_left_top,
+.path_left_lite,
+.path_right_bottom,
+.path_right_top,
+.right_top_corner,
+.vorota,
+.vorota_uzor,
+.player,
+.left_light1,
+.left_light2,
+.left_light3,
+.ball,
+.lines {
+  opacity: 0;
+}
+
+.bg {
+  transform: translate(0%, 100%);
+}
+
+.right_top_corner {
+  transform: translate(20%, -20%);
+}
+
+.lines {
+  transform: translate(-100%, 0);
+}
+
+.vorota {
+  transform: translate(20%, 0);
+}
+
+.tablo {
+  transform: translate(-20%, -150%);
+}
+.tablo_lenti {
+  transform: translate(-20%, -250%);
+  opacity: 0;
+}
+.tablo_right_top_brizg,
+.tablo_left_top_brizg,
+.tablo_down_brizg,
+.tablo_lenti {
+  will-change: transform;
+}
+.tablo_bg_lines {
+  opacity: 0;
+  transform: translate(0%, 30%);
+  will-change: transform;
+}
+.player {
+  opacity: 0;
+  transform: rotate(30deg) translate(-20%,20%);
+}
+.ball {
+  opacity: 0;
+  transform: translate(-70%, 35%);
+}
+.zritel {
+  transform: translate(10%, 10%);
+}
+.ball_oreol {
+  opacity: 0;
+}
+.path_left_lite {
+  transform: translate(-10%,0);
+}
+.path_right_bottom {
+  transform: translate(-5%,2%);
+}
+.path_right_top {
+   transform: translate(-5%,1%);
+}
+.path_left_top {
+   transform: translate(-5%,-1%);
+}

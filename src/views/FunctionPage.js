@@ -191,7 +191,7 @@ const PageFunction = () => {
             Pay with card
           </Button>
         </div>
-        <div className="cardInput" id="card-element"></div>
+        {/* <div className="cardInput" id="card-element"></div> */}
         {formFilled ? (
           <PayPalScriptProvider
             options={{

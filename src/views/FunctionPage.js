@@ -196,6 +196,7 @@ const PageFunction = () => {
           <PayPalScriptProvider
             options={{
               'client-id': process.env.REACT_APP_PAYPAL_ID,
+              vault: true,
             }}
           >
             <PayPalButtons

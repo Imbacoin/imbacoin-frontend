@@ -35,18 +35,21 @@ const PageFunction = () => {
     await activate(language);
   };
 
-  const paySuccessful = async (email) => {
+  const paySuccessful = async (email, toPay) => {
     let data = {
       email,
-      amount: coinsAmount,
+      amount: toPay,
     };
-    const request = fetch('http://localhost:4242/successPayment', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    }).then((response) => {
+    const request = fetch(
+      `${process.env.REACT_APP_PAYMENT_SERVER}successPayment`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      }
+    ).then((response) => {
       return response.json();
     });
 
@@ -62,13 +65,16 @@ const PageFunction = () => {
   };
 
   const getClientSecret = async (purchase) => {
-    const request = fetch('http://localhost:4242/create-payment-intent', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(purchase),
-    }).then((response) => {
+    const request = fetch(
+      `${process.env.REACT_APP_PAYMENT_SERVER}create-payment-intent`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(purchase),
+      }
+    ).then((response) => {
       return response.json();
     });
 
@@ -164,9 +170,7 @@ const PageFunction = () => {
           />
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label>
-            <Trans>{t`The money you will pay`}</Trans>
-          </Form.Label>
+          <Form.Label>The money you will pay</Form.Label>
           <Form.Control disabled type="number" value={toPay} />
         </Form.Group>
         <Form.Group className="mb-3">
@@ -208,6 +212,8 @@ const PageFunction = () => {
               }}
               onApprove={(data, actions) => {
                 return actions.order.capture().then((details) => {
+                  console.log(details.purchase_units[0].amount.value);
+                  paySuccessful(email, details.purchase_units[0].amount.value);
                   const name = details.payer.name.given_name;
                   alert(`Transaction completed by ${name}`);
                 });
@@ -215,13 +221,13 @@ const PageFunction = () => {
             />
           </PayPalScriptProvider>
         ) : null}
-        {formFilled ? (
+        {/* {formFilled ? (
           <div className="d-grid gap-2" show={formFilled}>
             <Button className="modalButton" variant="primary" type="submit">
               Purchase
             </Button>
           </div>
-        ) : null}
+        ) : null} */}
       </Form>
     </div>
   );

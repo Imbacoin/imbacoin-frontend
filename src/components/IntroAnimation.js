@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useRef} from "react";
 import gsap from "gsap";
 import path_1 from "../images/path_1.png"
 import path_2 from "../images/path_2.png"
@@ -36,38 +36,94 @@ import ball_oreol from "../images/ball_oreol.png"
 
 function IntroAnimation() {
 
+    const containerRef = useRef(null)
+    const q = gsap.utils.selector(containerRef)
+
+
     useEffect(()=>{
+        const circles = q('.circle')
+        const squares = q('.squares')
 
-        // gsap.registerEffect({
-        //     name:"counter",
-        //     extendTimeline:true,
-        //     defaults:{
-        //         end:0,
-        //         duration:0.5,
-        //         ease:"power1",
-        //         increment:1,
-        //     },
-        //     effect: (targets, config) => {
-        //         let tl = gsap.timeline()
-        //         let num = targets[0].innerText.replace(/\,/g,'')
-        //         targets[0].innerText = num
-        //
-        //         tl.to(targets, {duration:config.duration,
-        //             innerText:config.end,
-        //             //snap:{innerText:config.increment},
-        //             modifiers:{
-        //                 innerText:function(innerText){
-        //                     return  gsap.utils.snap(config.increment, innerText).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        //
-        //                 }
-        //             },
-        //             ease:config.ease}, 0)
-        //
-        //         return tl
-        //     }
-        // })
+        const minX = 0;
+        const maxX = containerRef.current.getBoundingClientRect().width
 
-        // CustomEase.create("custom", "M0,0 C0,0 0.014,0.136 0.021,0.226 0.04,0.48 0.051,0.551 0.051,0.551 0.051,0.551 0.061,0.701 0.071,0.798 0.078,0.869 0.093,0.977 0.093,0.977 0.093,0.977 0.098,1.011 0.104,1.03 0.107,1.04 0.111,1.048 0.116,1.054 0.117,1.056 0.121,1.057 0.123,1.056 0.126,1.054 0.13,1.05 0.132,1.046 0.139,1.03 0.144,1.018 0.148,1 0.15,0.987 0.23,0.777 0.282,0.78 0.33,0.782 0.353,0.965 0.383,1.012 0.389,1.022 0.396,1.028 0.405,1.035 0.412,1.04 0.419,1.043 0.428,1.046 0.433,1.047 0.437,1.046 0.443,1.045 0.448,1.044 0.453,1.043 0.458,1.041 0.486,1.025 0.503,1.012 0.531,0.996 0.539,0.992 0.545,0.99 0.554,0.987 0.562,0.985 0.568,0.984 0.576,0.983 0.587,0.983 0.595,0.983 0.606,0.985 0.636,0.99 0.653,0.996 0.683,1.001 0.698,1.004 0.708,1.005 0.723,1.005 0.779,1.004 0.812,0.999 0.87,0.998 0.92,0.997 1,1 1,1 ");
+        const minY = window.innerHeight;
+        const maxY =  window.innerHeight/2;
+
+        const minSize = window.innerHeight/50;
+        const maxSize = window.innerHeight*4/50;
+
+        const minDelay = 0;
+        const maxDelay = 2;
+
+        const minOpacity = 1.;
+        const maxOpacity = 1.0;
+
+        const minDuration = 1;
+        const maxDuration = 3;
+
+        const minRotation = 15;
+        const maxRotation = 60;
+
+
+        circles.forEach(el=>{
+            animateCircle(el, 0);
+        })
+
+        squares.forEach(el=>{
+            animateCircle(el, 1);
+        })
+
+        // $(window).resize(onResize);
+
+        function animateCircle(el, sq) {
+
+            const x = random(minX, maxX);
+            const y = random(minY, maxY);
+            let sizeH, sizeW
+            if (sq) {
+                console.log(sq)
+                sizeW = 2*random(minSize, maxSize);
+                sizeH = random(minSize, maxSize);
+            } else {
+                console.log(sq)
+                sizeW = random(minSize, maxSize);
+                sizeH = random(minSize, maxSize);
+            }
+            const delay = random(minDelay, maxDelay);
+            const rotation = random(minRotation, maxRotation);
+            const opacity = random(minOpacity, maxOpacity);
+            const duration = random(minDuration, maxDuration);
+
+            gsap.set(el, {
+                x: x,
+                y: sizeW,
+                rotation: rotation,
+                width:sizeW,
+                height: sizeH,
+                autoAlpha: opacity
+            });
+
+           gsap.to(el, {
+                duration,
+                autoAlpha: 0,
+                rotation: rotation,
+                y: y,
+                x: x,
+                delay: delay,
+                onComplete: animateCircle,
+                onCompleteParams: [el]
+            });
+        }
+
+        // function onResize() {
+        //     maxX = containerRef.width();
+        // }
+
+        function random(min, max) {
+            if (max == null) { max = min; min = 0; }
+            return Math.random() * (max - min) + min;
+        }
 
        gsap.to(".left_light1",{rotation: -10, transformOrigin: '0 0', duration: 15, repeat: -1, yoyo: true, ease: "none"})
        gsap.to(".left_light2",{rotation: 20, transformOrigin: '0 0', duration: 17, repeat: -1, yoyo: true, ease: "none"})
@@ -96,14 +152,15 @@ function IntroAnimation() {
            .to(".left_light2",{opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.3")
            .to(".left_light3",{opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.4")
            .to(".tablo",{y: 10, duration:3, repeat:-1, yoyo: true, ease:"none"},"<")
+           .to(".confetti",{opacity:1, duration:3},"<")
            .to(".player",{opacity: 1, rotation:0, y: 0, x: 0, duration:1, ease: "back"},"<+0.5")
-           .to(".ball",{opacity: 1, y: 0, x: 0, duration:1, },"<+=0")
            .fromTo(".path",{opacity:0, x:-10, y: 10},{opacity:1, x:0, y: 0, duration: 0.2, stagger:0.05, ease: "power3.inOut"},"<+=0.2")
            .to(".path_left_lite",{opacity:1, y: 0, x: 0, duration: 0.5, ease: "power3.Out"},"<-=0.1")
            .to(".path_right_bottom",{opacity:1, y: 0, x: 0, duration: 0.5, ease: "power3.Out"},"<+=0.1")
            .to(".path_right_top",{opacity:1, y: 0, x: 0, duration: 0.5, ease: "power3.Out"},"<+=0.2")
            .to(".path_left_top",{opacity:1, y: 0, x: 0, duration: 0.5, ease: "power3.Out"},"<+=0.3")
            .to(".ball_oreol",{opacity: 1,  y: 0, x: 0, duration:1,ease: "power4.inOut" },"<+=0.2")
+           .to(".ball",{opacity: 1, y: 0, x: 0, duration:1, },"<+=0")
            .to(".vorota_uzor",{opacity:1, y: 0, x: 0, duration: 1, ease: "power4.inOut"},"<+=0.2")
            .to(".zritel",{opacity:1, y: 0, x: 0, duration: 1, ease: "back"},"<-=0.5")
            .to(".ball_oreol",{opacity:0.5, duration:3, repeat:-1, yoyo: true, ease:"none" })
@@ -116,6 +173,39 @@ function IntroAnimation() {
     return (
         <div className="intro_wrap">
             <div className="scene">
+                <div className="confetti" ref={containerRef}>
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+
+                </div>
                 <img src={bg} className="bg" alt=""/>
 
                 <img src={lines} className="lines" alt=""/>

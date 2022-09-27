@@ -125,7 +125,6 @@ html, body {
 }
 .ball {
   opacity: 0;
-  transform: translate(-70%, 35%);
 }
 .zritel {
   transform: translate(10%, 10%);
@@ -144,4 +143,28 @@ html, body {
 }
 .path_left_top {
    transform: translate(-5%,-1%);
+}
+.confetti {
+  position: absolute;
+  width: 20vw;
+  height: 50vh;
+  top: 0;
+  left: 4%;
+  opacity: 0;
+  transform: rotate(170deg);
+}
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(176deg, rgba(255,247,185,1) 0%, rgba(255,214,81,1) 100%);
+  opacity: 0;
+  visibility: hidden;
+  will-change: transform;
+}
+.squares {
+  position: absolute;
+  background: linear-gradient(176deg, rgba(255,247,185,1) 0%, rgba(255,214,81,1) 100%);
+  opacity: 0;
+  visibility: hidden;
+  will-change: transform;
 }

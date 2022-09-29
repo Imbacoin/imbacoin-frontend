@@ -1,31 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { useStripe, useElements } from '@stripe/react-stripe-js';
 import { Trans, t } from '@lingui/macro';
 import { activate } from '../services/utils/activate';
-import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 
-const clientSecret =
-  'pk_test_51IY80XGdYFPvGwAahWAIdlKSo0PX60zvqEXKp8tBrJ43Sk4VxLMdF8LfTczCsq0neAddo1hTCPsWJAmnpQJFn9Mk00UVSjHAhO';
-
-const stripePromise = loadStripe(clientSecret);
-
 const WrapperMain = () => {
-  return (
-    <Elements stripe={stripePromise}>
-      <PageFunction />
-    </Elements>
-  );
+  return <PageFunction />;
 };
 
-let card;
-
 const PageFunction = () => {
-  const stripe = useStripe();
-  const elements = useElements();
   const [coinsAmount = 100000, setCoinsAmount] = useState();
   const [toPay = 10, setToPay] = useState();
   const [email, setEmail] = useState('');
@@ -35,85 +19,29 @@ const PageFunction = () => {
     await activate(language);
   };
 
-  const paySuccessful = async (email, toPay) => {
-    let data = {
-      email,
-      amount: toPay,
-    };
-    const request = fetch(
-      `${process.env.REACT_APP_PAYMENT_SERVER}successPayment`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      }
-    ).then((response) => {
-      return response.json();
-    });
+  // const paySuccessful = async (email, toPay) => {
+  //   let data = {
+  //     email,
+  //     amount: toPay,
+  //   };
+  //   const request = fetch(
+  //     `${process.env.REACT_APP_PAYMENT_SERVER}successPayment`,
+  //     {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(data),
+  //     }
+  //   ).then((response) => {
+  //     return response.json();
+  //   });
 
-    let response = await request;
-  };
+  //   let response = await request;
+  // };
 
   const payWithCard = async () => {
     setFormFilled(true);
-    // await apiService.loginUser()
-    card = elements.create('card');
-    card.mount('#card-element');
-    console.log(card);
-  };
-
-  const getClientSecret = async (purchase) => {
-    const request = fetch(
-      `${process.env.REACT_APP_PAYMENT_SERVER}create-payment-intent`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(purchase),
-      }
-    ).then((response) => {
-      return response.json();
-    });
-
-    let response = await request;
-    console.log(response.clientSecret);
-    return response.clientSecret;
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    if (!stripe || !elements) {
-      return;
-    }
-
-    let purchase = {
-      coins: toPay,
-    };
-
-    const clientSecret = await getClientSecret(purchase);
-
-    console.log(clientSecret);
-    console.log(card);
-
-    await stripe
-      .confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: card,
-        },
-      })
-      .then(function (result) {
-        if (result.error) {
-          // Show error to your customer
-          console.log('Error: ' + result.error.message);
-        } else {
-          // The payment succeeded!
-          console.log('Success: ' + result.paymentIntent.id);
-          paySuccessful(email);
-        }
-      });
   };
 
   const handleInputCoins = async (event) => {
@@ -138,7 +66,7 @@ const PageFunction = () => {
           Show my orders
         </Button>
       </div>
-      <Form className="Form" noValidate onSubmit={handleSubmit}>
+      <Form className="Form" noValidate>
         <Form.Group className="mb-3">
           <div>
             <img
@@ -182,15 +110,17 @@ const PageFunction = () => {
             value={email}
           />
         </Form.Group>
-        <div className="d-grid gap-2">
-          <Button
-            className="modalButton"
-            variant="primary"
-            onClick={payWithCard}
-          >
-            Pay with card
-          </Button>
-        </div>
+        {!formFilled ? (
+          <div className="d-grid gap-2">
+            <Button
+              className="modalButton"
+              variant="primary"
+              onClick={payWithCard}
+            >
+              Pay with card
+            </Button>
+          </div>
+        ) : null}
         {/* <div className="cardInput" id="card-element"></div> */}
         {formFilled ? (
           <PayPalScriptProvider
@@ -214,7 +144,7 @@ const PageFunction = () => {
               onApprove={(data, actions) => {
                 return actions.order.capture().then((details) => {
                   console.log(details.purchase_units[0].amount.value);
-                  paySuccessful(email, details.purchase_units[0].amount.value);
+                  // paySuccessful(email, details.purchase_units[0].amount.value);
                   const name = details.payer.name.given_name;
                   alert(`Transaction completed by ${name}`);
                 });

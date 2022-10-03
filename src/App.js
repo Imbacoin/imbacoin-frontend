@@ -1,13 +1,70 @@
-import logo from './logo.svg';
-import React from "react";
+import React, {useEffect} from "react";
 import './App.scss';
-import IntroAnimation from "./components/IntroAnimation";
+import IntroDesktop from "./components/desktop/IntroDesktop";
+import IntroMobile from "./components/mobile/IntroMobile";
+import { useMediaQuery } from 'react-responsive'
+import IntroTabletPortrait from "./components/tablet/portrait/IntroTabletPortrait";
+import IntroTabletLandscape from "./components/tablet/landscape/IntroTabletLandscape";
+import SocialButtons from "./components/SocialButtons";
+import Chat from "./components/Chat";
+import gsap from "gsap";
 
 function App() {
+    const Desktop = ({ children }) => {
+        const isDesktop = useMediaQuery({ minWidth:1225 })
+        return isDesktop ? children : null
+    }
+    const TabletPortrait = ({ children }) => {
+        const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1224, orientation: "portrait" })
+        return isTablet ? children : null
+    }
+    const TabletLandscape = ({ children }) => {
+        const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1224, orientation: "landscape" })
+        return isTablet ? children : null
+    }
+
+    const Mobile = ({ children }) => {
+        const isMobile = useMediaQuery({ maxWidth: 767 })
+        return isMobile ? children : null
+    }
+
+    useEffect(()=>{
+        gsap.to('.appears',{opacity: 1, delay: 6, duration:1})
+    },[])
 
   return (
     <div className="App">
-        <IntroAnimation />
+        <Desktop>
+            <IntroDesktop />
+            <div className="appears">
+                <SocialButtons />
+                <Chat />
+            </div>
+        </Desktop>
+
+        <TabletPortrait>
+            <IntroTabletPortrait />
+            <div className="appears">
+                <SocialButtons />
+                <Chat />
+            </div>
+        </TabletPortrait>
+
+        <TabletLandscape>
+            <IntroTabletLandscape />
+            <div className="appears">
+                <SocialButtons />
+                <Chat />
+            </div>
+        </TabletLandscape>
+
+        <Mobile>
+            <IntroMobile />
+            <div className="appears">
+                <SocialButtons />
+                <Chat />
+            </div>
+        </Mobile>
     </div>
   );
 }

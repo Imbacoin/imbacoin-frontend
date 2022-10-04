@@ -284,7 +284,7 @@ html, body {
 }
 
 .logo_trunspilot {
-  max-width: 165px;
+  width: 10vw;
 }
 
 .chat {
@@ -454,7 +454,7 @@ form {
   display: flex;
   flex-direction: column;
   width: 100%;
-  font-size: 2vh;
+  font-size: 1rem;
 }
 
 input[type=range] {
@@ -581,7 +581,7 @@ input[type=range]:focus::-ms-fill-upper {
   padding: 0 2vh;
   transition: all 0.5s;
   margin: 1vh 0 2vh;
-  font-size: 2vh;
+  font-size: 1rem;
 }
 
 .inputField:focus, .inputField:active {
@@ -600,7 +600,7 @@ input[type=range]:focus::-ms-fill-upper {
   min-height: 5vh;
   cursor: pointer;
   font-weight: 700;
-  font-size: 1vw;
+  font-size: 1rem;
   color: #FFFFFF;
   border: none;
   margin: 0px auto 2vh;
@@ -614,7 +614,7 @@ input[type=range]:focus::-ms-fill-upper {
   min-height: 5vh;
   cursor: pointer;
   font-weight: 700;
-  font-size: 1vw;
+  font-size: 1rem;
   color: #FFFFFF;
   margin: 0 auto;
   display: flex;
@@ -707,7 +707,7 @@ input[type=range]:focus::-ms-fill-upper {
   color: #fff;
   margin-left: 10px;
   font-weight: bold;
-  font-size: 1vw;
+  font-size: 1rem;
   pointer-events: none;
 }
 
@@ -745,7 +745,7 @@ input[type=range]:focus::-ms-fill-upper {
     align-items: center;
     flex-wrap: nowrap;
     color: #FFFFFF;
-    font-size: 1vw;
+    font-size: 1rem;
     padding: 0 20px 0 50px;
     width: 90%;
   }
@@ -934,10 +934,10 @@ input[type=range]:focus::-ms-fill-upper {
     background: transparent;
   }
   .goButton {
-    top:auto;
-    bottom: 0px;
+    top: 80vh;
     width: 40vw;
   }
+
   .chat_wrap {
     bottom: 2vh;
   }
@@ -977,17 +977,8 @@ input[type=range]:focus::-ms-fill-upper {
   .middle_box .card {
     display: none;
   }
-  .submitBtn {
-    font-size: 2vw;
-  }
-  .submitOptions {
-    font-size: 2vw;
-  }
-  .back_text {
-    font-size: 2vw;
-  }
   .inputField {
-    margin: 1vh 0 2vh;
+    margin: 0.5rem 0 1rem;
   }
 }
 
@@ -996,10 +987,11 @@ input[type=range]:focus::-ms-fill-upper {
     width: auto;
     right: 20px;
     padding: 0;
-    height: 85vh;
+    height: 75vh;
     top: 5vh;
     display: flex;
     flex-direction: column;
+    bottom: auto;
   }
   .social_img_wrap:hover {
     height: 5.5vh;
@@ -1031,15 +1023,33 @@ input[type=range]:focus::-ms-fill-upper {
     font-size: 16px;
   }
   .back_text {
-    font-size: 4vw;
+    font-size: 1rem;
   }
   .search_icon {
-    top: 53px;
+    top: 20px;
   }
   form {
     font-size: 16px;
   }
   .inputField {
     font-size: 16px;
+  }
+  .goButton {
+    top: 70vh;
+  }
+}
+
+// for ios only
+@supports (-webkit-touch-callout: none) {
+  .goButton {
+    top: auto;
+    bottom: 50px;
+    width: 40vw;
+  }
+  .chat_wrap {
+    height: 75vh;
+  }
+  .search_icon {
+    top: 18px;
   }
 }

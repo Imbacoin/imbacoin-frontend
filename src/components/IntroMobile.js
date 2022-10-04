@@ -142,7 +142,7 @@ function IntroMobile() {
            .to(".left_light1",{opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.2")
            .to(".left_light2",{opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.3")
            .to(".left_light3",{opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.4")
-           .to(".tablo",{y: 10, duration:3, repeat:-1, yoyo: true, ease:"none"},"<")
+           // .to(".tablo",{y: 10, duration:3, repeat:-1, yoyo: true, ease:"none"},"<")
            .to(".confetti",{opacity:1, duration:3},"<")
            .to(".player",{opacity: 1, rotation:0, y: 0, x: 0, duration:1, ease: "back"},"<+0.5")
            .fromTo(".path",{opacity:0, x:-10, y: 10},{opacity:1, x:0, y: 0, duration: 0.2, stagger:0.05, ease: "power3.inOut"},"<+=0.2")
@@ -153,12 +153,14 @@ function IntroMobile() {
            .to(".vorota_uzor",{opacity:1, y: 0, x: 0, duration: 1, ease: "power4.inOut"},"<+=0.2")
            .to(".zritel",{opacity:1, y: 0, x: 0, duration: 1, ease: "back"},"<-=0.5")
            .fromTo(".goButton",{yPercent: 100,opacity:0},{yPercent:0,opacity:1,duration: 1, ease: "back"},"<")
-           .to(".ball_oreol",{opacity:0.5, duration:3, repeat:-1, yoyo: true, ease:"none" })
+           // .to(".ball_oreol",{opacity:0.5, duration:3, repeat:-1, yoyo: true, ease:"none" })
            .fromTo(".path",{opacity:0},{opacity:1,repeat:-1, repeatDelay: 2,  duration: 0.2, stagger:0.05, ease: "power3.inOut"},"<")
 
 
 
     },[])
+
+
 
 
     const startForm = ()=>{
@@ -179,6 +181,9 @@ function IntroMobile() {
 
         tl_start.current.play()
     }
+
+
+
 
     return (
         <div className="intro_wrap">

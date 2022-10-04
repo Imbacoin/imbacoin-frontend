@@ -1,5 +1,9 @@
 import React, {useEffect, useRef, useState} from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import GoButton from "./GoButton";
+import BuyForm from "./BuyForm";
 import path_1 from "../images/mobile/path_1.png"
 import path_2 from "../images/mobile/path_2.png"
 import path_3 from "../images/mobile/path_3.png"
@@ -29,10 +33,15 @@ import bg from "../images/mobile/bg.png"
 import ball from "../images/mobile/ball.png"
 import ball_oreol from "../images/mobile/ball_oreol.png"
 import left_light from "../images/mobile/left_light.png"
-import GoButton from "./GoButton";
-import BuyForm from "./BuyForm";
 
+gsap.registerPlugin(ScrollTrigger);
 function IntroMobile() {
+
+    ScrollTrigger.config({
+        limitCallbacks: true,
+        ignoreMobileResize: true
+    });
+    ScrollTrigger.normalizeScroll(true);
 
     const containerRef = useRef(null)
     const q = gsap.utils.selector(containerRef)
@@ -122,8 +131,7 @@ function IntroMobile() {
        gsap.to(".left_light1",{rotation: -10, transformOrigin: '0 0', duration: 15, repeat: -1, yoyo: true, ease: "none"})
        gsap.to(".left_light2",{rotation: 20, transformOrigin: '0 0', duration: 17, repeat: -1, yoyo: true, ease: "none"})
        gsap.to(".left_light3",{rotation: 10, transformOrigin: '0 0', duration: 13, repeat: -1, yoyo: true, ease: "none"})
-
-       gsap.timeline()
+      gsap.timeline()
            .to(".scene",{scale:2,xPercent:-50, yPercent:20, duration: 1, ease: "back"})
            .to(".bg",{opacity:1, y:0, duration: 1, ease: "back"})
            .to(".right_top_corner",{opacity:1, y:0, x:0, duration: 1, ease: "power3.inOut"},"<+=0.1")

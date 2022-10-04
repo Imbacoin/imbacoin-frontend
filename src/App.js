@@ -1,10 +1,10 @@
 import React, {useEffect} from "react";
 import './App.scss';
-import IntroDesktop from "./components/desktop/IntroDesktop";
-import IntroMobile from "./components/mobile/IntroMobile";
+import IntroDesktop from "./components/IntroDesktop";
+import IntroMobile from "./components/IntroMobile";
 import { useMediaQuery } from 'react-responsive'
-import IntroTabletPortrait from "./components/tablet/portrait/IntroTabletPortrait";
-import IntroTabletLandscape from "./components/tablet/landscape/IntroTabletLandscape";
+import IntroTabletPortrait from "./components/IntroTabletPortrait";
+import IntroTabletLandscape from "./components/IntroTabletLandscape";
 import SocialButtons from "./components/SocialButtons";
 import Chat from "./components/Chat";
 import gsap from "gsap";

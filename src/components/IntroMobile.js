@@ -1,36 +1,36 @@
 import React, {useEffect, useRef, useState} from "react";
 import gsap from "gsap";
-import path_1 from "../../images/mobile/path_1.png"
-import path_2 from "../../images/mobile/path_2.png"
-import path_3 from "../../images/mobile/path_3.png"
-import path_4 from "../../images/mobile/path_4.png"
-import path_5 from "../../images/mobile/path_5.png"
-import path_6 from "../../images/mobile/path_6.png"
-import path_7 from "../../images/mobile/path_7.png"
-import path_8 from "../../images/mobile/path_8.png"
-import path_9 from "../../images/mobile/path_9.png"
-import path_10 from "../../images/mobile/path_10.png"
-import path_11 from "../../images/mobile/path_11.png"
-import path_12 from "../../images/mobile/path_12.png"
-import lines from "../../images/mobile/lines.png"
-import path_left_lite from "../../images/mobile/path_left_lite.png"
-import path_right_bottom from "../../images/mobile/path_right_bottom.png"
-import player from "../../images/mobile/player.png"
-import right_top_corner from "../../images/mobile/right_top_corner.png"
-import tablo from "../../images/mobile/tablo.png"
-import tablo_down_brizg from "../../images/mobile/tablo_down_brizg.png"
-import tablo_right_top_brizg from "../../images/mobile/tablo_right_top_brizg.png"
-import tablo_bg_lines from "../../images/mobile/tablo_bg_lines.png"
-import tablo_lenti from "../../images/mobile/tablo_lenti.png"
-import vorota from "../../images/mobile/vorota.png"
-import vorota_uzor from "../../images/mobile/vorota_uzor.png"
-import zritel from "../../images/mobile/zritel.png"
-import bg from "../../images/mobile/bg.png"
-import ball from "../../images/mobile/ball.png"
-import ball_oreol from "../../images/mobile/ball_oreol.png"
-import left_light from "../../images/mobile/left_light.png"
-import GoButton from "../GoButton";
-import BuyForm from "../BuyForm";
+import path_1 from "../images/mobile/path_1.png"
+import path_2 from "../images/mobile/path_2.png"
+import path_3 from "../images/mobile/path_3.png"
+import path_4 from "../images/mobile/path_4.png"
+import path_5 from "../images/mobile/path_5.png"
+import path_6 from "../images/mobile/path_6.png"
+import path_7 from "../images/mobile/path_7.png"
+import path_8 from "../images/mobile/path_8.png"
+import path_9 from "../images/mobile/path_9.png"
+import path_10 from "../images/mobile/path_10.png"
+import path_11 from "../images/mobile/path_11.png"
+import path_12 from "../images/mobile/path_12.png"
+import lines from "../images/mobile/lines.png"
+import path_left_lite from "../images/mobile/path_left_lite.png"
+import path_right_bottom from "../images/mobile/path_right_bottom.png"
+import player from "../images/mobile/player.png"
+import right_top_corner from "../images/mobile/right_top_corner.png"
+import tablo from "../images/mobile/tablo.png"
+import tablo_down_brizg from "../images/mobile/tablo_down_brizg.png"
+import tablo_right_top_brizg from "../images/mobile/tablo_right_top_brizg.png"
+import tablo_bg_lines from "../images/mobile/tablo_bg_lines.png"
+import tablo_lenti from "../images/mobile/tablo_lenti.png"
+import vorota from "../images/mobile/vorota.png"
+import vorota_uzor from "../images/mobile/vorota_uzor.png"
+import zritel from "../images/mobile/zritel.png"
+import bg from "../images/mobile/bg.png"
+import ball from "../images/mobile/ball.png"
+import ball_oreol from "../images/mobile/ball_oreol.png"
+import left_light from "../images/mobile/left_light.png"
+import GoButton from "./GoButton";
+import BuyForm from "./BuyForm";
 
 function IntroMobile() {
 
@@ -186,6 +186,9 @@ function IntroMobile() {
                 <img src={bg} className="bg img" alt=""/>
                 <img src={lines} className="lines img" alt=""/>
                 <img src={right_top_corner} className="right_top_corner img" alt=""/>
+                <img src={left_light} className="left_light1 img" alt=""/>
+                <img src={left_light} className="left_light2 img" alt=""/>
+                <img src={left_light} className="left_light3 img" alt=""/>
                 <img src={vorota} className="vorota img" alt=""/>
                 <img src={vorota_uzor} className="vorota_uzor img" alt=""/>
                 <img src={path_left_lite} className="path_left_lite img" alt=""/>
@@ -241,9 +244,6 @@ function IntroMobile() {
                 <img src={tablo} className="tablo img" alt=""/>
                 <img src={player} className="player img" alt=""/>
                 <img src={zritel} className="zritel img" alt=""/>
-                <img src={left_light} className="left_light1 img" alt=""/>
-                <img src={left_light} className="left_light2 img" alt=""/>
-                <img src={left_light} className="left_light3 img" alt=""/>
                 <img src={ball_oreol} className="ball_oreol img" alt=""/>
                 <img src={ball} className="ball img" alt=""/>
                 <div className="goButton">

@@ -2,11 +2,11 @@ import React, {useEffect, useRef, useState} from "react";
 import bg_card_under_player from '../images/bg_card_under_player.png'
 import bg_card_under_player_bg from '../images/bg_card_under_player_bg.png'
 import back_icon from '../images/back_icon.svg'
-import search_icon from '../images/search_icon.svg'
 import coins from '../images/coins.svg'
 import paypal from '../images/paypal.png'
 import gsap from "gsap";
 import { Formik, Field, Form, useField, useFormikContext } from 'formik';
+import SearchBar from "./searchBar";
 
 
 function BuyForm() {
@@ -159,14 +159,7 @@ function BuyForm() {
                                 </div>
                                 <div className="back_text">Back</div>
                             </div>
-                            <div className="search_input">
-                                <div className="input">
-                                    <div className="search_icon">
-                                        <img src={search_icon} alt=""/>
-                                    </div>
-                                    <input type="text" />
-                                </div>
-                            </div>
+                            <SearchBar />
                             <div className="options">
                                 <ul>
                                     {

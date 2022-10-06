@@ -36,12 +36,14 @@ import ball_oreol from "../images/tablet_L/ball_oreol.png"
 import GoButton from "./GoButton";
 import BuyForm from "./BuyForm";
 import {useMediaQuery} from "react-responsive";
+import france from "../images/lang/france.png";
+import SearchBar from "./searchBar";
 
 function IntroTabletLandscape() {
-
+    gsap.ticker.lagSmoothing(1000, 16)
     const containerRef = useRef(null)
     const q = gsap.utils.selector(containerRef)
-
+    const langFullPanelRef = useRef(null)
     const tl_start = useRef(null)
 
     const [start,setStart] = useState(false)
@@ -187,6 +189,47 @@ function IntroTabletLandscape() {
         tl_start.current.play()
     }
 
+    const openLangPanel = () => {
+        if (!langFullPanelRef.current.classList.contains("active")) {
+            langFullPanelRef.current.classList.add("active")
+            gsap.timeline().to(".lang_full_panel", {autoAlpha: 1, duration: 0.3})
+                .to(".panel_l", {marginTop: 0, opacity: 1, duration: 1, ease: "back"},"<")
+                .fromTo(".liLang",{opacity:0}, { opacity: 1, duration: 1, stagger:0.05, ease: "back"},"<")
+        } else {
+            langFullPanelRef.current.classList.remove("active")
+        }
+        //
+    }
+
+    const closeLangPanel = () => {
+        if (langFullPanelRef.current.classList.contains("active")) {
+            gsap.timeline().to(".panel_l", {marginTop: 100, duration: 1, ease: "back"})
+                .to(".lang_full_panel", {autoAlpha: 0, duration: 1.2},"<")
+            langFullPanelRef.current.classList.remove("active")
+        }
+    }
+
+    const wrapClosePanel = (e) => {
+        if (e.target.classList.contains("lang_full_wrap")) {
+            gsap.timeline().to(".panel_l", {marginTop: 100, duration: 1, ease: "back"})
+                .to(".lang_full_panel", {autoAlpha: 0, duration: 1.2},"<")
+            langFullPanelRef.current.classList.remove("active")
+        }
+    }
+
+    const langs = [
+        {lang: 'fran', img: france},
+        {lang: 'fran', img: france},
+        {lang: 'fran', img: france},
+        {lang: 'fran', img: france},
+        {lang: 'fran', img: france},
+        {lang: 'fran', img: france},
+        {lang: 'fran', img: france},
+        {lang: 'fran', img: france},
+        {lang: 'fran', img: france},
+        {lang: 'fran', img: france}
+    ]
+
     return (
         <div className="intro_wrap">
             <div className="scene">
@@ -226,7 +269,7 @@ function IntroTabletLandscape() {
 
                 <img src={lines} className="lines img" alt=""/>
                 <div className="goButton">
-                    <GoButton startForm={startForm} start={start}/>
+                    <GoButton startForm={startForm} start={start} openLangPanel={openLangPanel}/>
                 </div>
                 <img src={bg} className="bg img" alt=""/>
                 <img src={right_top_corner} className="right_top_corner img" alt=""/>
@@ -265,6 +308,34 @@ function IntroTabletLandscape() {
                 <img src={left_light} className="left_light3 img" alt=""/>
                 <img src={ball_oreol} className="ball_oreol img" alt=""/>
                 <img src={ball} className="ball img" alt=""/>
+                <div className="lang_full_panel" ref={langFullPanelRef}>
+                    <div className="lang_full_wrap"  onClick={wrapClosePanel}>
+                        <div className="panel_l">
+                            <div className="panel_close_btn" onClick={closeLangPanel}>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div className="search_pos">
+                                <SearchBar />
+                            </div>
+                            <div className="allLangs">
+                                <ul>
+                                    {
+                                        langs.map((el, index) => (
+                                                <li key={index} className="liLang">
+                                                    <div className="name">{el.lang}</div>
+                                                    <div className="flag">
+                                                        <img src={el.img} alt=""/>
+                                                    </div>
+                                                </li>
+                                            )
+                                        )
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

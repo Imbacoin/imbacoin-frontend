@@ -40,7 +40,7 @@ import france from "../images/lang/france.png";
 
 
 function IntroDesktop() {
-
+    gsap.ticker.lagSmoothing(1000, 16)
     const containerRef = useRef(null)
     const q = gsap.utils.selector(containerRef)
     const langFullPanelRef = useRef(null)

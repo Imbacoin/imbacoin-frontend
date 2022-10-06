@@ -33,105 +33,29 @@ import bg from "../images/mobile/bg.png"
 import ball from "../images/mobile/ball.png"
 import ball_oreol from "../images/mobile/ball_oreol.png"
 import left_light from "../images/mobile/left_light.png"
+import confetti from "../images/mobile/confetti.png"
 
-gsap.registerPlugin(ScrollTrigger);
 function IntroMobile() {
 
+    gsap.registerPlugin(ScrollTrigger);
     ScrollTrigger.config({
-        limitCallbacks: true,
         ignoreMobileResize: true
     });
     ScrollTrigger.normalizeScroll(true);
 
+    gsap.ticker.lagSmoothing(1000, 16)
+
     const containerRef = useRef(null)
-    const q = gsap.utils.selector(containerRef)
 
     const tl_start = useRef(null)
+    const tl_intro = useRef(null)
 
     const [start,setStart] = useState(false)
 
 
     useEffect(()=>{
-        const circles = q('.circle')
-        const squares = q('.squares')
 
-        const minX = 0;
-        const maxX = containerRef.current.getBoundingClientRect().width
-
-        const minY = window.innerHeight;
-        const maxY =  window.innerHeight/2;
-
-        const minSize = window.innerHeight/100;
-        const maxSize = window.innerHeight*4/100;
-
-        const minDelay = 0;
-        const maxDelay = 2;
-
-        const minOpacity = 1.;
-        const maxOpacity = 1.0;
-
-        const minDuration = 1;
-        const maxDuration = 3;
-
-        const minRotation = 15;
-        const maxRotation = 60;
-
-
-        circles.forEach(el=>{
-            animateCircle(el, 0);
-        })
-
-        squares.forEach(el=>{
-            animateCircle(el, 1);
-        })
-
-        function animateCircle(el, sq) {
-
-            const x = random(minX, maxX);
-            const y = random(minY, maxY);
-            let sizeH, sizeW
-            if (sq) {
-                sizeW = 2*random(minSize, maxSize);
-                sizeH = random(minSize, maxSize);
-            } else {
-                sizeW = random(minSize, maxSize);
-                sizeH = random(minSize, maxSize);
-            }
-            const delay = random(minDelay, maxDelay);
-            const rotation = random(minRotation, maxRotation);
-            const opacity = random(minOpacity, maxOpacity);
-            const duration = random(minDuration, maxDuration);
-
-            gsap.set(el, {
-                x: x,
-                y: sizeW,
-                rotation: rotation,
-                width:sizeW,
-                height: sizeH,
-                autoAlpha: opacity
-            });
-
-           gsap.to(el, {
-                duration,
-                autoAlpha: 0,
-                rotation: rotation,
-                y: y,
-                x: x,
-                delay: delay,
-                onComplete: animateCircle,
-                onCompleteParams: [el]
-            });
-        }
-
-        function random(min, max) {
-            if (max == null) { max = min; min = 0; }
-            return Math.random() * (max - min) + min;
-        }
-
-       gsap.to(".left_light1",{rotation: -10, transformOrigin: '0 0', duration: 15, repeat: -1, yoyo: true, ease: "none"})
-       gsap.to(".left_light2",{rotation: 20, transformOrigin: '0 0', duration: 17, repeat: -1, yoyo: true, ease: "none"})
-       gsap.to(".left_light3",{rotation: 10, transformOrigin: '0 0', duration: 13, repeat: -1, yoyo: true, ease: "none"})
-      gsap.timeline()
+        tl_intro.current = gsap.timeline()
            .to(".scene",{scale:2,xPercent:-50, yPercent:20, duration: 1, ease: "back"})
            .to(".bg",{opacity:1, y:0, duration: 1, ease: "back"})
            .to(".right_top_corner",{opacity:1, y:0, x:0, duration: 1, ease: "power3.inOut"},"<+=0.1")
@@ -150,10 +74,9 @@ function IntroMobile() {
            .to(".left_light1",{opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.2")
            .to(".left_light2",{opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.3")
            .to(".left_light3",{opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.4")
-           // .to(".tablo",{y: 10, duration:3, repeat:-1, yoyo: true, ease:"none"},"<")
-           .to(".confetti",{opacity:1, duration:3},"<")
+           .to(".confetti_img",{opacity:1, duration:3},"<")
            .to(".player",{opacity: 1, rotation:0, y: 0, x: 0, duration:1, ease: "back"},"<+0.5")
-           .fromTo(".path",{opacity:0, x:-10, y: 10},{opacity:1, x:0, y: 0, duration: 0.2, stagger:0.05, ease: "power3.inOut"},"<+=0.2")
+           .fromTo(".path",{opacity:0, x:0, y: 0},{opacity:1, x:0, y: 0, duration: 0.2, stagger:0.05, ease: "power3.inOut"},"<+=0.2")
            .to(".path_left_lite",{opacity:1, y: 0, x: 0, duration: 0.5, ease: "power3.Out"},"<-=0.1")
            .to(".path_right_bottom",{opacity:1, y: 0, x: 0, duration: 0.5, ease: "power3.Out"},"<+=0.1")
            .to(".ball_oreol",{opacity: 1,  y: 0, x: 0, duration:1,ease: "power4.inOut" },"<+=0.2")
@@ -161,7 +84,6 @@ function IntroMobile() {
            .to(".vorota_uzor",{opacity:1, y: 0, x: 0, duration: 1, ease: "power4.inOut"},"<+=0.2")
            .to(".zritel",{opacity:1, y: 0, x: 0, duration: 1, ease: "back"},"<-=0.5")
            .fromTo(".goButton",{yPercent: 100,opacity:0},{yPercent:0,opacity:1,duration: 1, ease: "back"},"<")
-           // .to(".ball_oreol",{opacity:0.5, duration:3, repeat:-1, yoyo: true, ease:"none" })
            .fromTo(".path",{opacity:0},{opacity:1,repeat:-1, repeatDelay: 2,  duration: 0.2, stagger:0.05, ease: "power3.inOut"},"<")
 
 
@@ -169,29 +91,19 @@ function IntroMobile() {
     },[])
 
 
-
-
     const startForm = ()=>{
         setStart(true)
-        tl_start.current = gsap.timeline({paused:true,
-            onComplete:()=>{
-                gsap.to(".player",{y:-20, duration: 5, repeat:-1, yoyo: true, ease: "none" })
-            }})
+        tl_start.current = gsap.timeline({paused:true})
             .set(".player",{zIndex:10})
             .set(".zritel",{zIndex: 0})
             .set(".buy_wrap",{top:0, zIndex: 9})
             .to(".buy_form_wrap",{ opacity: 1, duration: 1, ease:"power4.inOut"})
-            .to(".buy_form_wrap",{ background: 'rgba(13, 19, 53, 0.2)',
-                backdropFilter: 'blur(6px)', duration: 2, ease:"power4.inOut"}, "<")
             .to(".middle_box",{ top: '0vh', duration: 2, ease:"power4.inOut"}, "<")
             .to(".player",{ top: '20vh',left:-20, duration: 2, ease:"power4.inOut"}, "<")
             .to(".chat_wrap",{ top: '70vh', height: '15vh', duration: 2, ease:"power4.inOut"}, "<")
 
         tl_start.current.play()
     }
-
-
-
 
     return (
         <div className="intro_wrap">
@@ -218,38 +130,7 @@ function IntroMobile() {
                 <img src={path_10} className="path img" alt=""/>
                 <img src={path_11} className="path img" alt=""/>
                 <img src={path_12} className="path img" alt=""/>
-                <div className="confetti" ref={containerRef}>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                </div>
+                <img src={confetti} className="confetti_img img" alt=""/>
                 <img src={tablo_right_top_brizg} className="tablo_right_top_brizg img" alt=""/>
                 <img src={tablo_down_brizg} className="tablo_down_brizg img" alt=""/>
                 <img src={tablo_bg_lines} className="tablo_bg_lines img" alt=""/>

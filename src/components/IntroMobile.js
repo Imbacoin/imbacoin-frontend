@@ -61,35 +61,35 @@ function IntroMobile() {
     useEffect(()=>{
 
         tl_intro.current = gsap.timeline()
-           .to(".scene",{scale:2,xPercent:-50, yPercent:20, duration: 1, ease: "back"})
-           .to(".bg",{opacity:1, y:0, duration: 1, ease: "back"})
-           .to(".right_top_corner",{opacity:1, y:0, x:0, duration: 1, ease: "power3.inOut"},"<+=0.1")
-           .to(".lines",{opacity:1, x:0, duration: 1, ease: "power3.inOut"},"<+=0.2")
-           .to(".vorota",{opacity:1, x:0, duration: 1, ease: "back"},"<+=0.3")
-           .to(".scene",{scale:1,xPercent:0, yPercent:0, duration: 1, ease: "power3.inOut"})
-           .to(".tablo",{y: 0, x: 0, duration: 1, ease: "elastic.out(1, 0.4)"})
-           .to(".tablo_lenti",{opacity:1, y: 0, x: 0, duration: 1, ease: "none"},"<")
-           .fromTo(".tablo_right_top_brizg",
-               { opacity:0, y: 0, x: -80},
-               { opacity:1, y: 0, x: 0, duration: 0.5,  ease: "elastic.out(1, 0.3)"},"<+=0.1")
-           .fromTo(".tablo_down_brizg",
-               { opacity:0, y: -20, x: 0},
-               { opacity:1, y: 0, x: 0, duration: 0.5, ease: "elastic.out(1, 0.3)"},"<+=0.2")
-           .to(".tablo_bg_lines",{y: 0, x: 0, opacity: 1, duration: 1, ease: "power4.inOut"},"<")
-           .to(".left_light1",{opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.2")
-           .to(".left_light2",{opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.3")
-           .to(".left_light3",{opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.4")
-           .to(".confetti_img",{opacity:1, duration:3},"<")
-           .to(".player",{opacity: 1, rotation:0, y: 0, x: 0, duration:1, ease: "back"},"<+0.5")
-           .fromTo(".path",{opacity:0, x:0, y: 0},{opacity:1, x:0, y: 0, duration: 0.2, stagger:0.05, ease: "power3.inOut"},"<+=0.2")
-           .to(".path_left_lite",{opacity:1, y: 0, x: 0, duration: 0.5, ease: "power3.Out"},"<-=0.1")
-           .to(".path_right_bottom",{opacity:1, y: 0, x: 0, duration: 0.5, ease: "power3.Out"},"<+=0.1")
-           .to(".ball_oreol",{opacity: 1,  y: 0, x: 0, duration:1,ease: "power4.inOut" },"<+=0.2")
-           .to(".ball",{opacity: 1, y: 0, x: 0, duration:1, },"<+=0")
-           .to(".vorota_uzor",{opacity:1, y: 0, x: 0, duration: 1, ease: "power4.inOut"},"<+=0.2")
-           .to(".zritel",{opacity:1, y: 0, x: 0, duration: 1, ease: "back"},"<-=0.5")
-           .fromTo(".goButton",{yPercent: 100,opacity:0},{yPercent:0,opacity:1,duration: 1, ease: "back"},"<")
-           .fromTo(".path",{opacity:0},{opacity:1,repeat:-1, repeatDelay: 2,  duration: 0.2, stagger:0.05, ease: "power3.inOut"},"<")
+            .to(".scene",{scale:2,xPercent:-50, yPercent:20, duration: 1, ease: "back"})
+            .to(".bg",{opacity:1, y:0, duration: 1, ease: "back"})
+            .to(".right_top_corner",{opacity:1, y:0, x:0, duration: 1, ease: "power3.inOut"},"<+=0.1")
+            .to(".lines",{opacity:1, x:0, duration: 1, ease: "power3.inOut"},"<+=0.2")
+            .to(".vorota",{opacity:1, x:0, duration: 1, ease: "back"},"<+=0.3")
+            .to(".scene",{scale:1,xPercent:0, yPercent:0, duration: 1, ease: "power3.inOut"})
+            .to(".tablo",{y: 0, x: 0, duration: 1, ease: "elastic.out(1, 0.4)"})
+            .to(".tablo_lenti",{opacity:1, y: 0, x: 0, duration: 1, ease: "none"},"<")
+            .fromTo(".tablo_right_top_brizg",
+                { opacity:0, y: 0, x: -80},
+                { opacity:1, y: 0, x: 0, duration: 0.5,  ease: "elastic.out(1, 0.3)"},"<+=0.1")
+            .fromTo(".tablo_down_brizg",
+                { opacity:0, y: -20, x: 0},
+                { opacity:1, y: 0, x: 0, duration: 0.5, ease: "elastic.out(1, 0.3)"},"<+=0.2")
+            .to(".tablo_bg_lines",{y: 0, x: 0, opacity: 1, duration: 1, ease: "power4.inOut"},"<")
+            .to(".left_light1",{opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.2")
+            .to(".left_light2",{opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.3")
+            .to(".left_light3",{opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.4")
+            .to(".confetti_img",{opacity:1, duration:3},"<")
+            .to(".player",{opacity: 1, rotation:0, y: 0, x: 0, duration:1, ease: "back"},"<+0.5")
+            .fromTo(".path",{opacity:0, x:0, y: 0},{opacity:1, x:0, y: 0, duration: 0.2, stagger:0.05, ease: "power3.inOut"},"<+=0.2")
+            .to(".path_left_lite",{opacity:1, y: 0, x: 0, duration: 0.5, ease: "power3.Out"},"<-=0.1")
+            .to(".path_right_bottom",{opacity:1, y: 0, x: 0, duration: 0.5, ease: "power3.Out"},"<+=0.1")
+            .to(".ball_oreol",{opacity: 1,  y: 0, x: 0, duration:1,ease: "power4.inOut" },"<+=0.2")
+            .to(".ball",{opacity: 1, y: 0, x: 0, duration:1, },"<+=0")
+            .to(".vorota_uzor",{opacity:1, y: 0, x: 0, duration: 1, ease: "power4.inOut"},"<+=0.2")
+            .to(".zritel",{opacity:1, y: 0, x: 0, duration: 1, ease: "back"},"<-=0.5")
+            .fromTo(".goButton",{yPercent: 100,opacity:0},{yPercent:0,opacity:1,duration: 1, ease: "back"},"<")
+            .fromTo(".path",{opacity:0},{opacity:1,repeat:-1, repeatDelay: 2,  duration: 0.2, stagger:0.05, ease: "power3.inOut"},"<")
 
 
 
@@ -141,7 +141,7 @@ function IntroMobile() {
             langFullPanelRef.current.classList.add("active")
             gsap.timeline().to(".lang_full_panel", {autoAlpha: 1, duration: 0.3})
                 .to(".panel_l", {marginTop: 0, opacity: 1, duration: 1, ease: "back"},"<")
-                .fromTo(".liLang",{opacity:0}, { opacity: 1, duration: 1, stagger:0.05, ease: "back"},"<")
+                .fromTo(".liLang",{opacity:0}, { opacity: 1, duration: 1, ease: "back"},"<")
         } else {
             langFullPanelRef.current.classList.remove("active")
         }

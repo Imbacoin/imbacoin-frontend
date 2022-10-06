@@ -32,37 +32,37 @@ function App() {
         gsap.to('.appears',{opacity: 1, delay: 6, duration:1})
     },[])
 
-  return (
-    <div className="App">
-        <Desktop>
-            <IntroDesktop />
-            <div className="appears">
-                <SocialButtons />
-                <Chat />
-            </div>
-        </Desktop>
+    return (
+        <div className="App">
+            <Desktop>
+                <IntroDesktop />
+                <div className="appears">
+                    <SocialButtons />
+                    <Chat />
+                </div>
+            </Desktop>
 
-        <TabletPortrait>
-            <IntroTabletPortrait />
-        </TabletPortrait>
+            <TabletPortrait>
+                <IntroTabletPortrait />
+            </TabletPortrait>
 
-        <TabletLandscape>
-            <IntroTabletLandscape />
-            <div className="appears">
-                <Chat />
-                <SocialButtons />
-            </div>
-        </TabletLandscape>
+            <TabletLandscape>
+                <IntroTabletLandscape />
+                <div className="appears">
+                    <Chat />
+                    <SocialButtons />
+                </div>
+            </TabletLandscape>
 
-        <Mobile>
-            <IntroMobile />
-            <div className="appears">
-                <Chat />
-                <SocialButtons />
-            </div>
-        </Mobile>
-    </div>
-  );
+            <Mobile>
+                <IntroMobile />
+                <div className="appears">
+                    <Chat />
+                    <SocialButtons />
+                </div>
+            </Mobile>
+        </div>
+    );
 }
 
 export default App;

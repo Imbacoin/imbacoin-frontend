@@ -21,6 +21,7 @@ html, body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  max-height: 100vh;
 }
 
 .body {
@@ -784,11 +785,12 @@ input[type=range]:focus::-ms-fill-upper {
   margin: 1vh 0;
   opacity: 0;
   transform: translate(20px, 0);
+  will-change: transform, opacity;
 }
 
 .paymentEl:first-child {
   margin: 0;
-  transform: translate(50px, 0);
+  transform: translate(20px, 0);
 }
 
 .lang_full_panel {
@@ -950,6 +952,7 @@ input[type=range]:focus::-ms-fill-upper {
     height: 5.5vh;
   }
   .chat_wrap {
+    height: auto;
     width: 100%;
     right: 0;
     padding: 0 72px;
@@ -968,15 +971,15 @@ input[type=range]:focus::-ms-fill-upper {
     background: transparent;
   }
   .goButton {
-    top: 80vh;
+    top: 75vh;
     width: 40vw;
   }
 
   .chat_wrap {
-    bottom: 2vh;
+    bottom: 6vh;
   }
   .social_buttons_wrap {
-    bottom: 2vh;
+    bottom: 6vh;
   }
   .middle_box {
     background: linear-gradient(180deg, #262D54 0%, #1E2447 100%);
@@ -1020,21 +1023,30 @@ input[type=range]:focus::-ms-fill-upper {
     width: 73vw;
     left: 50vw;
     transform: translate(-50%,0);
-    height: auto;
+    height: 130px;
     background: url("./images/union_bot.svg");
     background-size: contain;
     background-repeat: no-repeat;
     justify-content: center;
+    align-items: flex-start;
   }
   .next_arrow {
     width: 25px;
     margin-left: -20px;
+    margin-top: 20px;
   }
   .panel_l {
     width: 70%;
   }
 }
-
+@media screen and (max-width: 1224px) and (min-height: 1200px) and (orientation: portrait) {
+  .lang_panel {
+    height: 160px;
+  }
+  .next_arrow {
+    margin-top: 30px;
+  }
+}
 @media screen and (max-width: 767px) {
   .chat_wrap{
     width: auto;
@@ -1095,10 +1107,11 @@ input[type=range]:focus::-ms-fill-upper {
     bottom: -10vh;
     width: 100%;
     left: 50vw;
-    transform: translate(-50%,0);
-    height: 100px;
+    transform: translate(-50%, 0);
+    height: 20vh;
     background: #262D54;
     justify-content: center;
+    align-items: flex-start;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
   }
@@ -1134,14 +1147,12 @@ input[type=range]:focus::-ms-fill-upper {
 
 // for ios only
 @supports (-webkit-touch-callout: none) {
-  .goButton {
-    top: auto;
-    bottom: 50px;
-    width: 40vw;
-  }
-  .chat_wrap {
-    height: 75vh;
-  }
+  //.goButton {
+  //  top: auto;
+  //  bottom: 50px;
+  //  width: 40vw;
+  //}
+
   .search_icon {
     top: 18px;
   }

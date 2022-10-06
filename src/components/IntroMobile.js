@@ -35,8 +35,6 @@ import ball_oreol from "../images/mobile/ball_oreol.png"
 import left_light from "../images/mobile/left_light.png"
 import confetti from "../images/mobile/confetti.png"
 import france from "../images/lang/france.png";
-import Chat from "./Chat";
-import SocialButtons from "./SocialButtons";
 import arrowDown from "../images/lang/arrowDown.svg";
 import arrow_mob from "../images/lang/arrow_mob.svg";
 import SearchBar from "./searchBar";

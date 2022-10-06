@@ -6,7 +6,7 @@ import gsap from "gsap";
 import {useMediaQuery} from 'react-responsive'
 
 function GoButton({ startForm, start, langClick}) {
-    const isDesktop = useMediaQuery({minWidth: 1225})
+    const isDesktop = useMediaQuery({minWidth: 1300})
     const isMobile = useMediaQuery({ maxWidth: 767 })
 
     useEffect(() => {

@@ -11,15 +11,15 @@ import gsap from "gsap";
 
 function App() {
     const Desktop = ({ children }) => {
-        const isDesktop = useMediaQuery({ minWidth:1225 })
+        const isDesktop = useMediaQuery({ minWidth:1300 })
         return isDesktop ? children : null
     }
     const TabletPortrait = ({ children }) => {
-        const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1224, orientation: "portrait" })
+        const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1299, orientation: "portrait" })
         return isTablet ? children : null
     }
     const TabletLandscape = ({ children }) => {
-        const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1224, orientation: "landscape" })
+        const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1299, orientation: "landscape" })
         return isTablet ? children : null
     }
 

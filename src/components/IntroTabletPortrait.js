@@ -151,7 +151,6 @@ function IntroTabletPortrait() {
            .to(".left_light1",{opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.2")
            .to(".left_light2",{opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.3")
            .to(".left_light3",{opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.4")
-           .to(".tablo",{y: 10, duration:3, repeat:-1, yoyo: true, ease:"none"},"<")
            .to(".confetti",{opacity:1, duration:3},"<")
            .to(".player",{opacity: 1, rotation:0, y: 0, x: 0, duration:1, ease: "back"},"<+0.5")
            .fromTo(".path",{opacity:0, x:-10, y: 10},{opacity:1, x:0, y: 0, duration: 0.2, stagger:0.05, ease: "power3.inOut"},"<+=0.2")
@@ -164,6 +163,7 @@ function IntroTabletPortrait() {
            .fromTo(".goButton",{yPercent: 100,opacity:0},{yPercent:0,opacity:1,duration: 1, ease: "back"},"<")
            .to(".ball_oreol",{opacity:0.5, duration:3, repeat:-1, yoyo: true, ease:"none" })
            .fromTo(".path",{opacity:0},{opacity:1,repeat:-1, repeatDelay: 2,  duration: 0.2, stagger:0.05, ease: "power3.inOut"},"<")
+           .fromTo(".appears",{opacity:0},{opacity:1, duration: 2},"<+=1")
     },[])
 
     const startForm = ()=>{
@@ -174,7 +174,7 @@ function IntroTabletPortrait() {
             }})
             .set(".player",{zIndex:10})
             .set(".zritel",{zIndex: 0})
-            .set(".buy_wrap",{top:0, zIndex: 9})
+            .set(".buy_wrap",{top:0})
             .to(".buy_form_wrap",{ opacity: 1, duration: 1, ease:"power4.inOut"})
             .to(".buy_form_wrap",{ background: 'rgba(13, 19, 53, 0.2)',
                 backdropFilter: 'blur(6px)', duration: 2, ease:"power4.inOut"}, "<")
@@ -186,7 +186,7 @@ function IntroTabletPortrait() {
 
     useEffect(() => {
         tl_Ref.current = gsap.timeline({paused: true})
-        tl_Ref.current.to(".lang_panel", {autoAlpha: 1, bottom: '0', ease: 'power3.inOut'})
+        tl_Ref.current.to(".lang_panel", {autoAlpha: 1, bottom: '-5px', ease: 'power3.inOut'})
     }, [])
 
     useEffect(() => {
@@ -319,6 +319,10 @@ function IntroTabletPortrait() {
                 <div className="goButton">
                     <GoButton startForm={startForm} start={start} langClick={langClick}/>
                 </div>
+
+                <div className="buy_wrap">
+                    <BuyForm />
+                </div>
                 <div className="appears">
                     <Chat />
                     <SocialButtons />
@@ -371,9 +375,7 @@ function IntroTabletPortrait() {
                     </div>
                 </div>
 
-                <div className="buy_wrap">
-                    <BuyForm />
-                </div>
+
 
             </div>
         </div>

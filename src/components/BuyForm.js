@@ -35,7 +35,7 @@ function BuyForm() {
         tl_formik_wrapper.current = gsap.timeline({paused: true})
         tl_formik_wrapper.current.to(formik_wrapper_Ref.current, {x: -50, autoAlpha:0,ease: 'power3.inOut'})
         tl_formik_wrapper.current.to(".options_wrapper", { left: '50px', autoAlpha:1, ease: 'power3.inOut'})
-        tl_formik_wrapper.current.to(".paymentEl", { x: 0, opacity:1, stagger: 0.05, duration:1,ease: 'power2.out'})
+        tl_formik_wrapper.current.to(".paymentEl", { x: 0, opacity:1, duration:1,ease: 'power2.out'})
     }, [])
 
     const showAllOptions = ()=>{

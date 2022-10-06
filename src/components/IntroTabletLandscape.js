@@ -38,13 +38,17 @@ import BuyForm from "./BuyForm";
 import {useMediaQuery} from "react-responsive";
 import france from "../images/lang/france.png";
 import SearchBar from "./searchBar";
+import arrowDown from "../images/lang/arrowDown.svg";
 
 function IntroTabletLandscape() {
     gsap.ticker.lagSmoothing(1000, 16)
     const containerRef = useRef(null)
     const q = gsap.utils.selector(containerRef)
     const langFullPanelRef = useRef(null)
+    const langRef = useRef(null)
+    const tl_langPanel_Ref = useRef(null)
     const tl_start = useRef(null)
+    const tl_Ref = useRef(null)
 
     const [start,setStart] = useState(false)
 
@@ -166,7 +170,6 @@ function IntroTabletLandscape() {
             .fromTo(".goButton",{yPercent: 100,opacity:0},{yPercent:0,opacity:1,duration: 1, ease: "back"},"<")
             .to(".ball_oreol",{opacity:0.5, duration:3, repeat:-1, yoyo: true, ease:"none" })
             .fromTo(".path",{opacity:0},{opacity:1,repeat:-1, repeatDelay: 2,  duration: 0.2, stagger:0.05, ease: "power3.inOut"},"<")
-
     },[])
 
     const startForm = ()=>{
@@ -189,6 +192,29 @@ function IntroTabletLandscape() {
         tl_start.current.play()
     }
 
+    useEffect(() => {
+        tl_Ref.current = gsap.timeline({paused: true})
+        tl_Ref.current.to(".lang_panel", {autoAlpha: 1, top: '0', ease: 'power3.inOut'})
+    }, [])
+
+    useEffect(() => {
+        tl_langPanel_Ref.current = gsap.timeline({paused: true})
+        tl_langPanel_Ref.current.to(".go_title", {opacity: 0, y: 50, ease: 'none'})
+    }, [])
+
+    const langClick = () => {
+        if (!langRef.current.classList.contains('active')) {
+            langRef.current.classList.add('active')
+            tl_Ref.current.play()
+        } else {
+            langRef.current.classList.remove('active')
+            tl_Ref.current.reverse()
+        }
+    }
+    const subLangClick = () => {
+        tl_Ref.current.reverse()
+    }
+
     const openLangPanel = () => {
         if (!langFullPanelRef.current.classList.contains("active")) {
             langFullPanelRef.current.classList.add("active")
@@ -198,7 +224,6 @@ function IntroTabletLandscape() {
         } else {
             langFullPanelRef.current.classList.remove("active")
         }
-        //
     }
 
     const closeLangPanel = () => {
@@ -206,6 +231,8 @@ function IntroTabletLandscape() {
             gsap.timeline().to(".panel_l", {marginTop: 100, duration: 1, ease: "back"})
                 .to(".lang_full_panel", {autoAlpha: 0, duration: 1.2},"<")
             langFullPanelRef.current.classList.remove("active")
+            langRef.current.classList.remove('active')
+            tl_Ref.current.reverse()
         }
     }
 
@@ -269,8 +296,9 @@ function IntroTabletLandscape() {
 
                 <img src={lines} className="lines img" alt=""/>
                 <div className="goButton">
-                    <GoButton startForm={startForm} start={start} openLangPanel={openLangPanel}/>
+                    <GoButton startForm={startForm} start={start} langClick={langClick}/>
                 </div>
+
                 <img src={bg} className="bg img" alt=""/>
                 <img src={right_top_corner} className="right_top_corner img" alt=""/>
                 <img src={vorota} className="vorota img" alt=""/>
@@ -308,6 +336,26 @@ function IntroTabletLandscape() {
                 <img src={left_light} className="left_light3 img" alt=""/>
                 <img src={ball_oreol} className="ball_oreol img" alt=""/>
                 <img src={ball} className="ball img" alt=""/>
+
+                <div className="lang_panel" ref={langRef}>
+                    <ul>
+                        {
+                            langs.slice(0, 5).map((el, index) => (
+                                    <li key={index} onClick={subLangClick} className="liLang">
+                                        <div className="name">{el.lang}</div>
+                                        <div className="flag">
+                                            <img src={el.img} alt=""/>
+                                        </div>
+                                    </li>
+                                )
+                            )
+                        }
+                    </ul>
+                    <div className="next_arrow" onClick={openLangPanel}>
+                        <img src={arrowDown} alt=""/>
+                    </div>
+                </div>
+
                 <div className="lang_full_panel" ref={langFullPanelRef}>
                     <div className="lang_full_wrap"  onClick={wrapClosePanel}>
                         <div className="panel_l">

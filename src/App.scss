@@ -409,7 +409,7 @@ html, body {
 
 .goButton {
   position: absolute;
-  top: 150px;
+  top: 17vh;
   left: 50vw;
   transform: translate(-50%, -50%);
   width: 20vw;
@@ -417,10 +417,10 @@ html, body {
   opacity: 0;
 
   @media screen and (max-width: 1400px) {
-    top: 15vh;
+    top: 17vh;
   }
   @media screen and (min-height: 1000px) {
-    top: 175px;
+    top: 18vh;
   }
 }
 
@@ -627,7 +627,9 @@ input[type=range]:focus::-ms-fill-upper {
 
 .lang_panel {
   position: absolute;
-  top: 20vh;
+  top: 30vh;
+  left: 50vw;
+  transform: translate(-50%,0);
   opacity: 0;
   visibility: hidden;
   display: flex;
@@ -919,6 +921,25 @@ input[type=range]:focus::-ms-fill-upper {
   .scene .left_light3 {
     max-width: 100%;
   }
+  .lang_panel {
+    top: -10vh;
+    width: 45vw;
+    left: 50vw;
+    transform: translate(-50%,0);
+    height: auto;
+    background: url("./images/union.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    justify-content: center;
+    //backdrop-filter: blur(6px);
+  }
+  .next_arrow {
+    width: 25px;
+    margin-left: -20px;
+  }
+  .panel_l {
+    width: 70%;
+  }
 }
 
 @media screen and (max-width: 1224px) and (orientation: portrait) {
@@ -993,6 +1014,25 @@ input[type=range]:focus::-ms-fill-upper {
   .inputField {
     margin: 0.5rem 0 1rem;
   }
+  .lang_panel {
+    top: auto;
+    bottom: -10vh;
+    width: 73vw;
+    left: 50vw;
+    transform: translate(-50%,0);
+    height: auto;
+    background: url("./images/union_bot.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    justify-content: center;
+  }
+  .next_arrow {
+    width: 25px;
+    margin-left: -20px;
+  }
+  .panel_l {
+    width: 70%;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -1049,6 +1089,46 @@ input[type=range]:focus::-ms-fill-upper {
   }
   .goButton {
     top: 70vh;
+  }
+  .lang_panel {
+    top: auto;
+    bottom: -10vh;
+    width: 100%;
+    left: 50vw;
+    transform: translate(-50%,0);
+    height: 100px;
+    background: #262D54;
+    justify-content: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+  .next_arrow {
+    display: none;
+  }
+  .panel_l {
+    width: 100%;
+    top: 20vh;
+  }
+  .arrow_mob {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translate(-50%,0);
+  }
+  .lang_panel ul {
+    justify-content: center;
+  }
+  .input input {
+    width: 100%;
+  }
+  .options_wrapper .input input {
+    width:90%;
+  }
+  .search_pos {
+    width: 80%;
+  }
+  .bg_ball_top, .bg_ball_bottom {
+    display: none;
   }
 }
 

@@ -37,15 +37,20 @@ import GoButton from "./GoButton";
 import BuyForm from "./BuyForm";
 import SearchBar from "./searchBar";
 import france from "../images/lang/france.png";
+import arrowDown from "../images/lang/arrowDown.svg";
 
 
 function IntroDesktop() {
     gsap.ticker.lagSmoothing(1000, 16)
+
     const containerRef = useRef(null)
     const q = gsap.utils.selector(containerRef)
     const langFullPanelRef = useRef(null)
+    const langRef = useRef(null)
 
+    const tl_langPanel_Ref = useRef(null)
     const tl_start = useRef(null)
+    const tl_Ref = useRef(null)
 
     const [start, setStart] = useState(false)
 
@@ -210,7 +215,7 @@ function IntroDesktop() {
 
     }, [])
 
-    const startForm = ()=> {
+    const startForm = () => {
         setStart(true)
         tl_start.current = gsap.timeline({
             paused: true,
@@ -244,13 +249,41 @@ function IntroDesktop() {
         tl_start.current.play()
     }
 
+    useEffect(() => {
+        tl_Ref.current = gsap.timeline({paused: true})
+        tl_Ref.current.to(".go_title", {opacity: 0, y: 50, ease: 'none'})
+        tl_Ref.current.to(".lang_panel", {autoAlpha: 1, top: '24vh', ease: 'back'})
+    }, [])
+
+    useEffect(() => {
+        tl_langPanel_Ref.current = gsap.timeline({paused: true})
+        tl_langPanel_Ref.current.to(".go_title", {opacity: 0, y: 50, ease: 'none'})
+    }, [])
+
+    const langClick = () => {
+        if (start) {
+            openLangPanel()
+        } else {
+            if (!langRef.current.classList.contains('active')) {
+                langRef.current.classList.add('active')
+                tl_Ref.current.play()
+            } else {
+                langRef.current.classList.remove('active')
+                tl_Ref.current.reverse()
+            }
+        }
+    }
+    const subLangClick = () => {
+        tl_Ref.current.reverse()
+    }
+
 
     const openLangPanel = () => {
         if (!langFullPanelRef.current.classList.contains("active")) {
             langFullPanelRef.current.classList.add("active")
             gsap.timeline().to(".lang_full_panel", {autoAlpha: 1, duration: 0.3})
-                .to(".panel_l", {marginTop: 0, opacity: 1, duration: 1, ease: "back"},"<")
-                .fromTo(".liLang",{opacity:0}, { opacity: 1, duration: 1, stagger:0.05, ease: "back"},"<")
+                .to(".panel_l", {marginTop: 0, opacity: 1, duration: 1, ease: "back"}, "<")
+                .fromTo(".liLang", {opacity: 0}, {opacity: 1, duration: 1, stagger: 0.05, ease: "back"}, "<")
         } else {
             langFullPanelRef.current.classList.remove("active")
         }
@@ -260,15 +293,17 @@ function IntroDesktop() {
     const closeLangPanel = () => {
         if (langFullPanelRef.current.classList.contains("active")) {
             gsap.timeline().to(".panel_l", {marginTop: 100, duration: 1, ease: "back"})
-                .to(".lang_full_panel", {autoAlpha: 0, duration: 1.2},"<")
+                .to(".lang_full_panel", {autoAlpha: 0, duration: 1.2}, "<")
             langFullPanelRef.current.classList.remove("active")
+            langRef.current.classList.remove('active')
+            tl_Ref.current.reverse()
         }
     }
 
     const wrapClosePanel = (e) => {
         if (e.target.classList.contains("lang_full_wrap")) {
             gsap.timeline().to(".panel_l", {marginTop: 100, duration: 1, ease: "back"})
-                .to(".lang_full_panel", {autoAlpha: 0, duration: 1.2},"<")
+                .to(".lang_full_panel", {autoAlpha: 0, duration: 1.2}, "<")
             langFullPanelRef.current.classList.remove("active")
         }
     }
@@ -324,7 +359,25 @@ function IntroDesktop() {
                 </div>
                 <img src={lines} className="lines" alt=""/>
                 <div className="goButton">
-                    <GoButton startForm={startForm} start={start} openLangPanel={openLangPanel}/>
+                    <GoButton startForm={startForm} start={start} langClick={langClick}/>
+                </div>
+                <div className="lang_panel" ref={langRef}>
+                    <ul>
+                        {
+                            langs.slice(0, 5).map((el, index) => (
+                                    <li key={index} onClick={subLangClick} className="liLang">
+                                        <div className="name">{el.lang}</div>
+                                        <div className="flag">
+                                            <img src={el.img} alt=""/>
+                                        </div>
+                                    </li>
+                                )
+                            )
+                        }
+                    </ul>
+                    <div className="next_arrow" onClick={openLangPanel}>
+                        <img src={arrowDown} alt=""/>
+                    </div>
                 </div>
                 <img src={bg} className="bg img" alt=""/>
                 <img src={right_top_corner} className="right_top_corner img" alt=""/>
@@ -363,21 +416,22 @@ function IntroDesktop() {
                 <img src={left_light} className="left_light3 img" alt=""/>
                 <img src={ball_oreol} className="ball_oreol img" alt=""/>
                 <img src={ball} className="ball img" alt=""/>
+
                 <div className="lang_full_panel" ref={langFullPanelRef}>
-                    <div className="lang_full_wrap"  onClick={wrapClosePanel}>
+                    <div className="lang_full_wrap" onClick={wrapClosePanel}>
                         <div className="panel_l">
                             <div className="panel_close_btn" onClick={closeLangPanel}>
                                 <span></span>
                                 <span></span>
                             </div>
                             <div className="search_pos">
-                                <SearchBar />
+                                <SearchBar/>
                             </div>
                             <div className="allLangs">
                                 <ul>
                                     {
                                         langs.map((el, index) => (
-                                                <li key={index} className="liLang">
+                                                <li key={index} className="liLang" onClick={closeLangPanel}>
                                                     <div className="name">{el.lang}</div>
                                                     <div className="flag">
                                                         <img src={el.img} alt=""/>

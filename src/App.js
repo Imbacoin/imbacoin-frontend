@@ -44,25 +44,21 @@ function App() {
 
         <TabletPortrait>
             <IntroTabletPortrait />
-            <div className="appears">
-                <SocialButtons />
-                <Chat />
-            </div>
         </TabletPortrait>
 
         <TabletLandscape>
             <IntroTabletLandscape />
             <div className="appears">
-                <SocialButtons />
                 <Chat />
+                <SocialButtons />
             </div>
         </TabletLandscape>
 
         <Mobile>
             <IntroMobile />
             <div className="appears">
-                <SocialButtons />
                 <Chat />
+                <SocialButtons />
             </div>
         </Mobile>
     </div>

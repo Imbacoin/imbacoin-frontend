@@ -34,6 +34,12 @@ import ball from "../images/mobile/ball.png"
 import ball_oreol from "../images/mobile/ball_oreol.png"
 import left_light from "../images/mobile/left_light.png"
 import confetti from "../images/mobile/confetti.png"
+import france from "../images/lang/france.png";
+import Chat from "./Chat";
+import SocialButtons from "./SocialButtons";
+import arrowDown from "../images/lang/arrowDown.svg";
+import arrow_mob from "../images/lang/arrow_mob.svg";
+import SearchBar from "./searchBar";
 
 function IntroMobile() {
 
@@ -45,11 +51,12 @@ function IntroMobile() {
 
     gsap.ticker.lagSmoothing(1000, 16)
 
-    const containerRef = useRef(null)
-
+    const langFullPanelRef = useRef(null)
+    const langRef = useRef(null)
     const tl_start = useRef(null)
     const tl_intro = useRef(null)
-
+    const tl_Ref = useRef(null)
+    const tl_langPanel_Ref = useRef(null)
     const [start,setStart] = useState(false)
 
 
@@ -105,6 +112,74 @@ function IntroMobile() {
         tl_start.current.play()
     }
 
+    useEffect(() => {
+        tl_Ref.current = gsap.timeline({paused: true})
+        tl_Ref.current.to(".chat_wrap", {autoAlpha: 0,  ease: 'power3.inOut'})
+        tl_Ref.current.to(".social_buttons_wrap", {autoAlpha: 0,  ease: 'power3.inOut'})
+        tl_Ref.current.to(".lang_panel", {autoAlpha: 1, bottom: '0', ease: 'power3.inOut'})
+    }, [])
+
+    useEffect(() => {
+        tl_langPanel_Ref.current = gsap.timeline({paused: true})
+        tl_langPanel_Ref.current.to(".go_title", {opacity: 0, y: 50, ease: 'none'})
+    }, [])
+
+    const langClick = () => {
+        if (!langRef.current.classList.contains('active')) {
+            langRef.current.classList.add('active')
+            tl_Ref.current.play()
+        } else {
+            langRef.current.classList.remove('active')
+            tl_Ref.current.reverse()
+        }
+    }
+    const subLangClick = () => {
+        langRef.current.classList.remove('active')
+        tl_Ref.current.reverse()
+    }
+
+    const openLangPanel = () => {
+        if (!langFullPanelRef.current.classList.contains("active")) {
+            langFullPanelRef.current.classList.add("active")
+            gsap.timeline().to(".lang_full_panel", {autoAlpha: 1, duration: 0.3})
+                .to(".panel_l", {marginTop: 0, opacity: 1, duration: 1, ease: "back"},"<")
+                .fromTo(".liLang",{opacity:0}, { opacity: 1, duration: 1, stagger:0.05, ease: "back"},"<")
+        } else {
+            langFullPanelRef.current.classList.remove("active")
+        }
+    }
+
+    const closeLangPanel = () => {
+        if (langFullPanelRef.current.classList.contains("active")) {
+            gsap.timeline().to(".panel_l", {marginTop: 100, duration: 1, ease: "back"})
+                .to(".lang_full_panel", {autoAlpha: 0, duration: 1.2},"<")
+            langFullPanelRef.current.classList.remove("active")
+            langRef.current.classList.remove('active')
+            tl_Ref.current.reverse()
+        }
+    }
+
+    const wrapClosePanel = (e) => {
+        if (e.target.classList.contains("lang_full_wrap")) {
+            gsap.timeline().to(".panel_l", {marginTop: 100, duration: 1, ease: "back"})
+                .to(".lang_full_panel", {autoAlpha: 0, duration: 1.2},"<")
+            langFullPanelRef.current.classList.remove("active")
+        }
+    }
+
+    const langs = [
+        {lang: 'fran', img: france},
+        {lang: 'fran', img: france},
+        {lang: 'fran', img: france},
+        {lang: 'fran', img: france},
+        {lang: 'fran', img: france},
+        {lang: 'fran', img: france},
+        {lang: 'fran', img: france},
+        {lang: 'fran', img: france},
+        {lang: 'fran', img: france},
+        {lang: 'fran', img: france}
+    ]
+
     return (
         <div className="intro_wrap">
             <div className="scene">
@@ -141,11 +216,64 @@ function IntroMobile() {
                 <img src={ball_oreol} className="ball_oreol img" alt=""/>
                 <img src={ball} className="ball img" alt=""/>
                 <div className="goButton">
-                    <GoButton startForm={startForm} start={start}/>
+                    <GoButton startForm={startForm} start={start} langClick={langClick}/>
                 </div>
+
+                <div className="lang_panel" ref={langRef}>
+                    <ul>
+                        {
+                            langs.slice(0, 5).map((el, index) => (
+                                    <li key={index} onClick={subLangClick} className="liLang">
+                                        <div className="name">{el.lang}</div>
+                                        <div className="flag">
+                                            <img src={el.img} alt=""/>
+                                        </div>
+                                    </li>
+                                )
+                            )
+                        }
+                    </ul>
+                    <div className="arrow_mob" onClick={openLangPanel}>
+                        <img src={arrow_mob} alt=""/>
+                    </div>
+                    <div className="next_arrow" onClick={openLangPanel}>
+                        <img src={arrowDown} alt=""/>
+                    </div>
+                </div>
+
+                <div className="lang_full_panel" ref={langFullPanelRef}>
+                    <div className="lang_full_wrap"  onClick={wrapClosePanel}>
+                        <div className="panel_l">
+                            <div className="panel_close_btn" onClick={closeLangPanel}>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div className="search_pos">
+                                <SearchBar />
+                            </div>
+                            <div className="allLangs">
+                                <ul>
+                                    {
+                                        langs.map((el, index) => (
+                                                <li key={index} className="liLang">
+                                                    <div className="name">{el.lang}</div>
+                                                    <div className="flag">
+                                                        <img src={el.img} alt=""/>
+                                                    </div>
+                                                </li>
+                                            )
+                                        )
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div className="buy_wrap">
                     <BuyForm />
                 </div>
+
             </div>
         </div>
     );

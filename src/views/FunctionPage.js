@@ -142,23 +142,8 @@ const PageFunction = () => {
                 const orderData = await res.json();
                 console.log('orderData: ', orderData);
                 return orderData.id;
-                // return actions.order.create({
-                //   purchase_units: [
-                //     {
-                //       amount: {
-                //         value: toPay,
-                //       },
-                //     },
-                //   ],
-                // });
               }}
               onApprove={async (data, actions) => {
-                // return actions.order.capture().then((details) => {
-                //   console.log(details.purchase_units[0].amount.value);
-                //   // paySuccessful(email, details.purchase_units[0].amount.value);
-                //   const name = details.payer.name.given_name;
-                //   alert(`Transaction completed by ${name}`);
-                // });
                 const res = await fetch(
                   process.env.REACT_APP_PAYMENT_SERVER +
                     '/orders/' +

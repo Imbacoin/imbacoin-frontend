@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useMemo, useRef, useState} from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -39,15 +39,25 @@ import arrowDown from "../images/lang/arrowDown.svg";
 import arrow_mob from "../images/lang/arrow_mob.svg";
 import SearchBar from "./searchBar";
 
-function IntroMobile() {
 
+
+
+function IntroMobile() {
+    gsap.ticker.lagSmoothing(1000, 33)
     gsap.registerPlugin(ScrollTrigger);
     ScrollTrigger.config({
         ignoreMobileResize: true
     });
     ScrollTrigger.normalizeScroll(true);
 
-    gsap.ticker.lagSmoothing(1000, 16)
+    function useSelector() {
+        const ref = useRef();
+        const q = useMemo(() => gsap.utils.selector(ref), [ref]);
+        return [q, ref];
+    }
+
+
+
 
     const langFullPanelRef = useRef(null)
     const langRef = useRef(null)
@@ -56,71 +66,71 @@ function IntroMobile() {
     const tl_Ref = useRef(null)
     const tl_langPanel_Ref = useRef(null)
     const [start,setStart] = useState(false)
-
+    const [q, ref] = useSelector();
 
     useEffect(()=>{
 
         tl_intro.current = gsap.timeline()
-            .to(".scene",{scale:2,xPercent:-50, yPercent:20, duration: 1, ease: "back"})
-            .to(".bg",{opacity:1, y:0, duration: 1, ease: "back"})
-            .to(".right_top_corner",{opacity:1, y:0, x:0, duration: 1, ease: "power3.inOut"},"<+=0.1")
-            .to(".lines",{opacity:1, x:0, duration: 1, ease: "power3.inOut"},"<+=0.2")
-            .to(".vorota",{opacity:1, x:0, duration: 1, ease: "back"},"<+=0.3")
-            .to(".scene",{scale:1,xPercent:0, yPercent:0, duration: 1, ease: "power3.inOut"})
-            .to(".tablo",{y: 0, x: 0, duration: 1, ease: "elastic.out(1, 0.4)"})
-            .to(".tablo_lenti",{opacity:1, y: 0, x: 0, duration: 1, ease: "none"},"<")
-            .fromTo(".tablo_right_top_brizg",
+            .to(q(".scene"),{scale:2,xPercent:-50, yPercent:20, duration: 1, ease: "back"})
+            .to(q(".bg"),{opacity:1, y:0, duration: 1, ease: "back"})
+            .to(q(".right_top_corner"),{opacity:1, y:0, x:0, duration: 1, ease: "power3.inOut"},"<+=0.1")
+            .to(q(".lines"),{opacity:1, x:0, duration: 1, ease: "power3.inOut"},"<+=0.2")
+            .to(q(".vorota"),{opacity:1, x:0, duration: 1, ease: "back"},"<+=0.3")
+            .to(q(".scene"),{scale:1,xPercent:0, yPercent:0, duration: 1, ease: "power3.inOut"})
+            .to(q(".tablo"),{y: 0, x: 0, duration: 1, ease: "elastic.out(1, 0.4)"})
+            .to(q(".tablo_lenti"),{opacity:1, y: 0, x: 0, duration: 1, ease: "none"},"<")
+            .fromTo(q(".tablo_right_top_brizg"),
                 { opacity:0, y: 0, x: -80},
                 { opacity:1, y: 0, x: 0, duration: 0.5,  ease: "elastic.out(1, 0.3)"},"<+=0.1")
-            .fromTo(".tablo_down_brizg",
+            .fromTo(q(".tablo_down_brizg"),
                 { opacity:0, y: -20, x: 0},
                 { opacity:1, y: 0, x: 0, duration: 0.5, ease: "elastic.out(1, 0.3)"},"<+=0.2")
-            .to(".tablo_bg_lines",{y: 0, x: 0, opacity: 1, duration: 1, ease: "power4.inOut"},"<")
-            .to(".left_light1",{opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.2")
-            .to(".left_light2",{opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.3")
-            .to(".left_light3",{opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.4")
-            .to(".confetti_img",{opacity:1, duration:3},"<")
-            .to(".player",{opacity: 1, rotation:0, y: 0, x: 0, duration:1, ease: "back"},"<+0.5")
-            .fromTo(".path",{opacity:0, x:0, y: 0},{opacity:1, x:0, y: 0, duration: 0.2, stagger:0.05, ease: "power3.inOut"},"<+=0.2")
-            .to(".path_left_lite",{opacity:1, y: 0, x: 0, duration: 0.5, ease: "power3.Out"},"<-=0.1")
-            .to(".path_right_bottom",{opacity:1, y: 0, x: 0, duration: 0.5, ease: "power3.Out"},"<+=0.1")
-            .to(".ball_oreol",{opacity: 1,  y: 0, x: 0, duration:1,ease: "power4.inOut" },"<+=0.2")
-            .to(".ball",{opacity: 1, y: 0, x: 0, duration:1, },"<+=0")
-            .to(".vorota_uzor",{opacity:1, y: 0, x: 0, duration: 1, ease: "power4.inOut"},"<+=0.2")
-            .to(".zritel",{opacity:1, y: 0, x: 0, duration: 1, ease: "back"},"<-=0.5")
-            .fromTo(".goButton",{yPercent: 100,opacity:0},{yPercent:0,opacity:1,duration: 1, ease: "back"},"<")
-            .fromTo(".path",{opacity:0},{opacity:1,repeat:-1, repeatDelay: 2,  duration: 0.2, stagger:0.05, ease: "power3.inOut"},"<")
+            .to(q(".tablo_bg_lines"),{y: 0, x: 0, opacity: 1, duration: 1, ease: "power4.inOut"},"<")
+            .to(q(".left_light1"),{opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.2")
+            .to(q(".left_light2"),{opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.3")
+            .to(q(".left_light3"),{opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.4")
+            .to(q(".confetti_img"),{opacity:1, duration:3},"<")
+            .to(q(".player"),{opacity: 1, rotation:0, y: 0, x: 0, duration:1, ease: "back"},"<+0.5")
+            .to(q(".path"),{opacity:1, duration: 0.2, stagger:0.1},"<+=0.2")
+            .to(q(".path_left_lite"),{opacity:1, y: 0, x: 0, duration: 0.5, ease: "power3.Out"},"<-=0.1")
+            .to(q(".path_right_bottom"),{opacity:1, y: 0, x: 0, duration: 0.5, ease: "power3.Out"},"<+=0.1")
+            .to(q(".ball_oreol"),{opacity: 1,  y: 0, x: 0, duration:1,ease: "power4.inOut" },"<+=0.2")
+            .to(q(".ball"),{opacity: 1, y: 0, x: 0, duration:1, },"<+=0")
+            .to(q(".vorota_uzor"),{opacity:1, y: 0, x: 0, duration: 1, ease: "power4.inOut"},"<+=0.2")
+            .to(q(".zritel"),{opacity:1, y: 0, x: 0, duration: 1, ease: "back"},"<-=0.5")
+            .fromTo(q(".goButton"),{yPercent: 100,opacity:0},{yPercent:0,opacity:1,duration: 1, ease: "back"},"<")
+            .fromTo(q(".path"),{opacity:0},{opacity:1,repeat:-1, repeatDelay: 2,  duration: 0.2, stagger:0.05, ease: "power3.inOut"},"<")
 
 
 
-    },[])
+    },[tl_intro, q])
 
 
     const startForm = ()=>{
         setStart(true)
         tl_start.current = gsap.timeline({paused:true})
-            .set(".player",{zIndex:10})
-            .set(".zritel",{zIndex: 0})
-            .set(".buy_wrap",{top:0, zIndex: 9})
-            .to(".buy_form_wrap",{ opacity: 1, duration: 1, ease:"power4.inOut"})
-            .to(".middle_box",{ top: '0vh', duration: 2, ease:"power4.inOut"}, "<")
-            .to(".player",{ top: '20vh',left:-20, duration: 2, ease:"power4.inOut"}, "<")
-            .to(".chat_wrap",{ top: '70vh', height: '15vh', duration: 2, ease:"power4.inOut"}, "<")
+            .set(q(".player"),{zIndex:10})
+            .set(q(".zritel"),{zIndex: 0})
+            .set(q(".buy_wrap"),{top:0, zIndex: 9})
+            .to(q(".buy_form_wrap"),{ opacity: 1, duration: 1, ease:"power4.inOut"})
+            .to(q(".middle_box"),{ top: '0vh', duration: 2, ease:"power4.inOut"}, "<")
+            .to(q(".player"),{ top: '20vh',left:-20, duration: 2, ease:"power4.inOut"}, "<")
+            .to(q(".chat_wrap"),{ top: '70vh', height: '15vh', duration: 2, ease:"power4.inOut"}, "<")
 
         tl_start.current.play()
     }
 
     useEffect(() => {
         tl_Ref.current = gsap.timeline({paused: true})
-        tl_Ref.current.to(".chat_wrap", {autoAlpha: 0,  ease: 'power3.inOut'})
-        tl_Ref.current.to(".social_buttons_wrap", {autoAlpha: 0,  ease: 'power3.inOut'})
-        tl_Ref.current.to(".lang_panel", {autoAlpha: 1, bottom: '0', ease: 'power3.inOut'})
-    }, [])
+        tl_Ref.current.to(q(".chat_wrap"), {autoAlpha: 0,  ease: 'power3.inOut'})
+        tl_Ref.current.to(q(".social_buttons_wrap"), {autoAlpha: 0,  ease: 'power3.inOut'})
+        tl_Ref.current.to(q(".lang_panel"), {autoAlpha: 1, bottom: '0', ease: 'power3.inOut'})
+    }, [tl_Ref,q])
 
     useEffect(() => {
         tl_langPanel_Ref.current = gsap.timeline({paused: true})
-        tl_langPanel_Ref.current.to(".go_title", {opacity: 0, y: 50, ease: 'none'})
-    }, [])
+        tl_langPanel_Ref.current.to(q(".go_title"), {opacity: 0, y: 50, ease: 'none'})
+    }, [tl_langPanel_Ref,q])
 
     const langClick = () => {
         if (!langRef.current.classList.contains('active')) {
@@ -139,9 +149,9 @@ function IntroMobile() {
     const openLangPanel = () => {
         if (!langFullPanelRef.current.classList.contains("active")) {
             langFullPanelRef.current.classList.add("active")
-            gsap.timeline().to(".lang_full_panel", {autoAlpha: 1, duration: 0.3})
-                .to(".panel_l", {marginTop: 0, opacity: 1, duration: 1, ease: "back"},"<")
-                .fromTo(".liLang",{opacity:0}, { opacity: 1, duration: 1, ease: "back"},"<")
+            gsap.timeline().to(q(".lang_full_panel"), {autoAlpha: 1, duration: 0.3})
+                .to(q(".panel_l"), {marginTop: 0, opacity: 1, duration: 1, ease: "back"},"<")
+                .fromTo(q(".liLang"),{opacity:0}, { opacity: 1, duration: 1, ease: "back"},"<")
         } else {
             langFullPanelRef.current.classList.remove("active")
         }
@@ -149,8 +159,8 @@ function IntroMobile() {
 
     const closeLangPanel = () => {
         if (langFullPanelRef.current.classList.contains("active")) {
-            gsap.timeline().to(".panel_l", {marginTop: 100, duration: 1, ease: "back"})
-                .to(".lang_full_panel", {autoAlpha: 0, duration: 1.2},"<")
+            gsap.timeline().to(q(".panel_l"), {marginTop: 100, duration: 1, ease: "back"})
+                .to(q(".lang_full_panel"), {autoAlpha: 0, duration: 1.2},"<")
             langFullPanelRef.current.classList.remove("active")
             langRef.current.classList.remove('active')
             tl_Ref.current.reverse()
@@ -159,8 +169,8 @@ function IntroMobile() {
 
     const wrapClosePanel = (e) => {
         if (e.target.classList.contains("lang_full_wrap")) {
-            gsap.timeline().to(".panel_l", {marginTop: 100, duration: 1, ease: "back"})
-                .to(".lang_full_panel", {autoAlpha: 0, duration: 1.2},"<")
+            gsap.timeline().to(q(".panel_l"), {marginTop: 100, duration: 1, ease: "back"})
+                .to(q(".lang_full_panel"), {autoAlpha: 0, duration: 1.2},"<")
             langFullPanelRef.current.classList.remove("active")
         }
     }
@@ -179,7 +189,7 @@ function IntroMobile() {
     ]
 
     return (
-        <div className="intro_wrap">
+        <div className="intro_wrap" ref={ref}>
             <div className="scene">
                 <img src={bg} className="bg img" alt=""/>
                 <img src={lines} className="lines img" alt=""/>

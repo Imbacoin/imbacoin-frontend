@@ -133,7 +133,7 @@ const PageFunction = () => {
               createOrder={async (data, actions) => {
                 const res = await fetch(
                   process.env.REACT_APP_PAYMENT_SERVER +
-                    '/orders/create/' +
+                    'orders/create/' +
                     toPay,
                   {
                     method: 'post',
@@ -146,7 +146,7 @@ const PageFunction = () => {
               onApprove={async (data, actions) => {
                 const res = await fetch(
                   process.env.REACT_APP_PAYMENT_SERVER +
-                    '/orders/' +
+                    'orders/' +
                     data.orderID +
                     '/capture/' +
                     email,

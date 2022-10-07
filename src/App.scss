@@ -1060,6 +1060,7 @@ input[type=range]:focus::-ms-fill-upper {
     display: flex;
     flex-direction: column;
     bottom: auto;
+    will-change: transform;
   }
   .social_img_wrap:hover {
     height: 5.5vh;

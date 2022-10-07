@@ -56,9 +56,6 @@ function IntroMobile() {
         return [q, ref];
     }
 
-
-
-
     const langFullPanelRef = useRef(null)
     const langRef = useRef(null)
     const tl_start = useRef(null)
@@ -111,19 +108,19 @@ function IntroMobile() {
         tl_start.current = gsap.timeline({paused:true})
             .set(q(".player"),{zIndex:10})
             .set(q(".zritel"),{zIndex: 0})
-            .set(q(".buy_wrap"),{top:0, zIndex: 9})
-            .to(q(".buy_form_wrap"),{ opacity: 1, duration: 1, ease:"power4.inOut"})
+            .set(".buy_wrap",{top:0, zIndex: 9})
+            .to(".buy_form_wrap",{ opacity: 1, duration: 1, ease:"power4.inOut"})
             .to(q(".middle_box"),{ top: '0vh', duration: 2, ease:"power4.inOut"}, "<")
             .to(q(".player"),{ top: '20vh',left:-20, duration: 2, ease:"power4.inOut"}, "<")
-            .to(q(".chat_wrap"),{ top: '70vh', height: '15vh', duration: 2, ease:"power4.inOut"}, "<")
+            .to('.chat_wrap',{ top: '70vh', height: '15vh', duration: 2, ease:"power4.inOut"}, "<")
 
         tl_start.current.play()
     }
 
     useEffect(() => {
         tl_Ref.current = gsap.timeline({paused: true})
-        tl_Ref.current.to(q(".chat_wrap"), {autoAlpha: 0,  ease: 'power3.inOut'})
-        tl_Ref.current.to(q(".social_buttons_wrap"), {autoAlpha: 0,  ease: 'power3.inOut'})
+        tl_Ref.current.to(".chat_wrap", {autoAlpha: 0,  ease: 'power3.inOut'})
+        tl_Ref.current.to(".social_buttons_wrap", {autoAlpha: 0,  ease: 'power3.inOut'})
         tl_Ref.current.to(q(".lang_panel"), {autoAlpha: 1, bottom: '0', ease: 'power3.inOut'})
     }, [tl_Ref,q])
 

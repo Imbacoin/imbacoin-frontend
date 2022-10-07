@@ -4659,10 +4659,10 @@ grapheme-splitter@^1.0.4:
   resolved "https://registry.npmjs.org/grapheme-splitter/-/grapheme-splitter-1.0.4.tgz"
   integrity sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==
 
-gsap@./gsap_club_18.05.2022.tgz:
-  version "3.10.4"
-  resolved "file:gsap_club_18.05.2022.tgz"
-  integrity sha512-K9fP7erKjpPC8a57Gxl7l+3jKCcHV7IqgkIGFrun+M/SoO8y2LX5a5dW192npvN3+yhRdz4bZOARfIhOl3Ba/A==
+gsap@^3.11.3:
+  version "3.11.3"
+  resolved "https://registry.yarnpkg.com/gsap/-/gsap-3.11.3.tgz#ca5be827f56fe8d5720e08343390f74fb89a05f3"
+  integrity sha512-xc/iIJy+LWiMbRa4IdMtdnnKa/7PXEK6NNzV71gdOYUVeTZN7UWnLU0fB7Hi1iwiz4ZZoYkBZPPYGg+2+zzFHA==
 
 gzip-size@^6.0.0:
   version "6.0.0"

@@ -130,24 +130,71 @@ const PageFunction = () => {
             }}
           >
             <PayPalButtons
-              createOrder={(data, actions) => {
-                return actions.order.create({
-                  purchase_units: [
-                    {
-                      amount: {
-                        value: toPay,
-                      },
-                    },
-                  ],
-                });
+              createOrder={async (data, actions) => {
+                const res = await fetch(
+                  process.env.REACT_APP_PAYMENT_SERVER +
+                    '/orders/create/' +
+                    toPay,
+                  {
+                    method: 'post',
+                  }
+                );
+                const orderData = await res.json();
+                console.log('orderData: ', orderData);
+                return orderData.id;
+                // return actions.order.create({
+                //   purchase_units: [
+                //     {
+                //       amount: {
+                //         value: toPay,
+                //       },
+                //     },
+                //   ],
+                // });
               }}
-              onApprove={(data, actions) => {
-                return actions.order.capture().then((details) => {
-                  console.log(details.purchase_units[0].amount.value);
-                  // paySuccessful(email, details.purchase_units[0].amount.value);
-                  const name = details.payer.name.given_name;
-                  alert(`Transaction completed by ${name}`);
-                });
+              onApprove={async (data, actions) => {
+                // return actions.order.capture().then((details) => {
+                //   console.log(details.purchase_units[0].amount.value);
+                //   // paySuccessful(email, details.purchase_units[0].amount.value);
+                //   const name = details.payer.name.given_name;
+                //   alert(`Transaction completed by ${name}`);
+                // });
+                const res = await fetch(
+                  process.env.REACT_APP_PAYMENT_SERVER +
+                    '/orders/' +
+                    data.orderID +
+                    '/capture/' +
+                    email,
+                  {
+                    method: 'post',
+                  }
+                );
+                const orderData = await res.json();
+                var errorDetail =
+                  Array.isArray(orderData.details) && orderData.details[0];
+                if (
+                  errorDetail &&
+                  errorDetail.issue === 'INSTRUMENT_DECLINED'
+                ) {
+                  return actions.restart(); // Recoverable state, per:
+                }
+                if (errorDetail) {
+                  var msg = 'Sorry, your transaction could not be processed.';
+                  if (errorDetail.description)
+                    msg += '\n\n' + errorDetail.description;
+                  if (orderData.debug_id)
+                    msg += ' (' + orderData.debug_id + ')';
+                  return alert(msg); // Show a failure message (try to avoid alerts in production environments)
+                }
+                var transaction =
+                  orderData.purchase_units[0].payments.captures[0];
+                alert(
+                  'Transaction ' +
+                    transaction.status +
+                    ': ' +
+                    transaction.id +
+                    '\n\nSee console for all available details'
+                );
               }}
             />
           </PayPalScriptProvider>

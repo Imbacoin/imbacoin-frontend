@@ -7,7 +7,7 @@ import IntroTabletPortrait from "./components/IntroTabletPortrait";
 import IntroTabletLandscape from "./components/IntroTabletLandscape";
 import SocialButtons from "./components/SocialButtons";
 import Chat from "./components/Chat";
-import gsap from "gsap";
+import { gsap } from "gsap/dist/gsap";
 
 function App() {
     const Desktop = ({ children }) => {

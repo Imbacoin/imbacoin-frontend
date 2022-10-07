@@ -67,7 +67,7 @@ function IntroMobile() {
 
     useLayoutEffect(()=>{
 
-        tl_intro.current = gsap.timeline()
+        tl_intro.current = gsap.timeline({  immediateRender: false })
             .to(q(".scene"),{scale:2,xPercent:-50, yPercent:20, duration: 1, ease: "back"})
             .to(q(".bg"),{opacity:1, y:0, duration: 1, ease: "back"})
             .to(q(".right_top_corner"),{opacity:1, y:0, x:0, duration: 1, ease: "power3.inOut"},"<+=0.1")
@@ -97,6 +97,10 @@ function IntroMobile() {
             .to(q(".zritel"),{opacity:1, y: 0, x: 0, duration: 1, ease: "back"},"<-=0.5")
             .fromTo(q(".goButton"),{yPercent: 100,opacity:0},{yPercent:0,opacity:1,duration: 1, ease: "back"},"<")
             .fromTo(q(".path"),{opacity:0},{opacity:1,repeat:-1, repeatDelay: 2,  duration: 0.2, stagger:0.05, ease: "power3.inOut"},"<")
+
+        return () => {
+            tl_intro.kill();
+        };
 
     },[tl_intro, q])
 

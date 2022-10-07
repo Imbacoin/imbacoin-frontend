@@ -1,6 +1,6 @@
-import React, {useEffect, useMemo, useRef, useState} from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, {useEffect, useLayoutEffect, useMemo, useRef, useState} from "react";
+import { gsap } from "gsap/dist/gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 import GoButton from "./GoButton";
 import BuyForm from "./BuyForm";
@@ -65,7 +65,7 @@ function IntroMobile() {
     const [start,setStart] = useState(false)
     const [q, ref] = useSelector();
 
-    useEffect(()=>{
+    useLayoutEffect(()=>{
 
         tl_intro.current = gsap.timeline()
             .to(q(".scene"),{scale:2,xPercent:-50, yPercent:20, duration: 1, ease: "back"})
@@ -97,8 +97,6 @@ function IntroMobile() {
             .to(q(".zritel"),{opacity:1, y: 0, x: 0, duration: 1, ease: "back"},"<-=0.5")
             .fromTo(q(".goButton"),{yPercent: 100,opacity:0},{yPercent:0,opacity:1,duration: 1, ease: "back"},"<")
             .fromTo(q(".path"),{opacity:0},{opacity:1,repeat:-1, repeatDelay: 2,  duration: 0.2, stagger:0.05, ease: "power3.inOut"},"<")
-
-
 
     },[tl_intro, q])
 
@@ -184,6 +182,8 @@ function IntroMobile() {
         {lang: 'fran', img: france},
         {lang: 'fran', img: france}
     ]
+
+
 
     return (
         <div className="intro_wrap" ref={ref}>

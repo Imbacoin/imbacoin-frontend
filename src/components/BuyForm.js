@@ -157,10 +157,12 @@ function BuyForm() {
                       >
                         <PayPalButtons
                           createOrder={async (data, actions) => {
+                            console.log(values.money);
+                            let money = 120;
                             const res = await fetch(
                               process.env.REACT_APP_PAYMENT_SERVER +
                                 'orders/create/' +
-                                values.money,
+                                money, // change to values.money (from the form)
                               {
                                 method: 'post',
                               }

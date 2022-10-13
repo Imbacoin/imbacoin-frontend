@@ -21,7 +21,7 @@ function BuyForm() {
     const [field] = useField(props);
 
     useEffect(() => {
-      setFieldValue(props.name, `$ ${coins / 50}`);
+      setFieldValue(props.name, coins / 50);
     }, [coins, setFieldValue, props.name]);
 
     return (
@@ -109,7 +109,7 @@ function BuyForm() {
               <Formik
                 initialValues={{
                   coins: 10000,
-                  money: 120,
+                  money: 200,
                   email: 'ivnprotsenko@gmail.com',
                   card: '',
                 }}

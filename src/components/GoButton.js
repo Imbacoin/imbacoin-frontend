@@ -35,7 +35,7 @@ function GoButton({ startForm, start, langClick}) {
                          backgroundSize: 'contain',
                      }}></div>
                 <div className="go_title" onClick={startForm}>
-                    <img src={go_text} alt=""/>1
+                    <img src={go_text} alt=""/>
                 </div>
             </div>
         </div>

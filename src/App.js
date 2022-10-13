@@ -7,11 +7,10 @@ import IntroTabletPortrait from "./components/IntroTabletPortrait";
 import IntroTabletLandscape from "./components/IntroTabletLandscape";
 import SocialButtons from "./components/SocialButtons";
 import Chat from "./components/Chat";
-import { gsap } from "gsap/dist/gsap";
-import {createRoot} from "react-dom/client";
+import { gsap } from "gsap";
+
 
 function App() {
-    const root = createRoot(document.getElementById("root"));
     const Desktop = ({ children }) => {
         const isDesktop = useMediaQuery({ minWidth:1300 })
         return isDesktop ? children : null

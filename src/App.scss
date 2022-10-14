@@ -578,6 +578,12 @@ input[type=range]:focus::-ms-fill-upper {
   align-items: center;
   justify-content: flex-end;
 }
+.money_wrap {
+  width: 100%;
+  position: relative;
+  margin: 1vh 0 2vh;
+  height: 5vh;
+}
 
 .inputField {
   background: rgba(13, 19, 53, 0.3);
@@ -585,10 +591,10 @@ input[type=range]:focus::-ms-fill-upper {
   border-radius: 12px;
   min-height: 5vh;
   color: #fff;
-  padding: 0 2vh;
+  padding: 0 3vh;
   transition: all 0.5s;
-  margin: 1vh 0 2vh;
   font-size: 1rem;
+  width: 100%;
 }
 
 .inputField:focus, .inputField:active {

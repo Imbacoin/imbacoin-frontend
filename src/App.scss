@@ -603,7 +603,10 @@ input[type=range]:focus::-ms-fill-upper {
   top: 50%;
   left: 3%;
   transform: translate(0%,-50%);
-  margin-top: 2px;
+  @supports (-webkit-touch-callout: none) {
+    margin-top: 2px;
+  }
+
 }
 
 .inputField:focus, .inputField:active {

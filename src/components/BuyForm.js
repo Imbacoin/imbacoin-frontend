@@ -139,7 +139,6 @@ function BuyForm() {
                             );
                             const orderData = await res.json();
                             console.log('orderData: ', orderData);
-                            console.log('coins: ', amountRef.current/50);
                             return orderData.id;
                           }}
                           onApprove={async (data, actions) => {

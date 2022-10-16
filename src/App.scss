@@ -467,7 +467,7 @@ form {
 input[type=range] {
   height: 3.5vh;
   -webkit-appearance: none;
-  margin: 1vh 0;
+  margin: 3vh 0;
   width: 100%;
   background: transparent;
 }
@@ -581,7 +581,7 @@ input[type=range]:focus::-ms-fill-upper {
 .money_wrap {
   width: 100%;
   position: relative;
-  margin: 1vh 0 2vh;
+  margin: 3vh 0 5vh;
   height: 5vh;
 }
 
@@ -595,6 +595,15 @@ input[type=range]:focus::-ms-fill-upper {
   transition: all 0.5s;
   font-size: 1rem;
   width: 100%;
+}
+
+.dollar {
+  width: 0.6rem;
+  position: absolute;
+  top: 50%;
+  left: 3%;
+  transform: translate(0%,-50%);
+  margin-top: 2px;
 }
 
 .inputField:focus, .inputField:active {
@@ -893,6 +902,13 @@ input[type=range]:focus::-ms-fill-upper {
   .goButton {
     top: 35vh;
   }
+  @media not all and (min-resolution:.001dpcm)
+  { @supports (-webkit-appearance:none) {
+
+    .goButton {
+      top: 17vh;
+    }
+  }}
   .buy_wrap {
     top: 0;
     left: 100vw;
@@ -920,7 +936,7 @@ input[type=range]:focus::-ms-fill-upper {
   .options_wrapper {
     width: 90%;
   }
-  .inputField {
+  .money_wrap {
     margin: 2vh 0 4vh;
   }
   .scene .left_light1 {
@@ -1014,7 +1030,7 @@ input[type=range]:focus::-ms-fill-upper {
   .options_wrapper {
     width: 90%;
   }
-  .inputField {
+  .money_wrap {
     margin: 2vh 0 4vh;
   }
   .middle_box .col:first-child {
@@ -1023,7 +1039,7 @@ input[type=range]:focus::-ms-fill-upper {
   .middle_box .card {
     display: none;
   }
-  .inputField {
+  .money_wrap {
     margin: 0.5rem 0 1rem;
   }
   .lang_panel {
@@ -1152,6 +1168,17 @@ input[type=range]:focus::-ms-fill-upper {
   }
   .bg_ball_top, .bg_ball_bottom {
     display: none;
+  }
+  input[type=range] {
+    margin: 5vh 0;
+  }
+  .money_wrap {
+    margin: 2.5rem 0 4rem;
+  }
+  @supports (-webkit-touch-callout: none) {
+    .social_buttons_wrap {
+      bottom: 0;
+    }
   }
 }
 

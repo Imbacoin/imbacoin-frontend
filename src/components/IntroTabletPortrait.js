@@ -186,7 +186,7 @@ function IntroTabletPortrait() {
 
     useEffect(() => {
         tl_Ref.current = gsap.timeline({paused: true})
-        tl_Ref.current.to(".lang_panel", {autoAlpha: 1, bottom: '-5px', ease: 'power3.inOut'})
+        tl_Ref.current.to(".lang_panel", {autoAlpha: 1, bottom: '-1vh', ease: 'power3.inOut'})
     }, [])
 
     useEffect(() => {

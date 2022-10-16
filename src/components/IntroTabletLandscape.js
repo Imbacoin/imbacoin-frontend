@@ -35,7 +35,6 @@ import ball from "../images/tablet_L/ball.png"
 import ball_oreol from "../images/tablet_L/ball_oreol.png"
 import GoButton from "./GoButton";
 import BuyForm from "./BuyForm";
-import {useMediaQuery} from "react-responsive";
 import france from "../images/lang/france.png";
 import SearchBar from "./searchBar";
 import arrowDown from "../images/lang/arrowDown.svg";

@@ -3,7 +3,8 @@ import {PayPalScriptProvider, PayPalButtons, usePayPalScriptReducer} from '@payp
 import bg_card_under_player from '../images/bg_card_under_player.png';
 import bg_card_under_player_bg from '../images/bg_card_under_player_bg.png';
 // import back_icon from '../images/back_icon.svg';
-import coins from '../images/coins.svg';
+import coins_img from '../images/coins.svg';
+import dollar from '../images/lang/dollar.svg';
 // import paypal from '../images/paypal.png';
 // import gsap from 'gsap';
 // import SearchBar from './searchBar';
@@ -12,7 +13,7 @@ function BuyForm() {
 
   const formik_wrapper_Ref = useRef();
   // const tl_formik_wrapper = useRef();
-  const [values, setValues] = useState({coins:10000});
+  const [amount, setAmount] = useState(10000);
 
   useEffect(() => {
     // tl_formik_wrapper.current = gsap.timeline({ paused: true });
@@ -70,7 +71,10 @@ function BuyForm() {
   //   { name: 'Paypal', img: paypal },
   //   { name: 'Paypal', img: paypal },
   // ];
-
+  const amountRef = useRef(amount);
+  useEffect(() => {
+    amountRef.current = amount;
+  }, [amount]);
 
 
   return (
@@ -94,9 +98,9 @@ function BuyForm() {
                     <form>
                       <div>The coins you will get</div>
                       <div className="coins_value_wrap">
-                        <div className="coins_value">{values.coins}</div>
+                        <div className="coins_value">{amount}</div>
                         <div className="coins">
-                          <img src={coins} alt="" />
+                          <img src={coins_img} alt="" />
                         </div>
                       </div>
                       <input
@@ -106,12 +110,15 @@ function BuyForm() {
                         min="0"
                         max="50000"
                         step="10000"
-                        value={values.coins}
-                        onChange={(e)=>setValues({coins: e.target.value})}
+                        value={amount}
+                        onChange={(e)=> {
+                          setAmount(e.target.value)
+                        }}
                       />
                       <label htmlFor="money">The money you will pay</label>
                       <div className="money_wrap">
-                        <input disabled className="inputField" value={values.coins/50}/>
+                        <input disabled className="inputField" value={amount/50}/>
+                        <img className="dollar" src={dollar} alt=""/>
                       </div>
 
                       <PayPalScriptProvider
@@ -125,13 +132,14 @@ function BuyForm() {
                             const res = await fetch(
                               process.env.REACT_APP_PAYMENT_SERVER +
                                 'orders/create/' +
-                                values.coins/50,
+                                amountRef.current/50,
                               {
                                 method: 'post',
                               }
                             );
                             const orderData = await res.json();
                             console.log('orderData: ', orderData);
+                            console.log('coins: ', amountRef.current/50);
                             return orderData.id;
                           }}
                           onApprove={async (data, actions) => {
@@ -140,7 +148,7 @@ function BuyForm() {
                                 'orders/' +
                                 data.orderID +
                                 '/capture/' +
-                                values.email,
+                                'mail@mail.com',
                               {
                                 method: 'post',
                               }

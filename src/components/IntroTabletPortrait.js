@@ -171,7 +171,9 @@ function IntroTabletPortrait() {
         tl_start.current = gsap.timeline({paused:true,
             onComplete:()=>{
                 gsap.to(".player",{y:-20, duration: 5, repeat:-1, yoyo: true, ease: "none" })
-            }})
+            },
+            onReverseComplete:()=>{setStart(false)}
+        })
             .set(".player",{zIndex:10})
             .set(".zritel",{zIndex: 0})
             .set(".buy_wrap",{top:0})
@@ -183,10 +185,13 @@ function IntroTabletPortrait() {
 
         tl_start.current.play()
     }
+    const back_to_main = () => {
+        tl_start.current.reverse()
 
+    }
     useEffect(() => {
         tl_Ref.current = gsap.timeline({paused: true})
-        tl_Ref.current.to(".lang_panel", {autoAlpha: 1, bottom: '-1vh', ease: 'power3.inOut'})
+        tl_Ref.current.to(".lang_panel", {autoAlpha: 1, bottom: '+=6vh', ease: 'power3.inOut'})
     }, [])
 
     useEffect(() => {
@@ -321,7 +326,7 @@ function IntroTabletPortrait() {
                 </div>
 
                 <div className="buy_wrap">
-                    <BuyForm />
+                    <BuyForm back_to_main={back_to_main} />
                 </div>
                 <div className="appears">
                     <Chat />

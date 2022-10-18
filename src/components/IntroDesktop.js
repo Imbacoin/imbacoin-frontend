@@ -13,7 +13,6 @@ import path_10 from "../images/path_10.png"
 import path_11 from "../images/path_11.png"
 import path_12 from "../images/path_12.png"
 import path_13 from "../images/path_13.png"
-import lines from "../images/lines.png"
 import path_left_top from "../images/path_left_top.png"
 import path_left_lite from "../images/path_left_lite.png"
 import path_right_bottom from "../images/path_right_bottom.png"
@@ -38,6 +37,7 @@ import BuyForm from "./BuyForm";
 import SearchBar from "./searchBar";
 import france from "../images/lang/france.png";
 import arrowDown from "../images/lang/arrowDown.svg";
+import pil from "../images/pil.png";
 
 
 function IntroDesktop() {
@@ -164,7 +164,6 @@ function IntroDesktop() {
             .to(".scene", {scale: 2, xPercent: -50, yPercent: 20, duration: 1, ease: "back"})
             .to(".bg", {opacity: 1, y: 0, duration: 1, ease: "back"})
             .to(".right_top_corner", {opacity: 1, y: 0, x: 0, duration: 1, ease: "power3.inOut"}, "<+=0.1")
-            .to(".lines", {opacity: 1, x: 0, duration: 1, ease: "power3.inOut"}, "<+=0.2")
             .to(".vorota", {opacity: 1, x: 0, duration: 1, ease: "back"}, "<+=0.3")
             .to(".scene", {scale: 1, xPercent: 0, yPercent: 0, duration: 1, ease: "power3.inOut"})
             .to(".tablo", {y: 0, x: 0, duration: 1, ease: "elastic.out(1, 0.4)"})
@@ -201,6 +200,7 @@ function IntroDesktop() {
             .to(".ball", {opacity: 1, y: 0, x: 0, duration: 1,}, "<+=0")
             .to(".vorota_uzor", {opacity: 1, y: 0, x: 0, duration: 1, ease: "power4.inOut"}, "<+=0.2")
             .to(".zritel", {opacity: 1, y: 0, x: 0, duration: 1, ease: "back"}, "<-=0.5")
+            .to(".pil", {opacity: 1, y: 0, x: 0, duration: 1, ease: "back"}, "<-=0.5")
             .fromTo(".goButton", {yPercent: 100, opacity: 0}, {yPercent: 0, opacity: 1, duration: 1, ease: "back"}, "<")
             .to(".ball_oreol", {opacity: 0.5, duration: 3, repeat: -1, yoyo: true, ease: "none"})
             .fromTo(".path", {opacity: 0}, {
@@ -221,7 +221,8 @@ function IntroDesktop() {
             paused: true,
             onComplete: () => {
                 gsap.to(".player", {y: -20, duration: 5, repeat: -1, yoyo: true, ease: "none"})
-            }
+            },
+            onReverseComplete:()=>{setStart(false)}
         })
             .to(".ball_oreol", {top: '-20vh', autoAlpha: 0, duration: 2, ease: "power4.inOut"})
             .to(".zritel", {top: '50vh', duration: 1, ease: "power4.inOut"}, "<")
@@ -237,17 +238,21 @@ function IntroDesktop() {
             .to(".path", {top: '-20vh', duration: 2, ease: "power4.inOut"}, "<")
             .to(".bg", {top: '-20vh', duration: 2, ease: "power4.inOut"}, "<")
             .to(".right_top_corner", {top: '-20vh', duration: 2, ease: "power4.inOut"}, "<")
-            .to(".lines", {top: '-20vh', duration: 2, ease: "power4.inOut"}, "<")
-            .to(".lines", {top: '-20vh', duration: 2, ease: "power4.inOut"}, "<")
             .to(".tablo_lenti", {top: '-20vh', duration: 2, ease: "power4.inOut"}, "<")
             .to(".tablo_right_top_brizg", {top: '-20vh', duration: 2, ease: "power4.inOut"}, "<")
             .to(".tablo_left_top_brizg", {top: '-20vh', duration: 2, ease: "power4.inOut"}, "<")
             .to(".tablo_down_brizg", {top: '-20vh', duration: 2, ease: "power4.inOut"}, "<")
             .to(".confetti", {top: '-20vh', duration: 2, ease: "power4.inOut"}, "<")
-            .to(".goButton", {zIndex: 9}, "<+=0.5")
+           .to(".goButton", {zIndex: 9}, "<+=0.5")
 
         tl_start.current.play()
     }
+
+    const back_to_main = () => {
+        tl_start.current.reverse()
+
+    }
+
 
     useEffect(() => {
         tl_Ref.current = gsap.timeline({paused: true})
@@ -276,6 +281,7 @@ function IntroDesktop() {
     const subLangClick = () => {
         tl_Ref.current.reverse()
     }
+
 
 
     const openLangPanel = () => {
@@ -357,7 +363,6 @@ function IntroDesktop() {
                     <div className="squares"></div>
 
                 </div>
-                <img src={lines} className="lines" alt=""/>
                 <div className="goButton">
                     <GoButton startForm={startForm} start={start} langClick={langClick}/>
                 </div>
@@ -380,6 +385,7 @@ function IntroDesktop() {
                     </div>
                 </div>
                 <img src={bg} className="bg img" alt=""/>
+                <img src={pil} className="pil img" alt=""/>
                 <img src={right_top_corner} className="right_top_corner img" alt=""/>
                 <img src={vorota} className="vorota img" alt=""/>
                 <img src={vorota_uzor} className="vorota_uzor img" alt=""/>
@@ -407,7 +413,7 @@ function IntroDesktop() {
                 <img src={tablo_lenti} className="tablo_lenti img" alt=""/>
                 <img src={tablo} className="tablo img" alt=""/>
                 <div className="buy_wrap">
-                    <BuyForm/>
+                    <BuyForm back_to_main={back_to_main}/>
                 </div>
                 <img src={player} className="player img" alt=""/>
                 <img src={zritel} className="zritel img" alt=""/>

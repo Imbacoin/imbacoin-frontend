@@ -125,6 +125,7 @@ html, body {
 .left_light3,
 .ball,
 .confetti_img,
+.pil,
 .lines {
   opacity: 0;
   will-change: opacity;
@@ -662,6 +663,7 @@ input[type=range]:focus::-ms-fill-upper {
   ul {
     display: flex;
     flex-wrap: nowrap;
+    justify-content: center;
   }
 
   li {
@@ -680,7 +682,7 @@ input[type=range]:focus::-ms-fill-upper {
 }
 .next_arrow {
   width: 38px;
-  height: 38px;
+  height: 31px;
   display: flex;
   align-items: flex-end;
   margin-left: 10px;
@@ -833,6 +835,38 @@ input[type=range]:focus::-ms-fill-upper {
   align-items: center;
   justify-content: center;
 }
+.back_to_main {
+  top: 2vh;
+  right: 3vw;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+
+  span {
+    width: 25px;
+    border-radius: 6px;
+    height: 4px;
+    background: #6B7092;
+    position: absolute;
+  }
+  span:first-child {
+    transform-origin: 0;
+    //transform: rotate(45deg) translate(10px, 8px);
+    transform: rotate(45deg) translate(-58%,-16%);
+    top: 50%;
+    left: 50%;
+
+  }
+  span:last-child {
+    transform-origin: 0;
+    //transform: rotate(45deg) translate(10px, 8px);
+    transform: rotate(-45deg) translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+  }
+}
 .panel_l {
   width: 52%;
   height: 67%;
@@ -905,13 +939,11 @@ input[type=range]:focus::-ms-fill-upper {
   .goButton {
     top: 35vh;
   }
-  @media not all and (min-resolution:.001dpcm)
-  { @supports (-webkit-appearance:none) {
-
+  @supports (-webkit-touch-callout: none) {
     .goButton {
       top: 17vh;
     }
-  }}
+  }
   .buy_wrap {
     top: 0;
     left: 100vw;
@@ -965,7 +997,9 @@ input[type=range]:focus::-ms-fill-upper {
   }
   .next_arrow {
     width: 25px;
-    margin-left: -20px;
+    /* margin-left: -20px; */
+    position: absolute;
+    right: 8vw;
   }
   .panel_l {
     width: 70%;
@@ -1057,6 +1091,10 @@ input[type=range]:focus::-ms-fill-upper {
     background-repeat: no-repeat;
     justify-content: center;
     align-items: flex-start;
+
+    @supports (-webkit-touch-callout: none) {
+      bottom: -7vh;
+    }
   }
   .next_arrow {
     width: 25px;

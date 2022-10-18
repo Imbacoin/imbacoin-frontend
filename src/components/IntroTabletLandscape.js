@@ -176,7 +176,9 @@ function IntroTabletLandscape() {
         tl_start.current = gsap.timeline({paused:true,
             onComplete:()=>{
                 gsap.to(".player",{y:-20, duration: 5, repeat:-1, yoyo: true, ease: "none" })
-            }})
+            },
+            onReverseComplete:()=>{setStart(false)}
+        })
             .set(".player",{zIndex:10})
             .set(".ball_oreol",{zIndex: -1})
             .set(".ball",{zIndex: -1})
@@ -190,7 +192,10 @@ function IntroTabletLandscape() {
 
         tl_start.current.play()
     }
+    const back_to_main = () => {
+        tl_start.current.reverse()
 
+    }
     useEffect(() => {
         tl_Ref.current = gsap.timeline({paused: true})
         tl_Ref.current.to(".lang_panel", {autoAlpha: 1, top: '0', ease: 'power3.inOut'})
@@ -326,7 +331,7 @@ function IntroTabletLandscape() {
                 <img src={tablo_lenti} className="tablo_lenti img" alt=""/>
                 <img src={tablo} className="tablo img" alt=""/>
                 <div className="buy_wrap">
-                    <BuyForm />
+                    <BuyForm back_to_main={back_to_main}/>
                 </div>
                 <img src={player} className="player img" alt=""/>
                 <img src={zritel} className="zritel img" alt=""/>

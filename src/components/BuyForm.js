@@ -9,7 +9,7 @@ import dollar from '../images/lang/dollar.svg';
 // import gsap from 'gsap';
 // import SearchBar from './searchBar';
 
-function BuyForm() {
+function BuyForm({back_to_main}) {
 
   const formik_wrapper_Ref = useRef();
   // const tl_formik_wrapper = useRef();
@@ -94,6 +94,13 @@ function BuyForm() {
             </div>
           </div>
           <div className="col p50">
+            <div
+                className="back_to_main"
+                onClick={back_to_main}
+            >
+              <span></span>
+              <span></span>
+            </div>
             <div className="formik_wrapper" ref={formik_wrapper_Ref}>
                     <form>
                       <div>The coins you will get</div>

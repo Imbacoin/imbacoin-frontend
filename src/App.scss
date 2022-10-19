@@ -42,6 +42,7 @@ html, body {
   height: 100vh; /* Fallback for browsers that do not support Custom Properties */
   height: calc(var(--vh, 1vh) * 100);
   position: relative;
+  will-change: transform;
 }
 
 .scene .img {
@@ -109,7 +110,6 @@ html, body {
   }
 }
 
-.bg,
 .zritel,
 .path,
 .path_left_top,
@@ -126,54 +126,18 @@ html, body {
 .ball,
 .confetti_img,
 .pil,
-.lines {
-  opacity: 0;
-  will-change: opacity;
-}
-
-.bg {
-  transform: translate(0%, 100%);
-}
-
-.right_top_corner {
-  transform: translate(20%, -20%);
-}
-
-.lines {
-  transform: translate(-100%, 0);
-}
-
-.vorota {
-  transform: translate(20%, 0);
-}
-
-.tablo {
-  transform: translate(-20%, -150%);
-  will-change: transform;
-}
-
-.tablo_lenti {
-  transform: translate(-20%, -250%);
-  opacity: 0;
-}
-
+.tablo,
+.bg,
+.tablo_lenti,
+.lines,
 .tablo_right_top_brizg,
 .tablo_left_top_brizg,
 .tablo_down_brizg,
-.tablo_lenti {
-  //will-change: transform;
+.tablo_bg_lines,
+.tablo_lenti{
+  will-change: transform,opacity;
 }
 
-.tablo_bg_lines {
-  opacity: 0;
-  transform: translate(0%, 30%);
-  //will-change: transform;
-}
-
-.player {
-  opacity: 0;
-  transform: rotate(30deg) translate(-20%, 20%);
-}
 
 .ball {
   opacity: 0;
@@ -223,7 +187,6 @@ html, body {
   border-radius: 50%;
   background: linear-gradient(176deg, rgba(255, 247, 185, 1) 0%, rgba(255, 214, 81, 1) 100%);
   opacity: 0;
-  visibility: hidden;
   will-change: transform, opacity;
 }
 
@@ -231,7 +194,6 @@ html, body {
   position: absolute;
   background: linear-gradient(176deg, rgba(255, 247, 185, 1) 0%, rgba(255, 214, 81, 1) 100%);
   opacity: 0;
-  visibility: hidden;
   will-change: transform, opacity;
 }
 
@@ -420,6 +382,7 @@ html, body {
   width: 20vw;
   height: 23vh;
   opacity: 0;
+  will-change: transform;
 
   @media screen and (max-width: 1400px) {
     top: 17vh;
@@ -976,11 +939,14 @@ input[type=range]:focus::-ms-fill-upper {
   }
   .scene .left_light1 {
     max-width: 100%;
+    opacity: 0;
   }
   .scene .left_light2 {
     max-width: 100%;
+    opacity: 0;
   }
   .scene .left_light3 {
+    opacity: 0;
     max-width: 100%;
   }
   .lang_panel {

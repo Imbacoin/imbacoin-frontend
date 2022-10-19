@@ -4,35 +4,35 @@ import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
 
 import GoButton from "./GoButton";
 import BuyForm from "./BuyForm";
-import path_1 from "../images/mobile/path_1.png"
-import path_2 from "../images/mobile/path_2.png"
-import path_3 from "../images/mobile/path_3.png"
-import path_4 from "../images/mobile/path_4.png"
-import path_5 from "../images/mobile/path_5.png"
-import path_6 from "../images/mobile/path_6.png"
-import path_7 from "../images/mobile/path_7.png"
-import path_8 from "../images/mobile/path_8.png"
-import path_9 from "../images/mobile/path_9.png"
-import path_10 from "../images/mobile/path_10.png"
-import path_11 from "../images/mobile/path_11.png"
-import path_12 from "../images/mobile/path_12.png"
-import lines from "../images/mobile/lines.png"
-import path_left_lite from "../images/mobile/path_left_lite.png"
-import path_right_bottom from "../images/mobile/path_right_bottom.png"
-import player from "../images/mobile/player.png"
-import right_top_corner from "../images/mobile/right_top_corner.png"
-import tablo from "../images/mobile/tablo.png"
-import tablo_down_brizg from "../images/mobile/tablo_down_brizg.png"
-import tablo_right_top_brizg from "../images/mobile/tablo_right_top_brizg.png"
-import tablo_bg_lines from "../images/mobile/tablo_bg_lines.png"
-import tablo_lenti from "../images/mobile/tablo_lenti.png"
-import vorota from "../images/mobile/vorota.png"
-import vorota_uzor from "../images/mobile/vorota_uzor.png"
-import zritel from "../images/mobile/zritel.png"
-import bg from "../images/mobile/bg.png"
-import ball from "../images/mobile/ball.png"
-import ball_oreol from "../images/mobile/ball_oreol.png"
-import left_light from "../images/mobile/left_light.png"
+import path_1 from "../images/mobile/webp/path_1.png"
+import path_2 from "../images/mobile/webp/path_2.png"
+import path_3 from "../images/mobile/webp/path_3.png"
+import path_4 from "../images/mobile/webp/path_4.png"
+import path_5 from "../images/mobile/webp/path_5.png"
+import path_6 from "../images/mobile/webp/path_6.png"
+import path_7 from "../images/mobile/webp/path_7.png"
+import path_8 from "../images/mobile/webp/path_8.png"
+import path_9 from "../images/mobile/webp/path_9.png"
+import path_10 from "../images/mobile/webp/path_10.png"
+import path_11 from "../images/mobile/webp/path_11.png"
+import path_12 from "../images/mobile/webp/path_12.png"
+import lines from "../images/mobile/webp/lines.png"
+import path_left_lite from "../images/mobile/webp/path_left_lite.png"
+import path_right_bottom from "../images/mobile/webp/path_right_bottom.png"
+import player from "../images/mobile/webp/player.png"
+import right_top_corner from "../images/mobile/webp/right_top_corner.png"
+import tablo from "../images/mobile/webp/tablo.png"
+import tablo_down_brizg from "../images/mobile/webp/tablo_down_brizg.png"
+import tablo_right_top_brizg from "../images/mobile/webp/tablo_right_top_brizg.png"
+import tablo_bg_lines from "../images/mobile/webp/tablo_bg_lines.png"
+import tablo_lenti from "../images/mobile/webp/tablo_lenti.png"
+import vorota from "../images/mobile/webp/vorota.png"
+import vorota_uzor from "../images/mobile/webp/vorota_uzor.png"
+import zritel from "../images/mobile/webp/zritel.png"
+import bg from "../images/mobile/webp/bg.png"
+import ball from "../images/mobile/webp/ball.png"
+import ball_oreol from "../images/mobile/webp/ball_oreol.png"
+import left_light from "../images/mobile/webp/left_light.png"
 import france from "../images/lang/france.png";
 import arrowDown from "../images/lang/arrowDown.svg";
 import arrow_mob from "../images/lang/arrow_mob.svg";
@@ -117,12 +117,12 @@ function IntroMobile() {
                 rotation: rotation,
                 width: sizeW,
                 height: sizeH,
-                autoAlpha: opacity
+                opacity: opacity
             });
 
             gsap.to(el, {
                 duration,
-                autoAlpha: 0,
+                opacity: 0,
                 rotation: rotation,
                 y: y,
                 x: x,
@@ -141,7 +141,6 @@ function IntroMobile() {
         }
 
 
-        let ctx = gsap.context(() => {
         gsap.to(".left_light1", {
             rotation: -10,
             transformOrigin: '0 0',
@@ -169,52 +168,65 @@ function IntroMobile() {
 
 
 
-            tl_intro.current = gsap.timeline({immediateRender: false})
-                .to(q(".scene"), {scale: 2, xPercent: -50, yPercent: 20, duration: 1, ease: "back"})
-                .to(q(".bg"), {opacity: 1, y: 0, duration: 1, ease: "back"})
-                .to(q(".right_top_corner"), {opacity: 1, y: 0, x: 0, duration: 1, ease: "power3.inOut"}, "<+=0.1")
-                .to(q(".lines"), {opacity: 1, x: 0, duration: 1, ease: "power3.inOut"}, "<+=0.2")
-                .to(q(".vorota"), {opacity: 1, x: 0, duration: 1, ease: "back"}, "<+=0.3")
-                .to(q(".scene"), {scale: 1, xPercent: 0, yPercent: 0, duration: 1, ease: "power3.inOut"})
-                .to(q(".tablo"), {y: 0, x: 0, duration: 1, ease: "elastic.out(1, 0.4)"})
-                .to(q(".tablo_lenti"), {opacity: 1, y: 0, x: 0, duration: 1, ease: "none"}, "<")
+            tl_intro.current = gsap.timeline()
+                //.to(q(".scene"), {scale: 2, xPercent: -50, yPercent: 20, duration: 1, ease: "back"})
+                .fromTo(q(".bg"), { yPercent: 100},{ yPercent: 0, duration: 1, ease: "back"})
+                .fromTo(q(".right_top_corner"), {opacity: 0, yPercent: -20, xPercent:20},
+                    {opacity: 1,  yPercent: 0, xPercent:0, duration: 1, ease: "power3.inOut"}, "<+=0.2")
+                //.to(q(".lines"), {opacity: 1, x: 0, duration: 1, ease: "power3.inOut"}, "<+=0.2")
+                .fromTo(q(".vorota"), {opacity: 0, xPercent: 20},{opacity: 1, xPercent: 0, duration: 1, ease: "back"}, "<+=0.2")
+                //.to(q(".scene"), {scale: 1, xPercent: 0, yPercent: 0, duration: 1, ease: "power3.inOut"})
+                .fromTo(q(".tablo"), {yPercent: -150, xPercent: -20},{yPercent: 0, xPercent: 0, duration: 1, ease: "back"},"<+=0.2")
+                .fromTo(q(".tablo_lenti"), {opacity: 0,yPercent: -250, xPercent: -20},{opacity: 1, yPercent: 0, xPercent: 0, duration: 1, ease: "none"}, "<+=0.2")
                 .fromTo(q(".tablo_right_top_brizg"),
-                    {opacity: 0, y: 0, x: -80},
-                    {opacity: 1, y: 0, x: 0, duration: 0.5, ease: "elastic.out(1, 0.3)"}, "<+=0.1")
+                    {opacity: 0, xPercent: -8},
+                    {opacity: 1, xPercent: 0, duration: 0.5, ease: "back"}, "<+=0.2")
                 .fromTo(q(".tablo_down_brizg"),
-                    {opacity: 0, y: -20, x: 0},
-                    {opacity: 1, y: 0, x: 0, duration: 0.5, ease: "elastic.out(1, 0.3)"}, "<+=0.2")
-                .to(q(".tablo_bg_lines"), {y: 0, x: 0, opacity: 1, duration: 1, ease: "power4.inOut"}, "<")
-                .to(q(".left_light1"), {opacity: 1, duration: 1, ease: "power4.inOut"}, "<+=0.2")
-                .to(q(".left_light2"), {opacity: 1, duration: 1, ease: "power4.inOut"}, "<+=0.3")
-                .to(q(".left_light3"), {opacity: 1, duration: 1, ease: "power4.inOut"}, "<+=0.4")
-                .to(q(".confetti"), {opacity: 1, duration: 3}, "<")
-                .to(q(".player"), {opacity: 1, rotation: 0, y: 0, x: 0, duration: 1, ease: "back"}, "<+0.5")
-                .to(q(".path"), {opacity: 1, duration: 0.2, stagger: 0.1}, "<+=0.2")
-                .to(q(".path_left_lite"), {opacity: 1, y: 0, x: 0, duration: 0.5, ease: "power3.Out"}, "<-=0.1")
-                .to(q(".path_right_bottom"), {opacity: 1, y: 0, x: 0, duration: 0.5, ease: "power3.Out"}, "<+=0.1")
-                .to(q(".ball_oreol"), {opacity: 1, y: 0, x: 0, duration: 1, ease: "power4.inOut"}, "<+=0.2")
-                .to(q(".ball"), {opacity: 1, y: 0, x: 0, duration: 1,}, "<+=0")
-                .to(q(".vorota_uzor"), {opacity: 1, y: 0, x: 0, duration: 1, ease: "power4.inOut"}, "<+=0.2")
-                .to(q(".zritel"), {opacity: 1, y: 0, x: 0, duration: 1, ease: "back"}, "<-=0.5")
-                .fromTo(q(".goButton"), {yPercent: 100, opacity: 0}, {
-                    yPercent: 0,
-                    opacity: 1,
-                    duration: 1,
-                    ease: "back"
-                }, "<")
-                .fromTo(q(".path"), {opacity: 0}, {
-                    opacity: 1,
-                    repeat: -1,
-                    repeatDelay: 2,
-                    duration: 0.2,
-                    stagger: 0.05,
-                    ease: "power3.inOut"
-                }, "<")
-        }, containerRef);
-        return () => ctx.revert();
+                    {opacity: 0, yPercent: -20},
+                    {opacity: 1, yPercent: 0, duration: 0.5, ease: "back"}, "<+=0.2")
+                .fromTo(q(".tablo_bg_lines"),
+                    {opacity: 0, yPercent: -30},
+                    {yPercent: 0, opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.2")
+                .fromTo(q(".left_light1",".left_light2",".left_light3"),
+                    {opacity: 0},
+                    {opacity: 1, stagger:0.2, duration: 1}, "<+=0.2")
+                .fromTo(q(".confetti"),{opacity:0},
+                    {opacity: 1, duration: 3}, "<+=0.2")
+                .fromTo(q(".player"),
+                    { opacity:0, rotation: -30,yPercent: 20, xPercent: -20},
+                    {opacity: 1, rotation: 0, yPercent: 0, xPercent: 0, duration: 1, ease: "back"}, "<+0.2")
+                .fromTo(q(".path"), {opacity: 0},{opacity: 1, duration: 0.2, stagger: 0.1}, "<+=0.2")
+                .fromTo(q(".path_left_lite"),
+                    {opacity: 0, xPercent: -10},
+                    {opacity: 1, xPercent: 0, duration: 0.5, ease: "power3.Out"}, "<-=0.2")
+                .fromTo(q(".path_right_bottom"),
+                    {opacity: 0, xPercent: -5, yPercent: 2},
+                    {opacity: 1, xPercent: 0, yPercent: 0, duration: 0.5, ease: "power3.Out"}, "<+=0.1")
+                .fromTo(q(".ball_oreol"),
+                    {opacity: 0},
+                    {opacity: 1, duration: 1}, "<+=0.2")
+                .fromTo(q(".ball"),
+                    {opacity: 0},
+                    {opacity: 1, duration: 1}, "<+=0.2")
+                .fromTo(q(".vorota_uzor"),
+                    {opacity: 0},
+                    {opacity: 1, duration: 1}, "<+=0.2")
+                .fromTo(q(".zritel"),
+                    {opacity: 0, xPercent: 10, yPercent: 10},
+                    {opacity: 1, xPercent: 0, yPercent: 0, duration: 1, ease: "back"}, "<-=0.5")
+                .fromTo(q(".goButton"),
+                    {yPercent: 100, opacity: 0},
+                    {yPercent: 0,opacity: 1,duration: 1,ease: "back"}, "<")
+                // .fromTo(q(".path"), {opacity: 0}, {
+                //     opacity: 1,
+                //     repeat: -1,
+                //     repeatDelay: 2,
+                //     duration: 0.2,
+                //     stagger: 0.05,
+                //     ease: "power3.inOut"
+                // }, "<")
 
-    }, [])
+    }, [q])
 
 
     const startForm = () => {
@@ -314,7 +326,7 @@ function IntroMobile() {
                 <img src={left_light} className="left_light3 img" alt=""/>
                 <img src={vorota} className="vorota img" alt=""/>
                 <img src={vorota_uzor} className="vorota_uzor img" alt=""/>
-                <div className="confetti" ref={containerRef}>
+                <div className="confetti" >
                     <div className="circle"></div>
                     <div className="circle"></div>
                     <div className="circle"></div>

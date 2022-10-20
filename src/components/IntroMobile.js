@@ -217,16 +217,16 @@ function IntroMobile() {
                     {yPercent: 100, opacity: 0},
                     {yPercent: 0,opacity: 1,duration: 1,ease: "back"}, "<")
                 .to('.appears', {opacity: 1, duration: 1})
-                .fromTo(".path", {scale: 0}, {
-                    scale: 1,
-                    repeat: -1,
-                    repeatDelay: 2,
-                    duration: 0.3,
-                    stagger: 0.1,
-                    ease: "back"
-                }, "<")
+                // .fromTo(q(".path"), {scale: 0}, {
+                //     scale: 1,
+                //     repeat: -1,
+                //     repeatDelay: 2,
+                //     duration: 0.3,
+                //     stagger: 0.1,
+                //     ease: "back"
+                // }, "<")
 
-        //return tl_intro.current.revert();
+        return ()=>tl_intro.current.kill();
     }, [])
 
 

@@ -141,92 +141,92 @@ function IntroMobile() {
         }
 
 
-        gsap.to(".left_light1", {
-            rotation: -10,
-            transformOrigin: '0 0',
-            duration: 15,
-            repeat: -1,
-            yoyo: true,
-            ease: "none"
-        })
-        gsap.to(".left_light2", {
-            rotation: 20,
-            transformOrigin: '0 0',
-            duration: 17,
-            repeat: -1,
-            yoyo: true,
-            ease: "none"
-        })
-        gsap.to(".left_light3", {
-            rotation: 10,
-            transformOrigin: '0 0',
-            duration: 13,
-            repeat: -1,
-            yoyo: true,
-            ease: "none"
-        })
+        // gsap.to(".left_light1", {
+        //     rotation: -10,
+        //     transformOrigin: '0 0',
+        //     duration: 15,
+        //     repeat: -1,
+        //     yoyo: true,
+        //     ease: "none"
+        // })
+        // gsap.to(".left_light2", {
+        //     rotation: 20,
+        //     transformOrigin: '0 0',
+        //     duration: 17,
+        //     repeat: -1,
+        //     yoyo: true,
+        //     ease: "none"
+        // })
+        // gsap.to(".left_light3", {
+        //     rotation: 10,
+        //     transformOrigin: '0 0',
+        //     duration: 13,
+        //     repeat: -1,
+        //     yoyo: true,
+        //     ease: "none"
+        // })
 
 
-            tl_intro.current = gsap.timeline()
-                .to(q(".scene"), {scale: 2, xPercent: -50, yPercent: 20, duration: 1, ease: "back"})
-                .fromTo(q(".bg"), { yPercent: 100},{ yPercent: 0, duration: 1, ease: "back"},"<+0.2")
-                .fromTo(q(".right_top_corner"), {scale: 0, yPercent: -20, xPercent:20},
-                    {scale: 1,  yPercent: 0, xPercent:0, duration: 1, ease: "power3.inOut"}, "<+=0.2")
-                .to(q(".lines"), {opacity: 1, x: 0, duration: 1, ease: "power3.inOut"}, "<+=0.2")
-                .fromTo(q(".vorota"), { xPercent: 50},{ xPercent: 0, duration: 1, ease: "back"}, "<+=0.2")
-                .to(q(".scene"), {scale: 1, xPercent: 0, yPercent: 0, duration: 1, ease: "power3.inOut"})
-                .fromTo(q(".tablo"), {yPercent: -150, xPercent: -20},{yPercent: 0, xPercent: 0, duration: 1, ease: "back"},"<+=0.2")
-                .fromTo(q(".tablo_lenti"), {yPercent: -250, xPercent: -20},{ yPercent: 0, xPercent: 0, duration: 1, ease: "none"}, "<+=0.2")
-                .fromTo(q(".tablo_right_top_brizg"),
-                    {opacity: 0, xPercent: -8},
-                    {opacity: 1, xPercent: 0, duration: 0.5, ease: "back"}, "<+=0.2")
-                .fromTo(q(".tablo_down_brizg"),
-                    {opacity: 0, yPercent: -20},
-                    {opacity: 1, yPercent: 0, duration: 0.5, ease: "back"}, "<+=0.2")
-                .fromTo(q(".tablo_bg_lines"),
-                    {opacity: 0, yPercent: -30},
-                    {yPercent: 0, opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.2")
-                .fromTo([".left_light1",".left_light2",".left_light3"],
-                    {xPercent: -100, yPercent: -100},
-                    {xPercent: 0, yPercent: 0, stagger:0.2, duration: 1}, "<+=0.2")
-                .fromTo(q(".confetti"),{opacity:0},
-                    {opacity: 1, duration: 3}, "<+=0.2")
-                .fromTo(q(".player"),
-                    { opacity:0, rotation: -30,yPercent: 20, xPercent: -20},
-                    {opacity: 1, rotation: 0, yPercent: 0, xPercent: 0, duration: 1, ease: "back"}, "<+0.2")
-                .fromTo(q(".path"), {scale: 0},{scale: 1, duration: 0.3, stagger: 0.1, ease:"back"}, "<+=0.2")
-                .fromTo(q(".path_left_lite"),
-                    { scale:0, xPercent: 10, yPercent: 200},
-                    {scale: 1, xPercent: 2,yPercent: 5, duration: 0.5, ease: "power3.Out"}, "<-=0.2")
-                .fromTo(q(".path_right_bottom"),
-                    { scale:0, xPercent: 50, yPercent: 200},
-                    { scale:1, xPercent: 5, yPercent: 0,duration: 0.5, ease: "power3.Out"}, "<+=0.1")
-                .fromTo(q(".ball"),
-                    {scale: 0},
-                    {scale: 1, duration: 0.3, ease: "back"}, "<+=1.3")
-                .fromTo(q(".ball_oreol"),
-                    {scale: 0},
-                    {scale: 1, duration: 0.3, ease: "back"}, "<+=0.2")
-                .fromTo(q(".vorota_uzor"),
-                    {scale: 0},
-                    {scale: 1, duration: 0.5, ease:"back"}, "<+=0.4")
-                .fromTo(q(".zritel"),
-                    { xPercent: 30, yPercent: 30},
-                    { xPercent: 0, yPercent: 0, duration: 1, ease: "back"}, "<-=0.5")
-                .fromTo(q(".goButton"),
-                    {yPercent: 100, opacity: 0},
-                    {yPercent: 0,opacity: 1,duration: 1,ease: "back"}, "<")
-                .to('.appears', {opacity: 1, duration: 1})
-                // .fromTo(q(".path"), {scale: 0}, {
-                //     scale: 1,
-                //     repeat: -1,
-                //     repeatDelay: 2,
-                //     duration: 0.3,
-                //     stagger: 0.1,
-                //     ease: "back"
-                // }, "<")
-
-        return ()=>tl_intro.current.kill();
+        //     tl_intro.current = gsap.timeline()
+        //         .to(q(".scene"), {scale: 2, xPercent: -50, yPercent: 20, duration: 1, ease: "back"})
+        //         .fromTo(q(".bg"), { yPercent: 100},{ yPercent: 0, duration: 1, ease: "back"},"<+0.2")
+        //         .fromTo(q(".right_top_corner"), {scale: 0, yPercent: -20, xPercent:20},
+        //             {scale: 1,  yPercent: 0, xPercent:0, duration: 1, ease: "power3.inOut"}, "<+=0.2")
+        //         .to(q(".lines"), {opacity: 1, x: 0, duration: 1, ease: "power3.inOut"}, "<+=0.2")
+        //         .fromTo(q(".vorota"), { xPercent: 50},{ xPercent: 0, duration: 1, ease: "back"}, "<+=0.2")
+        //         .to(q(".scene"), {scale: 1, xPercent: 0, yPercent: 0, duration: 1, ease: "power3.inOut"})
+        //         .fromTo(q(".tablo"), {yPercent: -150, xPercent: -20},{yPercent: 0, xPercent: 0, duration: 1, ease: "back"},"<+=0.2")
+        //         .fromTo(q(".tablo_lenti"), {yPercent: -250, xPercent: -20},{ yPercent: 0, xPercent: 0, duration: 1, ease: "none"}, "<+=0.2")
+        //         .fromTo(q(".tablo_right_top_brizg"),
+        //             {opacity: 0, xPercent: -8},
+        //             {opacity: 1, xPercent: 0, duration: 0.5, ease: "back"}, "<+=0.2")
+        //         .fromTo(q(".tablo_down_brizg"),
+        //             {opacity: 0, yPercent: -20},
+        //             {opacity: 1, yPercent: 0, duration: 0.5, ease: "back"}, "<+=0.2")
+        //         .fromTo(q(".tablo_bg_lines"),
+        //             {opacity: 0, yPercent: -30},
+        //             {yPercent: 0, opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.2")
+        //         .fromTo([".left_light1",".left_light2",".left_light3"],
+        //             {xPercent: -100, yPercent: -100},
+        //             {xPercent: 0, yPercent: 0, stagger:0.2, duration: 1}, "<+=0.2")
+        //         .fromTo(q(".confetti"),{opacity:0},
+        //             {opacity: 1, duration: 3}, "<+=0.2")
+        //         .fromTo(q(".player"),
+        //             { opacity:0, rotation: -30,yPercent: 20, xPercent: -20},
+        //             {opacity: 1, rotation: 0, yPercent: 0, xPercent: 0, duration: 1, ease: "back"}, "<+0.2")
+        //         .fromTo(q(".path"), {scale: 0},{scale: 1, duration: 0.3, stagger: 0.1, ease:"back"}, "<+=0.2")
+        //         .fromTo(q(".path_left_lite"),
+        //             { scale:0, xPercent: 10, yPercent: 200},
+        //             {scale: 1, xPercent: 2,yPercent: 5, duration: 0.5, ease: "power3.Out"}, "<-=0.2")
+        //         .fromTo(q(".path_right_bottom"),
+        //             { scale:0, xPercent: 50, yPercent: 200},
+        //             { scale:1, xPercent: 5, yPercent: 0,duration: 0.5, ease: "power3.Out"}, "<+=0.1")
+        //         .fromTo(q(".ball"),
+        //             {scale: 0},
+        //             {scale: 1, duration: 0.3, ease: "back"}, "<+=1.3")
+        //         .fromTo(q(".ball_oreol"),
+        //             {scale: 0},
+        //             {scale: 1, duration: 0.3, ease: "back"}, "<+=0.2")
+        //         .fromTo(q(".vorota_uzor"),
+        //             {scale: 0},
+        //             {scale: 1, duration: 0.5, ease:"back"}, "<+=0.4")
+        //         .fromTo(q(".zritel"),
+        //             { xPercent: 30, yPercent: 30},
+        //             { xPercent: 0, yPercent: 0, duration: 1, ease: "back"}, "<-=0.5")
+        //         .fromTo(q(".goButton"),
+        //             {yPercent: 100, opacity: 0},
+        //             {yPercent: 0,opacity: 1,duration: 1,ease: "back"}, "<")
+        //         .to('.appears', {opacity: 1, duration: 1})
+        //         // .fromTo(q(".path"), {scale: 0}, {
+        //         //     scale: 1,
+        //         //     repeat: -1,
+        //         //     repeatDelay: 2,
+        //         //     duration: 0.3,
+        //         //     stagger: 0.1,
+        //         //     ease: "back"
+        //         // }, "<")
+        //
+        // return ()=>tl_intro.current.kill();
     }, [])
 
 
@@ -361,18 +361,18 @@ function IntroMobile() {
                 </div>
                 <img src={path_left_lite} className="path_left_lite img" alt=""/>
                 <img src={path_right_bottom} className="path_right_bottom img" alt=""/>
-                <img src={path_1} className="path img" alt=""/>
-                <img src={path_2} className="path img" alt=""/>
-                <img src={path_3} className="path img" alt=""/>
-                <img src={path_4} className="path img" alt=""/>
-                <img src={path_5} className="path img" alt=""/>
-                <img src={path_6} className="path img" alt=""/>
-                <img src={path_7} className="path img" alt=""/>
-                <img src={path_8} className="path img" alt=""/>
-                <img src={path_9} className="path img" alt=""/>
-                <img src={path_10} className="path img" alt=""/>
-                <img src={path_11} className="path img" alt=""/>
-                <img src={path_12} className="path img" alt=""/>
+                <img src={path_1} className="path_1 img" alt=""/>
+                <img src={path_2} className="path_2 img" alt=""/>
+                <img src={path_3} className="path_3 img" alt=""/>
+                <img src={path_4} className="path_4 img" alt=""/>
+                <img src={path_5} className="path_5 img" alt=""/>
+                <img src={path_6} className="path_6 img" alt=""/>
+                <img src={path_7} className="path_7 img" alt=""/>
+                <img src={path_8} className="path_8 img" alt=""/>
+                <img src={path_9} className="path_9 img" alt=""/>
+                <img src={path_10} className="path_10 img" alt=""/>
+                <img src={path_11} className="path_11 img" alt=""/>
+                <img src={path_12} className="path_12 img" alt=""/>
                 <img src={tablo_right_top_brizg} className="tablo_right_top_brizg img" alt=""/>
                 <img src={tablo_down_brizg} className="tablo_down_brizg img" alt=""/>
                 <img src={tablo_bg_lines} className="tablo_bg_lines img" alt=""/>

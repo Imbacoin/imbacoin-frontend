@@ -37,11 +37,12 @@ import france from "../images/lang/france.png";
 import arrowDown from "../images/lang/arrowDown.svg";
 import arrow_mob from "../images/lang/arrow_mob.svg";
 import SearchBar from "./searchBar";
+import PreloadImage from "../services/PreloadImage";
 
 
 function IntroMobile() {
 
-
+    console.log('render')
     // gsap.ticker.lagSmoothing(1000, 33)
     // gsap.registerPlugin(ScrollTrigger);
     // ScrollTrigger.config({
@@ -61,6 +62,7 @@ function IntroMobile() {
 
 
     useEffect(() => {
+
         const circles = q('.circle')
         const squares = q('.squares')
 
@@ -319,14 +321,15 @@ function IntroMobile() {
     return (
         <div className="intro_wrap" id="root" ref={containerRef}>
             <div className="scene">
-                <img src={bg} className="bg img" alt=""/>
-                <img src={lines} className="lines img" alt=""/>
-                <img src={right_top_corner} className="right_top_corner img" alt=""/>
-                <img src={left_light} className="left_light1 img" alt=""/>
-                <img src={left_light} className="left_light2 img" alt=""/>
-                <img src={left_light} className="left_light3 img" alt=""/>
-                <img src={vorota} className="vorota img" alt=""/>
-                <img src={vorota_uzor} className="vorota_uzor img" alt=""/>
+                <div className="bg img"><PreloadImage src={bg} /></div>
+                <div className="lines img"><PreloadImage src={lines} /></div>
+                <div className="right_top_corner img"><PreloadImage src={right_top_corner} /></div>
+                <div className="left_light1 img"><PreloadImage src={left_light} /></div>
+                <div className="left_light2 img"><PreloadImage src={left_light} /></div>
+                <div className="left_light3 img"><PreloadImage src={left_light} /></div>
+                <div className="left_light3 img"><PreloadImage src={left_light} /></div>
+                <div className="vorota img"><PreloadImage src={vorota} /></div>
+                <div className="vorota_uzor img"><PreloadImage src={vorota_uzor} /></div>
                 <div className="confetti" >
                     <div className="circle"></div>
                     <div className="circle"></div>
@@ -359,29 +362,29 @@ function IntroMobile() {
                     <div className="squares"></div>
                     <div className="squares"></div>
                 </div>
-                <img src={path_left_lite} className="path_left_lite img" alt=""/>
-                <img src={path_right_bottom} className="path_right_bottom img" alt=""/>
-                <img src={path_1} className="path_1 img" alt=""/>
-                <img src={path_2} className="path_2 img" alt=""/>
-                <img src={path_3} className="path_3 img" alt=""/>
-                <img src={path_4} className="path_4 img" alt=""/>
-                <img src={path_5} className="path_5 img" alt=""/>
-                <img src={path_6} className="path_6 img" alt=""/>
-                <img src={path_7} className="path_7 img" alt=""/>
-                <img src={path_8} className="path_8 img" alt=""/>
-                <img src={path_9} className="path_9 img" alt=""/>
-                <img src={path_10} className="path_10 img" alt=""/>
-                <img src={path_11} className="path_11 img" alt=""/>
-                <img src={path_12} className="path_12 img" alt=""/>
-                <img src={tablo_right_top_brizg} className="tablo_right_top_brizg img" alt=""/>
-                <img src={tablo_down_brizg} className="tablo_down_brizg img" alt=""/>
-                <img src={tablo_bg_lines} className="tablo_bg_lines img" alt=""/>
-                <img src={tablo_lenti} className="tablo_lenti img" alt=""/>
-                <img src={tablo} className="tablo img" alt=""/>
-                <img src={player} className="player img" alt=""/>
-                <img src={zritel} className="zritel img" alt=""/>
-                <img src={ball_oreol} className="ball_oreol img" alt=""/>
-                <img src={ball} className="ball img" alt=""/>
+                <div className="path_left_lite img"><PreloadImage src={path_left_lite} /></div>
+                <div className="path_right_bottom img"><PreloadImage src={path_right_bottom} /></div>
+                <div className="path_1 img"><PreloadImage src={path_1} /></div>
+                <div className="path_2 img"><PreloadImage src={path_2} /></div>
+                <div className="path_3 img"><PreloadImage src={path_3} /></div>
+                <div className="path_4 img"><PreloadImage src={path_4} /></div>
+                <div className="path_5 img"><PreloadImage src={path_5} /></div>
+                <div className="path_6 img"><PreloadImage src={path_6} /></div>
+                <div className="path_7 img"><PreloadImage src={path_7} /></div>
+                <div className="path_8 img"><PreloadImage src={path_8} /></div>
+                <div className="path_9 img"><PreloadImage src={path_9} /></div>
+                <div className="path_10 img"><PreloadImage src={path_10} /></div>
+                <div className="path_11 img"><PreloadImage src={path_11} /></div>
+                <div className="path_12 img"><PreloadImage src={path_12} /></div>
+                <div className="tablo_right_top_brizg img"><PreloadImage src={tablo_right_top_brizg} /></div>
+                <div className="tablo_down_brizg img"><PreloadImage src={tablo_down_brizg} /></div>
+                <div className="tablo_bg_lines img"><PreloadImage src={tablo_bg_lines} /></div>
+                <div className="tablo_lenti img"><PreloadImage src={tablo_lenti} /></div>
+                <div className="tablo img"><PreloadImage src={tablo} /></div>
+                <div className="player img"><PreloadImage src={player} /></div>
+                <div className="zritel img"><PreloadImage src={zritel} /></div>
+                <div className="ball_oreol img"><PreloadImage src={ball_oreol} /></div>
+                <div className="ball img"><PreloadImage src={ball} /></div>
                 <div className="goButton">
                     <GoButton startForm={startForm} start={start} langClick={langClick}/>
                 </div>

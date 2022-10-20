@@ -29,7 +29,7 @@ function App() {
     }
 
     useEffect(() => {
-        gsap.to('.appears', {opacity: 1, delay: 6, duration: 1})
+
     }, [])
 
     return (

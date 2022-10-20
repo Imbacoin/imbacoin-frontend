@@ -21,9 +21,7 @@ html, body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  min-height: 100vh;
-  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
-  height: calc(var(--vh, 1vh) * 100);
+  height: 100vh;
 }
 .body {
   font-family: 'Space Grotesk', sans-serif;
@@ -32,15 +30,14 @@ html, body {
 .intro_wrap {
   background: #0d1335;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   color: white;
   overflow: hidden;
 }
 
 .scene {
   width: 100%;
-  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
-  height: calc(var(--vh, 1vh) * 100);
+  height: 100vh;
   position: relative;
   will-change: transform;
 }
@@ -51,14 +48,13 @@ html, body {
   position: absolute;
   top: 0;
   left: 0;
-  display: inherit;
+  bottom:0;
+  right: 0;
+  display: flex;
   pointer-events: none;
 }
 
-.path {
-  opacity: 0;
-  will-change: transform, opacity;
-}
+
 
 .scene .left_light1 {
   max-width: 30%;
@@ -135,21 +131,33 @@ html, body {
 .tablo_down_brizg,
 .tablo_bg_lines,
 .tablo_lenti{
-  will-change: transform,opacity;
+  will-change: transform;
 }
 
-
+.path {
+  transform: scale(0);
+  transform-origin: 74% 67%;
+}
+.vorota_uzor {
+  transform-origin: 90% 50%;
+}
+.right_top_corner {
+  transform-origin: 100% 0%;
+}
+.scene {
+  transform-origin: 0% 50%;
+}
+.ball_oreol {
+  transform-origin: 85% 45%;
+}
 .ball {
-  opacity: 0;
+  transform-origin: 85% 45%;
 }
 
 .zritel {
   transform: translate(10%, 10%);
 }
 
-.ball_oreol {
-  opacity: 0;
-}
 
 .path_left_lite {
   transform: translate(-10%, 0);
@@ -1080,6 +1088,9 @@ input[type=range]:focus::-ms-fill-upper {
   }
 }
 @media screen and (max-width: 767px) {
+  .intro_wrap {
+    background: #040b32;
+  }
   .chat_wrap{
     width: auto;
     right: 20px;

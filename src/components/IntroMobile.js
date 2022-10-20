@@ -1,5 +1,5 @@
 import React, {useEffect, useMemo, useRef, useState} from "react";
-import {gsap} from "gsap/dist/gsap";
+import {gsap} from "gsap";
 import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
 
 import GoButton from "./GoButton";
@@ -42,12 +42,12 @@ import SearchBar from "./searchBar";
 function IntroMobile() {
 
 
-    gsap.ticker.lagSmoothing(1000, 33)
-    gsap.registerPlugin(ScrollTrigger);
-    ScrollTrigger.config({
-        ignoreMobileResize: true
-    });
-    ScrollTrigger.normalizeScroll(true);
+    // gsap.ticker.lagSmoothing(1000, 33)
+    // gsap.registerPlugin(ScrollTrigger);
+    // ScrollTrigger.config({
+    //     ignoreMobileResize: true
+    // });
+    // ScrollTrigger.normalizeScroll(true);
 
     const langFullPanelRef = useRef(null)
     const langRef = useRef(null)
@@ -167,17 +167,16 @@ function IntroMobile() {
         })
 
 
-
             tl_intro.current = gsap.timeline()
-                //.to(q(".scene"), {scale: 2, xPercent: -50, yPercent: 20, duration: 1, ease: "back"})
-                .fromTo(q(".bg"), { yPercent: 100},{ yPercent: 0, duration: 1, ease: "back"})
-                .fromTo(q(".right_top_corner"), {opacity: 0, yPercent: -20, xPercent:20},
-                    {opacity: 1,  yPercent: 0, xPercent:0, duration: 1, ease: "power3.inOut"}, "<+=0.2")
-                //.to(q(".lines"), {opacity: 1, x: 0, duration: 1, ease: "power3.inOut"}, "<+=0.2")
-                .fromTo(q(".vorota"), {opacity: 0, xPercent: 20},{opacity: 1, xPercent: 0, duration: 1, ease: "back"}, "<+=0.2")
-                //.to(q(".scene"), {scale: 1, xPercent: 0, yPercent: 0, duration: 1, ease: "power3.inOut"})
+                .to(q(".scene"), {scale: 2, xPercent: -50, yPercent: 20, duration: 1, ease: "back"})
+                .fromTo(q(".bg"), { yPercent: 100},{ yPercent: 0, duration: 1, ease: "back"},"<+0.2")
+                .fromTo(q(".right_top_corner"), {scale: 0, yPercent: -20, xPercent:20},
+                    {scale: 1,  yPercent: 0, xPercent:0, duration: 1, ease: "power3.inOut"}, "<+=0.2")
+                .to(q(".lines"), {opacity: 1, x: 0, duration: 1, ease: "power3.inOut"}, "<+=0.2")
+                .fromTo(q(".vorota"), { xPercent: 50},{ xPercent: 0, duration: 1, ease: "back"}, "<+=0.2")
+                .to(q(".scene"), {scale: 1, xPercent: 0, yPercent: 0, duration: 1, ease: "power3.inOut"})
                 .fromTo(q(".tablo"), {yPercent: -150, xPercent: -20},{yPercent: 0, xPercent: 0, duration: 1, ease: "back"},"<+=0.2")
-                .fromTo(q(".tablo_lenti"), {opacity: 0,yPercent: -250, xPercent: -20},{opacity: 1, yPercent: 0, xPercent: 0, duration: 1, ease: "none"}, "<+=0.2")
+                .fromTo(q(".tablo_lenti"), {yPercent: -250, xPercent: -20},{ yPercent: 0, xPercent: 0, duration: 1, ease: "none"}, "<+=0.2")
                 .fromTo(q(".tablo_right_top_brizg"),
                     {opacity: 0, xPercent: -8},
                     {opacity: 1, xPercent: 0, duration: 0.5, ease: "back"}, "<+=0.2")
@@ -187,46 +186,48 @@ function IntroMobile() {
                 .fromTo(q(".tablo_bg_lines"),
                     {opacity: 0, yPercent: -30},
                     {yPercent: 0, opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.2")
-                .fromTo(q(".left_light1",".left_light2",".left_light3"),
-                    {opacity: 0},
-                    {opacity: 1, stagger:0.2, duration: 1}, "<+=0.2")
+                .fromTo([".left_light1",".left_light2",".left_light3"],
+                    {xPercent: -100, yPercent: -100},
+                    {xPercent: 0, yPercent: 0, stagger:0.2, duration: 1}, "<+=0.2")
                 .fromTo(q(".confetti"),{opacity:0},
                     {opacity: 1, duration: 3}, "<+=0.2")
                 .fromTo(q(".player"),
                     { opacity:0, rotation: -30,yPercent: 20, xPercent: -20},
                     {opacity: 1, rotation: 0, yPercent: 0, xPercent: 0, duration: 1, ease: "back"}, "<+0.2")
-                .fromTo(q(".path"), {opacity: 0},{opacity: 1, duration: 0.2, stagger: 0.1}, "<+=0.2")
+                .fromTo(q(".path"), {scale: 0},{scale: 1, duration: 0.3, stagger: 0.1, ease:"back"}, "<+=0.2")
                 .fromTo(q(".path_left_lite"),
-                    {opacity: 0, xPercent: -10},
-                    {opacity: 1, xPercent: 0, duration: 0.5, ease: "power3.Out"}, "<-=0.2")
+                    { scale:0, xPercent: 10, yPercent: 200},
+                    {scale: 1, xPercent: 2,yPercent: 5, duration: 0.5, ease: "power3.Out"}, "<-=0.2")
                 .fromTo(q(".path_right_bottom"),
-                    {opacity: 0, xPercent: -5, yPercent: 2},
-                    {opacity: 1, xPercent: 0, yPercent: 0, duration: 0.5, ease: "power3.Out"}, "<+=0.1")
-                .fromTo(q(".ball_oreol"),
-                    {opacity: 0},
-                    {opacity: 1, duration: 1}, "<+=0.2")
+                    { scale:0, xPercent: 50, yPercent: 200},
+                    { scale:1, xPercent: 5, yPercent: 0,duration: 0.5, ease: "power3.Out"}, "<+=0.1")
                 .fromTo(q(".ball"),
-                    {opacity: 0},
-                    {opacity: 1, duration: 1}, "<+=0.2")
+                    {scale: 0},
+                    {scale: 1, duration: 0.3, ease: "back"}, "<+=1.3")
+                .fromTo(q(".ball_oreol"),
+                    {scale: 0},
+                    {scale: 1, duration: 0.3, ease: "back"}, "<+=0.2")
                 .fromTo(q(".vorota_uzor"),
-                    {opacity: 0},
-                    {opacity: 1, duration: 1}, "<+=0.2")
+                    {scale: 0},
+                    {scale: 1, duration: 0.5, ease:"back"}, "<+=0.4")
                 .fromTo(q(".zritel"),
-                    {opacity: 0, xPercent: 10, yPercent: 10},
-                    {opacity: 1, xPercent: 0, yPercent: 0, duration: 1, ease: "back"}, "<-=0.5")
+                    { xPercent: 30, yPercent: 30},
+                    { xPercent: 0, yPercent: 0, duration: 1, ease: "back"}, "<-=0.5")
                 .fromTo(q(".goButton"),
                     {yPercent: 100, opacity: 0},
                     {yPercent: 0,opacity: 1,duration: 1,ease: "back"}, "<")
-                // .fromTo(q(".path"), {opacity: 0}, {
-                //     opacity: 1,
-                //     repeat: -1,
-                //     repeatDelay: 2,
-                //     duration: 0.2,
-                //     stagger: 0.05,
-                //     ease: "power3.inOut"
-                // }, "<")
+                .to('.appears', {opacity: 1, duration: 1})
+                .fromTo(".path", {scale: 0}, {
+                    scale: 1,
+                    repeat: -1,
+                    repeatDelay: 2,
+                    duration: 0.3,
+                    stagger: 0.1,
+                    ease: "back"
+                }, "<")
 
-    }, [q])
+        //return tl_intro.current.revert();
+    }, [])
 
 
     const startForm = () => {

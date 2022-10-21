@@ -192,7 +192,7 @@ function IntroMobile() {
                 .fromTo(q(".confetti"),{opacity:0},
                     {opacity: 1, duration: 3}, "<+=0.2")
                 .fromTo(q(".player"),
-                    { opacity:0, rotation: -30,yPercent: 20, xPercent: -20},
+                    { opacity:0, rotation: 30,yPercent: 10, xPercent: -50},
                     {opacity: 1, rotation: 0, yPercent: 0, xPercent: 0, duration: 1, ease: "back"}, "<+0.2")
                 .fromTo(q(".path"), {opacity: 0},{opacity: 1, duration: 0.3, stagger: 0.1, ease:"back"}, "<+=0.2")
                 .fromTo(q(".path_left_lite"),
@@ -213,100 +213,100 @@ function IntroMobile() {
                 .fromTo(q(".zritel"),
                     { xPercent: 30, yPercent: 30},
                     { xPercent: 0, yPercent: 0, duration: 1, ease: "back"}, "<-=0.5")
-                .fromTo(q(".goButton"),
-                    {yPercent: 200, },
-                    {yPercent: 0,duration: 1,ease: "back"}, "<")
-                .to('.appears', {opacity: 1, duration: 1})
+                // .fromTo(q(".goButton"),
+                //     {yPercent: 200, },
+                //     {yPercent: 0,duration: 1,ease: "back"}, "<")
+                // .to('.appears', {opacity: 1, duration: 1})
 
 
-        return ()=>tl_intro.current.kill();
+        return ()=>tl_intro.current.progress(0).kill();
     }, [])
 
 
-    const startForm = () => {
-        setStart(true)
-        tl_start.current = gsap.timeline({paused: true})
-            .set(q(".player"), {zIndex: 10})
-            .set(q(".zritel"), {zIndex: 0})
-            .set(".buy_wrap", {top: 0, zIndex: 9})
-            .to(".buy_form_wrap", {opacity: 1, duration: 1, ease: "power4.inOut"})
-            .to(q(".middle_box"), {top: '0vh', duration: 2, ease: "power4.inOut"}, "<")
-            .to(q(".player"), {top: '20vh', left: -20, duration: 2, ease: "power4.inOut"}, "<")
-            .to('.chat_wrap', {top: '70vh', height: '15vh', duration: 2, ease: "power4.inOut"}, "<")
-
-        tl_start.current.play()
-    }
-    const back_to_main = () => {
-        tl_start.current.reverse()
-
-    }
-    useEffect(() => {
-        tl_Ref.current = gsap.timeline({paused: true})
-        tl_Ref.current.to(".chat_wrap", {autoAlpha: 0, ease: 'power3.inOut'})
-        tl_Ref.current.to(".social_buttons_wrap", {autoAlpha: 0, ease: 'power3.inOut'})
-        tl_Ref.current.to(q(".lang_panel"), {autoAlpha: 1, bottom: '0', ease: 'power3.inOut'})
-    }, [tl_Ref, q])
-
-    useEffect(() => {
-        tl_langPanel_Ref.current = gsap.timeline({paused: true})
-        tl_langPanel_Ref.current.to(q(".go_title"), {opacity: 0, y: 50, ease: 'none'})
-    }, [tl_langPanel_Ref, q])
-
-    const langClick = () => {
-        if (!langRef.current.classList.contains('active')) {
-            langRef.current.classList.add('active')
-            tl_Ref.current.play()
-        } else {
-            langRef.current.classList.remove('active')
-            tl_Ref.current.reverse()
-        }
-    }
-    const subLangClick = () => {
-        langRef.current.classList.remove('active')
-        tl_Ref.current.reverse()
-    }
-
-    const openLangPanel = () => {
-        if (!langFullPanelRef.current.classList.contains("active")) {
-            langFullPanelRef.current.classList.add("active")
-            gsap.timeline().to(q(".lang_full_panel"), {autoAlpha: 1, duration: 0.3})
-                .to(q(".panel_l"), {marginTop: 0, opacity: 1, duration: 1, ease: "back"}, "<")
-                .fromTo(q(".liLang"), {opacity: 0}, {opacity: 1, duration: 1, ease: "back"}, "<")
-        } else {
-            langFullPanelRef.current.classList.remove("active")
-        }
-    }
-
-    const closeLangPanel = () => {
-        if (langFullPanelRef.current.classList.contains("active")) {
-            gsap.timeline().to(q(".panel_l"), {marginTop: 100, duration: 1, ease: "back"})
-                .to(q(".lang_full_panel"), {autoAlpha: 0, duration: 1.2}, "<")
-            langFullPanelRef.current.classList.remove("active")
-            langRef.current.classList.remove('active')
-            tl_Ref.current.reverse()
-        }
-    }
-
-    const wrapClosePanel = (e) => {
-        if (e.target.classList.contains("lang_full_wrap")) {
-            gsap.timeline().to(q(".panel_l"), {marginTop: 100, duration: 1, ease: "back"})
-                .to(q(".lang_full_panel"), {autoAlpha: 0, duration: 1.2}, "<")
-            langFullPanelRef.current.classList.remove("active")
-        }
-    }
-
-    const langs = [
-        {lang: 'fran', img: france},
-        {lang: 'fran', img: france},
-        {lang: 'fran', img: france},
-        {lang: 'fran', img: france},
-        {lang: 'fran', img: france},
-        {lang: 'fran', img: france},
-        {lang: 'fran', img: france},
-        {lang: 'fran', img: france},
-        {lang: 'fran', img: france},
-        {lang: 'fran', img: france}
-    ]
+    // const startForm = () => {
+    //     setStart(true)
+    //     tl_start.current = gsap.timeline({paused: true})
+    //         .set(q(".player"), {zIndex: 10})
+    //         .set(q(".zritel"), {zIndex: 0})
+    //         .set(".buy_wrap", {top: 0, zIndex: 9})
+    //         .to(".buy_form_wrap", {opacity: 1, duration: 1, ease: "power4.inOut"})
+    //         .to(q(".middle_box"), {top: '0vh', duration: 2, ease: "power4.inOut"}, "<")
+    //         .to(q(".player"), {top: '20vh', left: -20, duration: 2, ease: "power4.inOut"}, "<")
+    //         .to('.chat_wrap', {top: '70vh', height: '15vh', duration: 2, ease: "power4.inOut"}, "<")
+    //
+    //     tl_start.current.play()
+    // }
+    // const back_to_main = () => {
+    //     tl_start.current.reverse()
+    //
+    // }
+    // useEffect(() => {
+    //     tl_Ref.current = gsap.timeline({paused: true})
+    //     tl_Ref.current.to(".chat_wrap", {autoAlpha: 0, ease: 'power3.inOut'})
+    //     tl_Ref.current.to(".social_buttons_wrap", {autoAlpha: 0, ease: 'power3.inOut'})
+    //     tl_Ref.current.to(q(".lang_panel"), {autoAlpha: 1, bottom: '0', ease: 'power3.inOut'})
+    // }, [tl_Ref, q])
+    //
+    // useEffect(() => {
+    //     tl_langPanel_Ref.current = gsap.timeline({paused: true})
+    //     tl_langPanel_Ref.current.to(q(".go_title"), {opacity: 0, y: 50, ease: 'none'})
+    // }, [tl_langPanel_Ref, q])
+    //
+    // const langClick = () => {
+    //     if (!langRef.current.classList.contains('active')) {
+    //         langRef.current.classList.add('active')
+    //         tl_Ref.current.play()
+    //     } else {
+    //         langRef.current.classList.remove('active')
+    //         tl_Ref.current.reverse()
+    //     }
+    // }
+    // const subLangClick = () => {
+    //     langRef.current.classList.remove('active')
+    //     tl_Ref.current.reverse()
+    // }
+    //
+    // const openLangPanel = () => {
+    //     if (!langFullPanelRef.current.classList.contains("active")) {
+    //         langFullPanelRef.current.classList.add("active")
+    //         gsap.timeline().to(q(".lang_full_panel"), {autoAlpha: 1, duration: 0.3})
+    //             .to(q(".panel_l"), {marginTop: 0, opacity: 1, duration: 1, ease: "back"}, "<")
+    //             .fromTo(q(".liLang"), {opacity: 0}, {opacity: 1, duration: 1, ease: "back"}, "<")
+    //     } else {
+    //         langFullPanelRef.current.classList.remove("active")
+    //     }
+    // }
+    //
+    // const closeLangPanel = () => {
+    //     if (langFullPanelRef.current.classList.contains("active")) {
+    //         gsap.timeline().to(q(".panel_l"), {marginTop: 100, duration: 1, ease: "back"})
+    //             .to(q(".lang_full_panel"), {autoAlpha: 0, duration: 1.2}, "<")
+    //         langFullPanelRef.current.classList.remove("active")
+    //         langRef.current.classList.remove('active')
+    //         tl_Ref.current.reverse()
+    //     }
+    // }
+    //
+    // const wrapClosePanel = (e) => {
+    //     if (e.target.classList.contains("lang_full_wrap")) {
+    //         gsap.timeline().to(q(".panel_l"), {marginTop: 100, duration: 1, ease: "back"})
+    //             .to(q(".lang_full_panel"), {autoAlpha: 0, duration: 1.2}, "<")
+    //         langFullPanelRef.current.classList.remove("active")
+    //     }
+    // }
+    //
+    // const langs = [
+    //     {lang: 'fran', img: france},
+    //     {lang: 'fran', img: france},
+    //     {lang: 'fran', img: france},
+    //     {lang: 'fran', img: france},
+    //     {lang: 'fran', img: france},
+    //     {lang: 'fran', img: france},
+    //     {lang: 'fran', img: france},
+    //     {lang: 'fran', img: france},
+    //     {lang: 'fran', img: france},
+    //     {lang: 'fran', img: france}
+    // ]
 
 
     return (
@@ -376,64 +376,64 @@ function IntroMobile() {
                 <div className="zritel img"><PreloadImage src={zritel} /></div>
                 <div className="ball_oreol img"><PreloadImage src={ball_oreol} /></div>
                 <div className="ball img"><PreloadImage src={ball} /></div>
-                <div className="goButton">
-                    <GoButton startForm={startForm} start={start} langClick={langClick}/>
-                </div>
+                {/*<div className="goButton">*/}
+                {/*    <GoButton startForm={startForm} start={start} langClick={langClick}/>*/}
+                {/*</div>*/}
 
-                <div className="lang_panel" ref={langRef}>
-                    <ul>
-                        {
-                            langs.slice(0, 5).map((el, index) => (
-                                    <li key={index} onClick={subLangClick} className="liLang">
-                                        <div className="name">{el.lang}</div>
-                                        <div className="flag">
-                                            <PreloadImage src={el.img}/>
-                                        </div>
-                                    </li>
-                                )
-                            )
-                        }
-                    </ul>
-                    <div className="arrow_mob" onClick={openLangPanel}>
-                        <PreloadImage src={arrow_mob} />
-                    </div>
-                    <div className="next_arrow" onClick={openLangPanel}>
-                        <PreloadImage src={arrowDown} />
-                    </div>
-                </div>
+                {/*<div className="lang_panel" ref={langRef}>*/}
+                {/*    <ul>*/}
+                {/*        {*/}
+                {/*            langs.slice(0, 5).map((el, index) => (*/}
+                {/*                    <li key={index} onClick={subLangClick} className="liLang">*/}
+                {/*                        <div className="name">{el.lang}</div>*/}
+                {/*                        <div className="flag">*/}
+                {/*                            <PreloadImage src={el.img}/>*/}
+                {/*                        </div>*/}
+                {/*                    </li>*/}
+                {/*                )*/}
+                {/*            )*/}
+                {/*        }*/}
+                {/*    </ul>*/}
+                {/*    <div className="arrow_mob" onClick={openLangPanel}>*/}
+                {/*        <PreloadImage src={arrow_mob} />*/}
+                {/*    </div>*/}
+                {/*    <div className="next_arrow" onClick={openLangPanel}>*/}
+                {/*        <PreloadImage src={arrowDown} />*/}
+                {/*    </div>*/}
+                {/*</div>*/}
 
-                <div className="lang_full_panel" ref={langFullPanelRef}>
-                    <div className="lang_full_wrap" onClick={wrapClosePanel}>
-                        <div className="panel_l">
-                            <div className="panel_close_btn" onClick={closeLangPanel}>
-                                <span></span>
-                                <span></span>
-                            </div>
-                            <div className="search_pos">
-                                <SearchBar/>
-                            </div>
-                            <div className="allLangs">
-                                <ul>
-                                    {
-                                        langs.map((el, index) => (
-                                                <li key={index} className="liLang">
-                                                    <div className="name">{el.lang}</div>
-                                                    <div className="flag">
-                                                        <PreloadImage src={el.img} />
-                                                    </div>
-                                                </li>
-                                            )
-                                        )
-                                    }
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {/*<div className="lang_full_panel" ref={langFullPanelRef}>*/}
+                {/*    <div className="lang_full_wrap" onClick={wrapClosePanel}>*/}
+                {/*        <div className="panel_l">*/}
+                {/*            <div className="panel_close_btn" onClick={closeLangPanel}>*/}
+                {/*                <span></span>*/}
+                {/*                <span></span>*/}
+                {/*            </div>*/}
+                {/*            <div className="search_pos">*/}
+                {/*                <SearchBar/>*/}
+                {/*            </div>*/}
+                {/*            <div className="allLangs">*/}
+                {/*                <ul>*/}
+                {/*                    {*/}
+                {/*                        langs.map((el, index) => (*/}
+                {/*                                <li key={index} className="liLang">*/}
+                {/*                                    <div className="name">{el.lang}</div>*/}
+                {/*                                    <div className="flag">*/}
+                {/*                                        <PreloadImage src={el.img} />*/}
+                {/*                                    </div>*/}
+                {/*                                </li>*/}
+                {/*                            )*/}
+                {/*                        )*/}
+                {/*                    }*/}
+                {/*                </ul>*/}
+                {/*            </div>*/}
+                {/*        </div>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
 
-                <div className="buy_wrap">
-                    <BuyForm back_to_main={back_to_main}/>
-                </div>
+                {/*<div className="buy_wrap">*/}
+                {/*    <BuyForm back_to_main={back_to_main}/>*/}
+                {/*</div>*/}
 
             </div>
         </div>

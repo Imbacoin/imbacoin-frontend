@@ -167,59 +167,59 @@ function IntroMobile() {
         })
 
 
-            tl_intro.current = gsap.timeline()
-                .to(q(".scene"), {scale: 2, xPercent: -50, yPercent: 20, duration: 1, ease: "back"})
-                .fromTo(q(".bg"), { yPercent: 100},{ yPercent: 0, duration: 1, ease: "back"},"<+0.2")
-                .fromTo(q(".right_top_corner"), {scale: 0, yPercent: -20, xPercent:20},
-                    {scale: 1,  yPercent: 0, xPercent:0, duration: 1, ease: "power3.inOut"}, "<+=0.2")
-                .to(q(".lines"), {opacity: 1, x: 0, duration: 1, ease: "power3.inOut"}, "<+=0.2")
-                .fromTo(q(".vorota"), { xPercent: 50},{ xPercent: 0, duration: 1, ease: "back"}, "<+=0.2")
-                .to(q(".scene"), {scale: 1, xPercent: 0, yPercent: 0, duration: 1, ease: "power3.inOut"})
-                .fromTo(q(".tablo"), {yPercent: -150, xPercent: -20},{yPercent: 0, xPercent: 0, duration: 1, ease: "back"},"<+=0.2")
-                .fromTo(q(".tablo_lenti"), {yPercent: -250, xPercent: -20},{ yPercent: 0, xPercent: 0, duration: 1, ease: "none"}, "<+=0.2")
-                .fromTo(q(".tablo_right_top_brizg"),
-                    {opacity: 0, xPercent: -8},
-                    {opacity: 1, xPercent: 0, duration: 0.5, ease: "back"}, "<+=0.2")
-                .fromTo(q(".tablo_down_brizg"),
-                    {opacity: 0, yPercent: -20},
-                    {opacity: 1, yPercent: 0, duration: 0.5, ease: "back"}, "<+=0.2")
-                .fromTo(q(".tablo_bg_lines"),
-                    {opacity: 0, yPercent: -30},
-                    {yPercent: 0, opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.2")
-                .fromTo([".left_light1",".left_light2",".left_light3"],
-                    {xPercent: -100, yPercent: -100},
-                    {xPercent: 0, yPercent: 0, stagger:0.2, duration: 1}, "<+=0.2")
-                .fromTo(q(".confetti"),{opacity:0},
-                    {opacity: 1, duration: 3}, "<+=0.2")
-                .fromTo(q(".player"),
-                    { opacity:0, rotation: 30,yPercent: 10, xPercent: -50},
-                    {opacity: 1, rotation: 0, yPercent: 0, xPercent: 0, duration: 1, ease: "back"}, "<+0.2")
-                .fromTo(q(".path"), {opacity: 0},{opacity: 1, duration: 0.3, stagger: 0.1, ease:"back"}, "<+=0.2")
-                .fromTo(q(".path_left_lite"),
-                    { scale:0, xPercent: -30, yPercent: 200},
-                    {scale: 1, xPercent: -5,yPercent: 5, duration: 0.5, ease: "power3.Out"}, "<-=0.2")
-                .fromTo(q(".path_right_bottom"),
-                    { scale:0, xPercent: 50, yPercent: 200},
-                    { scale:1, xPercent: 0, yPercent: 0,duration: 0.5, ease: "power3.Out"}, "<+=0.1")
-                .fromTo(q(".ball"),
-                    {scale: 0},
-                    {scale: 1, duration: 0.3, ease: "back"}, "<+=1.3")
-                .fromTo(q(".ball_oreol"),
-                    {scale: 0},
-                    {scale: 1, duration: 0.3, ease: "back"}, "<+=0.2")
-                .fromTo(q(".vorota_uzor"),
-                    {scale: 0},
-                    {scale: 1, duration: 0.5, ease:"back"}, "<+=0.4")
-                .fromTo(q(".zritel"),
-                    { xPercent: 30, yPercent: 30},
-                    { xPercent: 0, yPercent: 0, duration: 1, ease: "back"}, "<-=0.5")
-                // .fromTo(q(".goButton"),
-                //     {yPercent: 200, },
-                //     {yPercent: 0,duration: 1,ease: "back"}, "<")
-                // .to('.appears', {opacity: 1, duration: 1})
-
-
-        return ()=>tl_intro.current.progress(0).kill();
+        //     tl_intro.current = gsap.timeline()
+        //         .to(q(".scene"), {scale: 2, xPercent: -50, yPercent: 20, duration: 1, ease: "back"})
+        //         .fromTo(q(".bg"), { yPercent: 100},{ yPercent: 0, duration: 1, ease: "back"},"<+0.2")
+        //         .fromTo(q(".right_top_corner"), {scale: 0, yPercent: -20, xPercent:20},
+        //             {scale: 1,  yPercent: 0, xPercent:0, duration: 1, ease: "power3.inOut"}, "<+=0.2")
+        //         .to(q(".lines"), {opacity: 1, x: 0, duration: 1, ease: "power3.inOut"}, "<+=0.2")
+        //         .fromTo(q(".vorota"), { xPercent: 50},{ xPercent: 0, duration: 1, ease: "back"}, "<+=0.2")
+        //         .to(q(".scene"), {scale: 1, xPercent: 0, yPercent: 0, duration: 1, ease: "power3.inOut"})
+        //         .fromTo(q(".tablo"), {yPercent: -150, xPercent: -20},{yPercent: 0, xPercent: 0, duration: 1, ease: "back"},"<+=0.2")
+        //         .fromTo(q(".tablo_lenti"), {yPercent: -250, xPercent: -20},{ yPercent: 0, xPercent: 0, duration: 1, ease: "none"}, "<+=0.2")
+        //         .fromTo(q(".tablo_right_top_brizg"),
+        //             {opacity: 0, xPercent: -8},
+        //             {opacity: 1, xPercent: 0, duration: 0.5, ease: "back"}, "<+=0.2")
+        //         .fromTo(q(".tablo_down_brizg"),
+        //             {opacity: 0, yPercent: -20},
+        //             {opacity: 1, yPercent: 0, duration: 0.5, ease: "back"}, "<+=0.2")
+        //         .fromTo(q(".tablo_bg_lines"),
+        //             {opacity: 0, yPercent: -30},
+        //             {yPercent: 0, opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.2")
+        //         .fromTo([".left_light1",".left_light2",".left_light3"],
+        //             {xPercent: -100, yPercent: -100},
+        //             {xPercent: 0, yPercent: 0, stagger:0.2, duration: 1}, "<+=0.2")
+        //         .fromTo(q(".confetti"),{opacity:0},
+        //             {opacity: 1, duration: 3}, "<+=0.2")
+        //         .fromTo(q(".player"),
+        //             { opacity:0, rotation: 30,yPercent: 10, xPercent: -50},
+        //             {opacity: 1, rotation: 0, yPercent: 0, xPercent: 0, duration: 1, ease: "back"}, "<+0.2")
+        //         .fromTo(q(".path"), {opacity: 0},{opacity: 1, duration: 0.3, stagger: 0.1, ease:"back"}, "<+=0.2")
+        //         .fromTo(q(".path_left_lite"),
+        //             { scale:0, xPercent: -30, yPercent: 200},
+        //             {scale: 1, xPercent: -5,yPercent: 5, duration: 0.5, ease: "power3.Out"}, "<-=0.2")
+        //         .fromTo(q(".path_right_bottom"),
+        //             { scale:0, xPercent: 50, yPercent: 200},
+        //             { scale:1, xPercent: 0, yPercent: 0,duration: 0.5, ease: "power3.Out"}, "<+=0.1")
+        //         .fromTo(q(".ball"),
+        //             {scale: 0},
+        //             {scale: 1, duration: 0.3, ease: "back"}, "<+=1.3")
+        //         .fromTo(q(".ball_oreol"),
+        //             {scale: 0},
+        //             {scale: 1, duration: 0.3, ease: "back"}, "<+=0.2")
+        //         .fromTo(q(".vorota_uzor"),
+        //             {scale: 0},
+        //             {scale: 1, duration: 0.5, ease:"back"}, "<+=0.4")
+        //         .fromTo(q(".zritel"),
+        //             { xPercent: 30, yPercent: 30},
+        //             { xPercent: 0, yPercent: 0, duration: 1, ease: "back"}, "<-=0.5")
+        //         // .fromTo(q(".goButton"),
+        //         //     {yPercent: 200, },
+        //         //     {yPercent: 0,duration: 1,ease: "back"}, "<")
+        //         // .to('.appears', {opacity: 1, duration: 1})
+        //
+        //
+        // return ()=>tl_intro.current.progress(0).kill();
     }, [])
 
 

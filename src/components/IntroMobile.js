@@ -2,8 +2,8 @@ import React, {useEffect, useMemo, useRef, useState} from "react";
 import {gsap} from "gsap";
 import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
 
-import GoButton from "./GoButton";
-import BuyForm from "./BuyForm";
+// import GoButton from "./GoButton";
+// import BuyForm from "./BuyForm";
 import path_1 from "../images/mobile/webp/path_1.png"
 import path_2 from "../images/mobile/webp/path_2.png"
 import path_3 from "../images/mobile/webp/path_3.png"
@@ -33,10 +33,10 @@ import bg from "../images/mobile/webp/bg.png"
 import ball from "../images/mobile/webp/ball.png"
 import ball_oreol from "../images/mobile/webp/ball_oreol.png"
 import left_light from "../images/mobile/webp/left_light.png"
-import france from "../images/lang/france.png";
-import arrowDown from "../images/lang/arrowDown.svg";
-import arrow_mob from "../images/lang/arrow_mob.svg";
-import SearchBar from "./searchBar";
+// import france from "../images/lang/france.png";
+// import { ReactComponent as Arrow_mob } from "../images/lang/arrowDown.svg";
+// import { ReactComponent as Arrow_mob } from "../images/lang/arrow_mob.svg";
+// import SearchBar from "./searchBar";
 import PreloadImage from "../services/PreloadImage";
 
 
@@ -395,10 +395,10 @@ function IntroMobile() {
                 {/*        }*/}
                 {/*    </ul>*/}
                 {/*    <div className="arrow_mob" onClick={openLangPanel}>*/}
-                {/*        <PreloadImage src={arrow_mob} />*/}
+                {/*        <Arrow_mob />*/}
                 {/*    </div>*/}
                 {/*    <div className="next_arrow" onClick={openLangPanel}>*/}
-                {/*        <PreloadImage src={arrowDown} />*/}
+                {/*        <ArrowDown />*/}
                 {/*    </div>*/}
                 {/*</div>*/}
 

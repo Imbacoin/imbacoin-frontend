@@ -1,7 +1,7 @@
-import React, {useEffect, useMemo, useRef, useState} from "react";
+import React, {Suspense, useEffect, useMemo, useRef, useState} from "react";
 import {gsap} from "gsap";
 import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
-
+import {SuspenseImg} from "../services/SuspenseImg";
 // import GoButton from "./GoButton";
 // import BuyForm from "./BuyForm";
 import path_1 from "../images/mobile/webp/path_1.png"
@@ -37,16 +37,15 @@ import left_light from "../images/mobile/webp/left_light.png"
 // import { ReactComponent as Arrow_mob } from "../images/lang/arrowDown.svg";
 // import { ReactComponent as Arrow_mob } from "../images/lang/arrow_mob.svg";
 // import SearchBar from "./searchBar";
-import PreloadImage from "../services/PreloadImage";
 
 
 function IntroMobile() {
-
-    gsap.ticker.lagSmoothing(1000, 33)
-    gsap.registerPlugin(ScrollTrigger);
-    ScrollTrigger.config({
-        ignoreMobileResize: true
-    });
+    //
+    // gsap.ticker.lagSmoothing(1000, 33)
+    // gsap.registerPlugin(ScrollTrigger);
+    // ScrollTrigger.config({
+    //     ignoreMobileResize: true
+    // });
 
     const langFullPanelRef = useRef(null)
     const langRef = useRef(null)
@@ -308,74 +307,76 @@ function IntroMobile() {
     //     {lang: 'fran', img: france}
     // ]
 
-
     return (
         <div className="intro_wrap" id="root" ref={containerRef}>
             <div className="scene">
-                <div className="bg img"><PreloadImage src={bg} /></div>
-                <div className="lines img"><PreloadImage src={lines} /></div>
-                <div className="right_top_corner img"><PreloadImage src={right_top_corner} /></div>
-                <div className="left_light1 img"><PreloadImage src={left_light} /></div>
-                <div className="left_light2 img"><PreloadImage src={left_light} /></div>
-                <div className="left_light3 img"><PreloadImage src={left_light} /></div>
-                <div className="left_light3 img"><PreloadImage src={left_light} /></div>
-                <div className="vorota img"><PreloadImage src={vorota} /></div>
-                <div className="vorota_uzor img"><PreloadImage src={vorota_uzor} /></div>
-                <div className="confetti" >
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                    <div className="squares"></div>
-                </div>
-                <div className="path_left_lite img"><PreloadImage src={path_left_lite} /></div>
-                <div className="path_right_bottom img"><PreloadImage src={path_right_bottom} /></div>
-                <div className="path_1 img"><PreloadImage src={path_1} /></div>
-                <div className="path_2 img"><PreloadImage src={path_2} /></div>
-                <div className="path_3 img"><PreloadImage src={path_3} /></div>
-                <div className="path_4 img"><PreloadImage src={path_4} /></div>
-                <div className="path_5 img"><PreloadImage src={path_5} /></div>
-                <div className="path_6 img"><PreloadImage src={path_6} /></div>
-                <div className="path_7 img"><PreloadImage src={path_7} /></div>
-                <div className="path_8 img"><PreloadImage src={path_8} /></div>
-                <div className="path_9 img"><PreloadImage src={path_9} /></div>
-                <div className="path_10 img"><PreloadImage src={path_10} /></div>
-                <div className="path_11 img"><PreloadImage src={path_11} /></div>
-                <div className="path_12 img"><PreloadImage src={path_12} /></div>
-                <div className="tablo_right_top_brizg img"><PreloadImage src={tablo_right_top_brizg} /></div>
-                <div className="tablo_down_brizg img"><PreloadImage src={tablo_down_brizg} /></div>
-                <div className="tablo_bg_lines img"><PreloadImage src={tablo_bg_lines} /></div>
-                <div className="tablo_lenti img"><PreloadImage src={tablo_lenti} /></div>
-                <div className="tablo img"><PreloadImage src={tablo} /></div>
-                <div className="player img"><PreloadImage src={player} /></div>
-                <div className="zritel img"><PreloadImage src={zritel} /></div>
-                <div className="ball_oreol img"><PreloadImage src={ball_oreol} /></div>
-                <div className="ball img"><PreloadImage src={ball} /></div>
+                <Suspense fallback={<></>}>
+                    <div className="bg img"><SuspenseImg alt="" src={bg}/></div>
+                    <div className="lines img"><SuspenseImg alt="" src={lines}/></div>
+                    <div className="right_top_corner img"><SuspenseImg alt="" src={right_top_corner}/></div>
+                    <div className="left_light1 img"><SuspenseImg alt="" src={left_light}/></div>
+                    <div className="left_light2 img"><SuspenseImg alt="" src={left_light}/></div>
+                    <div className="left_light3 img"><SuspenseImg alt="" src={left_light}/></div>
+                    <div className="left_light3 img"><SuspenseImg alt="" src={left_light}/></div>
+                    <div className="vorota img"><SuspenseImg alt="" src={vorota}/></div>
+                    <div className="vorota_uzor img"><SuspenseImg alt="" src={vorota_uzor}/></div>
+                    <div className="confetti">
+                        <div className="circle"></div>
+                        <div className="circle"></div>
+                        <div className="circle"></div>
+                        <div className="circle"></div>
+                        <div className="circle"></div>
+                        <div className="circle"></div>
+                        <div className="circle"></div>
+                        <div className="circle"></div>
+                        <div className="circle"></div>
+                        <div className="circle"></div>
+                        <div className="circle"></div>
+                        <div className="circle"></div>
+                        <div className="circle"></div>
+                        <div className="squares"></div>
+                        <div className="squares"></div>
+                        <div className="squares"></div>
+                        <div className="squares"></div>
+                        <div className="squares"></div>
+                        <div className="squares"></div>
+                        <div className="squares"></div>
+                        <div className="squares"></div>
+                        <div className="squares"></div>
+                        <div className="squares"></div>
+                        <div className="squares"></div>
+                        <div className="squares"></div>
+                        <div className="squares"></div>
+                        <div className="squares"></div>
+                        <div className="squares"></div>
+                        <div className="squares"></div>
+                        <div className="squares"></div>
+                    </div>
+                    <div className="path_left_lite img"><SuspenseImg alt="" src={path_left_lite}/></div>
+                    <div className="path_right_bottom img"><SuspenseImg alt="" src={path_right_bottom}/></div>
+                    <div className="path_1 img"><SuspenseImg alt="" src={path_1}/></div>
+                    <div className="path_2 img"><SuspenseImg alt="" src={path_2}/></div>
+                    <div className="path_3 img"><SuspenseImg alt="" src={path_3}/></div>
+                    <div className="path_4 img"><SuspenseImg alt="" src={path_4}/></div>
+                    <div className="path_5 img"><SuspenseImg alt="" src={path_5}/></div>
+                    <div className="path_6 img"><SuspenseImg alt="" src={path_6}/></div>
+                    <div className="path_7 img"><SuspenseImg alt="" src={path_7}/></div>
+                    <div className="path_8 img"><SuspenseImg alt="" src={path_8}/></div>
+                    <div className="path_9 img"><SuspenseImg alt="" src={path_9}/></div>
+                    <div className="path_10 img"><SuspenseImg alt="" src={path_10}/></div>
+                    <div className="path_11 img"><SuspenseImg alt="" src={path_11}/></div>
+                    <div className="path_12 img"><SuspenseImg alt="" src={path_12}/></div>
+                    <div className="tablo_right_top_brizg img"><SuspenseImg alt="" src={tablo_right_top_brizg}/>
+                    </div>
+                    <div className="tablo_down_brizg img"><SuspenseImg alt="" src={tablo_down_brizg}/></div>
+                    <div className="tablo_bg_lines img"><SuspenseImg alt="" src={tablo_bg_lines}/></div>
+                    <div className="tablo_lenti img"><SuspenseImg alt="" src={tablo_lenti}/></div>
+                    <div className="tablo img"><SuspenseImg alt="" src={tablo}/></div>
+                    <div className="player img"><SuspenseImg alt="" src={player}/></div>
+                    <div className="zritel img"><SuspenseImg alt="" src={zritel}/></div>
+                    <div className="ball_oreol img"><SuspenseImg alt="" src={ball_oreol}/></div>
+                    <div className="ball img"><SuspenseImg alt="" src={ball}/></div>
+                </Suspense>
                 {/*<div className="goButton">*/}
                 {/*    <GoButton startForm={startForm} start={start} langClick={langClick}/>*/}
                 {/*</div>*/}
@@ -387,7 +388,7 @@ function IntroMobile() {
                 {/*                    <li key={index} onClick={subLangClick} className="liLang">*/}
                 {/*                        <div className="name">{el.lang}</div>*/}
                 {/*                        <div className="flag">*/}
-                {/*                            <PreloadImage src={el.img}/>*/}
+                {/*                            <img alt="" src={el.img}/>*/}
                 {/*                        </div>*/}
                 {/*                    </li>*/}
                 {/*                )*/}
@@ -419,7 +420,7 @@ function IntroMobile() {
                 {/*                                <li key={index} className="liLang">*/}
                 {/*                                    <div className="name">{el.lang}</div>*/}
                 {/*                                    <div className="flag">*/}
-                {/*                                        <PreloadImage src={el.img} />*/}
+                {/*                                        <img alt="" src={el.img} />*/}
                 {/*                                    </div>*/}
                 {/*                                </li>*/}
                 {/*                            )*/}

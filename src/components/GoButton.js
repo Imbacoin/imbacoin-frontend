@@ -7,7 +7,7 @@ import {useMediaQuery} from 'react-responsive'
 
 function GoButton({ startForm, start, langClick}) {
     const isDesktop = useMediaQuery({minWidth: 1300})
-    const isMobile = useMediaQuery({ maxWidth: 767 })
+    const isMobileTablet = useMediaQuery({ maxWidth: 1299, orientation: "portrait"})
     const tl_start_btn = useRef(null)
 
     useEffect(() => {
@@ -15,16 +15,16 @@ function GoButton({ startForm, start, langClick}) {
             tl_start_btn.current.fromTo(".go_title", {y: 0, autoAlpha: 1},{y: 50, autoAlpha: 0, duration: 0.6})
             tl_start_btn.current.fromTo(".img_bg_circle", {y: 0, opacity: 1}, {y: 50, opacity: 0, duration: 0.5},"<")
             tl_start_btn.current.fromTo(".goButton", {
-                top: ()=> isMobile ? 'auto' : '15vh',
-                bottom: ()=> isMobile ? '50px' : 'auto',
+                top: ()=> isMobileTablet ? 'auto' : '15vh',
+                bottom: ()=> isMobileTablet ? '50px' : 'auto',
                 y:0, left: '50vw'},{
-                top: ()=> isMobile ? 'auto' : '-2vh',
-                bottom: ()=> isMobile ? '50px' : 'auto',
+                top: ()=> isMobileTablet ? 'auto' : '-2vh',
+                bottom: ()=> isMobileTablet ? '50px' : 'auto',
                 y:0, left: '90vw', duration: 1, ease: "power4.inOut"},"<+=1")
         if (start && isDesktop) {
             tl_start_btn.current.play()
         }
-        if (start && isMobile) {
+        if (start && isMobileTablet) {
             gsap.to(".chat_wrap", {autoAlpha: 1, ease: 'power3.inOut'})
             gsap.to(".social_buttons_wrap", {autoAlpha: 1, ease: 'power3.inOut'})
             gsap.to(".lang_panel", {autoAlpha: 0, bottom: '-10vh', ease: 'power3.inOut'})

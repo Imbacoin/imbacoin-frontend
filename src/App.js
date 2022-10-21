@@ -28,10 +28,6 @@ function App() {
         return isMobile ? children : null
     }
 
-    useEffect(() => {
-
-    }, [])
-
     return (
             <div className="App">
                 <Desktop>

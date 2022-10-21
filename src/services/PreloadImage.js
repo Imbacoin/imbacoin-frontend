@@ -1,20 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-export default function PreloadImage({ src }) {
-    const [loading, setLoading] = useState(true);
+const PreloadImage = ({ src }) => (
+    <div>
+        <LazyLoadImage
+            alt='1'
+            height='100%'
+            src={src}
+            width='100%' />
+    </div>
+);
 
-    useEffect(() => {
-        const image = new Image();
-        image.src = src;
-        image.onload = () => {
-            setLoading(false);
-        };
-    }, [src]);
+export default PreloadImage;
 
-    if (loading) {
-        return <div></div>;
-    }
-
-    return <img src={src} alt="" />;
-}
+// import React, { useState, useEffect } from 'react';
+//
+// export default function PreloadImage({ src }) {
+//     const [loading, setLoading] = useState(true);
+//
+//     useEffect(() => {
+//         const image = new Image();
+//         image.src = src;
+//         image.onload = () => {
+//             setLoading(false);
+//             console.log(src)
+//         };
+//     }, [src]);
+//
+//     if (loading) {
+//         return <div></div>;
+//     }
+//
+//     return <img src={src} alt="" />;
+// }
 

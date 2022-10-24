@@ -33,6 +33,7 @@ import bg from "../images/mobile/tw/bg.webp"
 import ball from "../images/mobile/tw/ball.webp"
 import ball_oreol from "../images/mobile/tw/ball_oreol.webp"
 import left_light from "../images/mobile/tw/left_light.webp"
+import Path from "./Path";
 // import france from "../images/lang/france.webp";
 // import { ReactComponent as Arrow_mob } from "../images/lang/arrowDown.svg";
 // import { ReactComponent as Arrow_mob } from "../images/lang/arrow_mob.svg";
@@ -64,7 +65,7 @@ function IntroMobile() {
         const squares = q('.squares')
 
         const minX = 0;
-        const maxX = containerRef.current.getBoundingClientRect().width
+        const maxX = 200
 
         const minY = window.innerHeight;
         const maxY = window.innerHeight / 2;
@@ -354,18 +355,19 @@ function IntroMobile() {
                     </div>
                     <div className="path_left_lite img"><SuspenseImg alt="" src={path_left_lite}/></div>
                     <div className="path_right_bottom img"><SuspenseImg alt="" src={path_right_bottom}/></div>
-                    <div className="path_1 img"><SuspenseImg alt="" src={path_1}/></div>
-                    <div className="path_2 img"><SuspenseImg alt="" src={path_2}/></div>
-                    <div className="path_3 img"><SuspenseImg alt="" src={path_3}/></div>
-                    <div className="path_4 img"><SuspenseImg alt="" src={path_4}/></div>
-                    <div className="path_5 img"><SuspenseImg alt="" src={path_5}/></div>
-                    <div className="path_6 img"><SuspenseImg alt="" src={path_6}/></div>
-                    <div className="path_7 img"><SuspenseImg alt="" src={path_7}/></div>
-                    <div className="path_8 img"><SuspenseImg alt="" src={path_8}/></div>
-                    <div className="path_9 img"><SuspenseImg alt="" src={path_9}/></div>
-                    <div className="path_10 img"><SuspenseImg alt="" src={path_10}/></div>
-                    <div className="path_11 img"><SuspenseImg alt="" src={path_11}/></div>
-                    <div className="path_12 img"><SuspenseImg alt="" src={path_12}/></div>
+                    <Path />
+                    {/*<div className="path_1 img"><SuspenseImg alt="" src={path_1}/></div>*/}
+                    {/*<div className="path_2 img"><SuspenseImg alt="" src={path_2}/></div>*/}
+                    {/*<div className="path_3 img"><SuspenseImg alt="" src={path_3}/></div>*/}
+                    {/*<div className="path_4 img"><SuspenseImg alt="" src={path_4}/></div>*/}
+                    {/*<div className="path_5 img"><SuspenseImg alt="" src={path_5}/></div>*/}
+                    {/*<div className="path_6 img"><SuspenseImg alt="" src={path_6}/></div>*/}
+                    {/*<div className="path_7 img"><SuspenseImg alt="" src={path_7}/></div>*/}
+                    {/*<div className="path_8 img"><SuspenseImg alt="" src={path_8}/></div>*/}
+                    {/*<div className="path_9 img"><SuspenseImg alt="" src={path_9}/></div>*/}
+                    {/*<div className="path_10 img"><SuspenseImg alt="" src={path_10}/></div>*/}
+                    {/*<div className="path_11 img"><SuspenseImg alt="" src={path_11}/></div>*/}
+                    {/*<div className="path_12 img"><SuspenseImg alt="" src={path_12}/></div>*/}
                     <div className="tablo_right_top_brizg img"><SuspenseImg alt="" src={tablo_right_top_brizg}/>
                     </div>
                     <div className="tablo_down_brizg img"><SuspenseImg alt="" src={tablo_down_brizg}/></div>

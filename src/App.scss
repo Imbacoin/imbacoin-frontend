@@ -104,6 +104,7 @@ html, body {
   }
 }
 
+.path,
 .zritel,
 .path_left_top,
 .path_left_lite,
@@ -207,82 +208,11 @@ html, body {
 //  animation-delay: 5.1s;
 //   opacity: 0;
 //}
-.path_1 {
-  transform-origin: 74% 67%;
-  animation: opacity_path 2s infinite;
-  opacity: 0;
-}
-.path_2 {
-  transform-origin: 74% 67%;
-  animation: opacity_path 2s infinite;
-  animation-delay: 0.1s;
-  opacity: 0;
-}
-.path_3 {
-  transform-origin: 74% 67%;
-  animation: opacity_path 2s infinite;
-  animation-delay: 0.2s;
-  opacity: 0;
-}
-.path_4 {
-  transform-origin: 74% 67%;
-  animation: opacity_path 2s infinite;
-  animation-delay: 0.3s;
-  opacity: 0;
-}
-.path_5 {
-  transform-origin: 74% 67%;
-  animation: opacity_path 2s infinite;
-  animation-delay: 0.4s;
-  opacity: 0;
-}
-.path_6 {
-  transform-origin: 74% 67%;
-  animation: opacity_path 2s infinite;
-  animation-delay: 0.5s;
-  opacity: 0;
-}
-.path_7 {
-  transform-origin: 74% 67%;
-  animation: opacity_path 2s infinite;
-  animation-delay: 0.6s;
-  opacity: 0;
-}
-.path_8 {
-  transform-origin: 74% 67%;
-  animation: opacity_path 2s infinite;
-  animation-delay: 0.7s;
-  opacity: 0;
-}
-.path_9 {
-  transform-origin: 74% 67%;
-  animation: opacity_path 2s infinite;
-  animation-delay: 0.8s;
-  opacity: 0;
-}
-.path_10 {
-  transform-origin: 74% 67%;
-  animation: opacity_path 2s infinite;
-  animation-delay: 0.9s;
-  opacity: 0;
-}
-.path_11 {
-  transform-origin: 74% 67%;
-  animation: opacity_path 2s infinite;
-  animation-delay: 1s;
-  opacity: 0;
-}
-.path_12 {
-  transform-origin: 74% 67%;
-  animation: opacity_path 2s infinite;
-  animation-delay: 1.1s;
-  opacity: 0;
-}
-@keyframes opacity_path {
-  0% {opacity: 1;}
-  50% {opacity: 0;}
-  100% {opacity: 0;}
-}
+//@keyframes opacity_path {
+//  0% {opacity: 1;}
+//  50% {opacity: 0;}
+//  100% {opacity: 0;}
+//}
 
 .vorota_uzor {
   transform-origin: 90% 50%;
@@ -1353,18 +1283,4 @@ input[type=range]:focus::-ms-fill-upper {
     top: 18px;
   }
 }
-.st0{fill:#FFFFFF;}
-.st1{fill:#FFDA5F;}
-.st2{fill:#FEEDAD;}
-.st3{fill:#FFD753;}
-.st4{fill:#F8BB50;}
-.st5{fill:#FEF7C6;}
-.st6{fill:#FFD754;}
-.st7{fill:#FEF7C4;}
-.st8{fill:#FFD755;}
-.st9{fill:#FFD857;}
-.st10{fill:#F8BC50;}
-.st11{fill:#FFD859;}
-.st12{fill:#FEF5C0;}
-.st13{fill:#FEF3B9;}
-.st14{fill:#FFE281;}
+

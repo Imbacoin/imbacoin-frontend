@@ -16,10 +16,10 @@ function GoButton({ startForm, start, langClick}) {
             tl_start_btn.current.fromTo(".img_bg_circle", {y: 0, opacity: 1}, {y: 50, opacity: 0, duration: 0.5},"<")
             tl_start_btn.current.fromTo(".goButton", {
                 top: ()=> isMobileTablet ? 'auto' : '15vh',
-                bottom: ()=> isMobileTablet ? '50px' : 'auto',
+                bottom: ()=> isMobileTablet ? '3vh' : 'auto',
                 y:0, left: '50vw'},{
                 top: ()=> isMobileTablet ? 'auto' : '-2vh',
-                bottom: ()=> isMobileTablet ? '50px' : 'auto',
+                bottom: ()=> isMobileTablet ? '3vh' : 'auto',
                 y:0, left: '90vw', duration: 1, ease: "power4.inOut"},"<+=1")
         if (start && isDesktop) {
             tl_start_btn.current.play()

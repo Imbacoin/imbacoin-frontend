@@ -144,12 +144,12 @@ function IntroMobile() {
 
         let ctx = gsap.context(() => {
             tl_intro.current = gsap.timeline()
-                .to(q(".scene"), {scale: 2, xPercent: -50, yPercent: 20, duration: 1, ease: "power3.inOut"})
-                .fromTo(q(".bg"), {yPercent: 100}, {yPercent: 0, duration: 1, ease: "power3.inOut"}, "<+0.2")
-                .fromTo(q(".corner"), {scale: 0, yPercent: -20, xPercent: 20},
-                    {scale: 1, yPercent: 0, xPercent: 0, duration: 1, ease: "power3.inOut"}, "<+=0.2")
-                .fromTo(q(".vorota"), {xPercent: 50}, {xPercent: 0, duration: 1, ease: "power3.inOut"}, "<+=0.2")
-                .to(q(".scene"), {scale: 1, xPercent: 0, yPercent: 0, duration: 1, ease: "power3.inOut"})
+                .to(q(".scene"), {scale: 2, xPercent: -50, yPercent: 20, duration: 2, ease: "power3.inOut"})
+                .fromTo(q(".bg"), {yPercent: 100}, {yPercent: 0, duration: 2, ease: "power3.inOut"}, "<+0.2")
+                .fromTo(q(".vorota"), {xPercent: 50}, {xPercent: 0, duration: 1, ease: "power3.inOut"}, "<+=1.2")
+                .to(q(".scene"), {scale: 1, xPercent: 0, yPercent: 0, duration: 1, ease: "power3.inOut"}, "<+=0.2")
+                .fromTo(q(".corner"), {scale: 0, yPercent: -20, xPercent: 50},
+                    {scale: 1, yPercent: 0, xPercent: 0, duration: 1, ease: "power3.inOut"})
                 .fromTo(q(".tablo"), {yPercent: -150, xPercent: -20}, {
                     yPercent: 0,
                     xPercent: 0,
@@ -164,10 +164,10 @@ function IntroMobile() {
                 .fromTo(q(".player"),
                     {opacity: 0, rotation: 30, yPercent: 10, xPercent: -50},
                     {opacity: 1, rotation: 0, yPercent: 0, xPercent: 0, duration: 1, ease: "power3.inOut"}, "<+0.2")
-                .fromTo(q(".path"), {opacity: 0}, {opacity: 1, duration: 0.3, stagger: 0.1, ease: "power3.inOut"}, "<+=0.6")
+                .fromTo(q(".path"), {opacity: 0}, {opacity: 1, duration: 1, ease: "power3.inOut"}, "<+=0.6")
                 .fromTo(q(".ball"),
                     {scale: 0},
-                    {scale: 1, duration: 0.3, ease: "power3.inOut"}, "<+=1.3")
+                    {scale: 1, duration: 0.3, ease: "power3.inOut"}, "<+=0.6")
                 .fromTo(q(".zritel"),
                     {xPercent: 30, yPercent: 30},
                     {xPercent: 0, yPercent: 0, duration: 1, ease: "power3.inOut"}, "<-=0.5")

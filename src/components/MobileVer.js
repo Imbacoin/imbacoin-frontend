@@ -7,22 +7,24 @@ import SearchBar from "./searchBar";
 import arrow_next from "../images/lang/arrowDown.svg";
 import arrow_mob from "../images/lang/arrow_mob.svg";
 
-import path from "../images/mobile/mob/path.png"
-import player from "../images/mobile/mob/player.png"
-import ball from "../images/mobile/mob/ball.png"
-import bg from "../images/mobile/mob/bg.png"
-import light from "../images/mobile/mob/light.png"
-import corner from "../images/mobile/mob/corner.png"
-import tablo from "../images/mobile/mob/tablo.png"
-import vorota from "../images/mobile/mob/vorota.png"
-import vorota_after from "../images/mobile/mob/vorota_after.png"
-import zritel from "../images/mobile/mob/zritel.png"
+import path from "../images/mobile/path.png"
+import player from "../images/mobile/player.png"
+import ball from "../images/mobile/ball.png"
+import bg from "../images/mobile/bg.png"
+import light from "../images/mobile/light.png"
+import corner from "../images/mobile/corner.png"
+import tablo from "../images/mobile/tablo.png"
+import vorota from "../images/mobile/vorota.png"
+import vorota_after from "../images/mobile/vorota_after.png"
+import zritel from "../images/mobile/zritel.png"
 import france from "../images/lang/france.png"
 import BeatLoader from "react-spinners/BeatLoader";
 
 
 function IntroMobile() {
-
+    gsap.config({
+        nullTargetWarn: false
+    })
     const langFullPanelRef = useRef(null)
     const langRef = useRef(null)
     const tl_start = useRef(null)
@@ -62,7 +64,6 @@ function IntroMobile() {
 
         Promise.all(imgs.map(src => loadImage(src)))
             .then(() => {
-                console.log('ok')
                 setIsLoading(false)
             })
             .catch(err => console.log("Failed to load images", err))

@@ -34,85 +34,86 @@ function IntroMobile() {
 
 
     useEffect(() => {
-        //
-        // const circles = q('.circle')
-        // const squares = q('.squares')
-        //
-        // const minX = 0;
-        // const maxX = 200
-        //
-        // const minY = window.innerHeight;
-        // const maxY = window.innerHeight / 2;
-        //
-        // const minSize = window.innerHeight / 100;
-        // const maxSize = window.innerHeight * 4 / 100;
-        //
-        // const minDelay = 0;
-        // const maxDelay = 2;
-        //
-        // const minOpacity = 1.;
-        // const maxOpacity = 1.0;
-        //
-        // const minDuration = 1;
-        // const maxDuration = 3;
-        //
-        // const minRotation = 15;
-        // const maxRotation = 60;
-        //
-        //
-        // circles.forEach(el => {
-        //     animateCircle(el, 0);
-        // })
-        //
-        // squares.forEach(el => {
-        //     animateCircle(el, 1);
-        // })
-        //
-        // function animateCircle(el, sq) {
-        //
-        //     const x = random(minX, maxX);
-        //     const y = random(minY, maxY);
-        //     let sizeH, sizeW
-        //     if (sq) {
-        //         sizeW = 2 * random(minSize, maxSize);
-        //         sizeH = random(minSize, maxSize);
-        //     } else {
-        //         sizeW = random(minSize, maxSize);
-        //         sizeH = random(minSize, maxSize);
-        //     }
-        //     const delay = random(minDelay, maxDelay);
-        //     const rotation = random(minRotation, maxRotation);
-        //     const opacity = random(minOpacity, maxOpacity);
-        //     const duration = random(minDuration, maxDuration);
-        //
-        //     gsap.set(el, {
-        //         x: x,
-        //         y: sizeW,
-        //         rotation: rotation,
-        //         width: sizeW,
-        //         height: sizeH,
-        //         opacity: opacity
-        //     });
-        //
-        //     gsap.to(el, {
-        //         duration,
-        //         opacity: 0,
-        //         rotation: rotation,
-        //         y: y,
-        //         x: x,
-        //         delay: delay,
-        //         onComplete: animateCircle,
-        //         onCompleteParams: [el]
-        //     });
-        // }
-        //
-        // function random(min, max) {
-        //     if (max == null) {
-        //         max = min;
-        //         min = 0;
-        //     }
-        //     return Math.random() * (max - min) + min;
-        // }
+        let ctx_confetti = gsap.context(() => {
+            const circles = q('.circle')
+            const squares = q('.squares')
+
+            const minX = 0;
+            const maxX = 200
+
+            const minY = window.innerHeight;
+            const maxY = window.innerHeight / 2;
+
+            const minSize = window.innerHeight / 100;
+            const maxSize = window.innerHeight * 4 / 100;
+
+            const minDelay = 0;
+            const maxDelay = 2;
+
+            const minOpacity = 1.;
+            const maxOpacity = 1.0;
+
+            const minDuration = 1;
+            const maxDuration = 3;
+
+            const minRotation = 15;
+            const maxRotation = 60;
+
+
+            circles.forEach(el => {
+                animateCircle(el, 0);
+            })
+
+            squares.forEach(el => {
+                animateCircle(el, 1);
+            })
+
+            function animateCircle(el, sq) {
+
+                const x = random(minX, maxX);
+                const y = random(minY, maxY);
+                let sizeH, sizeW
+                if (sq) {
+                    sizeW = 2 * random(minSize, maxSize);
+                    sizeH = random(minSize, maxSize);
+                } else {
+                    sizeW = random(minSize, maxSize);
+                    sizeH = random(minSize, maxSize);
+                }
+                const delay = random(minDelay, maxDelay);
+                const rotation = random(minRotation, maxRotation);
+                const opacity = random(minOpacity, maxOpacity);
+                const duration = random(minDuration, maxDuration);
+
+                gsap.set(el, {
+                    x: x,
+                    y: sizeW,
+                    rotation: rotation,
+                    width: sizeW,
+                    height: sizeH,
+                    opacity: opacity
+                });
+
+                gsap.to(el, {
+                    duration,
+                    opacity: 0,
+                    rotation: rotation,
+                    y: y,
+                    x: x,
+                    delay: delay,
+                    onComplete: animateCircle,
+                    onCompleteParams: [el]
+                });
+            }
+
+            function random(min, max) {
+                if (max == null) {
+                    max = min;
+                    min = 0;
+                }
+                return Math.random() * (max - min) + min;
+            }
+        })
 
         let ctx_l = gsap.context(() => {
             gsap.to(".left_light1", {
@@ -159,12 +160,12 @@ function IntroMobile() {
                 .fromTo([".left_light1", ".left_light2", ".left_light3"],
                     {xPercent: -100, yPercent: -100},
                     {xPercent: 0, yPercent: 0, stagger: 0.2, duration: 1}, "<+=0.2")
-                // .fromTo(q(".confetti"), {opacity: 0},
-                //     {opacity: 1, duration: 3}, "<+=0.2")
+                .fromTo(q(".confetti"), {opacity: 0},
+                    {opacity: 1, duration: 3}, "<+=0.2")
                 .fromTo(q(".player"),
                     {opacity: 0, rotation: 30, yPercent: 10, xPercent: -50},
                     {opacity: 1, rotation: 0, yPercent: 0, xPercent: 0, duration: 1, ease: "power3.inOut"}, "<+0.2")
-                .fromTo(q(".path"), {opacity: 0}, {opacity: 1, duration: 0.3, stagger: 0.1, ease: "power3.inOut"}, "<+=0.2")
+                .fromTo(q(".path"), {opacity: 0}, {opacity: 1, duration: 0.3, stagger: 0.1, ease: "power3.inOut"}, "<+=0.6")
                 .fromTo(q(".ball"),
                     {scale: 0},
                     {scale: 1, duration: 0.3, ease: "power3.inOut"}, "<+=1.3")
@@ -183,6 +184,7 @@ function IntroMobile() {
         return () => {
             ctx.revert();
             ctx_l.revert();
+            ctx_confetti.revert();
         }
     }, [])
 
@@ -281,38 +283,38 @@ function IntroMobile() {
                 <div className="left_light2 img"><PreloadImage alt="" src={light}/></div>
                 <div className="left_light3 img"><PreloadImage alt="" src={light}/></div>
                 <div className="vorota img"><PreloadImage alt="" src={vorota}/></div>
-                {/*<div className="confetti">*/}
-                {/*    <div className="circle"></div>*/}
-                {/*    <div className="circle"></div>*/}
-                {/*    <div className="circle"></div>*/}
-                {/*    <div className="circle"></div>*/}
-                {/*    <div className="circle"></div>*/}
-                {/*    <div className="circle"></div>*/}
-                {/*    <div className="circle"></div>*/}
-                {/*    <div className="circle"></div>*/}
-                {/*    <div className="circle"></div>*/}
-                {/*    <div className="circle"></div>*/}
-                {/*    <div className="circle"></div>*/}
-                {/*    <div className="circle"></div>*/}
-                {/*    <div className="circle"></div>*/}
-                {/*    <div className="squares"></div>*/}
-                {/*    <div className="squares"></div>*/}
-                {/*    <div className="squares"></div>*/}
-                {/*    <div className="squares"></div>*/}
-                {/*    <div className="squares"></div>*/}
-                {/*    <div className="squares"></div>*/}
-                {/*    <div className="squares"></div>*/}
-                {/*    <div className="squares"></div>*/}
-                {/*    <div className="squares"></div>*/}
-                {/*    <div className="squares"></div>*/}
-                {/*    <div className="squares"></div>*/}
-                {/*    <div className="squares"></div>*/}
-                {/*    <div className="squares"></div>*/}
-                {/*    <div className="squares"></div>*/}
-                {/*    <div className="squares"></div>*/}
-                {/*    <div className="squares"></div>*/}
-                {/*    <div className="squares"></div>*/}
-                {/*</div>*/}
+                <div className="confetti">
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                    <div className="squares"></div>
+                </div>
                 <div className="path img"><PreloadImage alt="" src={path}/></div>
                 <div className="tablo img"><PreloadImage alt="" src={tablo}/></div>
                 <div className="player img"><PreloadImage alt="" src={player}/></div>

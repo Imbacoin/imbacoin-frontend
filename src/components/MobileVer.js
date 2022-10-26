@@ -20,7 +20,6 @@ import france from "../images/lang/france.png"
 
 
 function IntroMobile() {
-    // gsap.ticker.lagSmoothing(1000, 33)
 
     const langFullPanelRef = useRef(null)
     const langRef = useRef(null)

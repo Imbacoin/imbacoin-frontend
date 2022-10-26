@@ -48,161 +48,209 @@ function IntroTabletPortrait() {
     const tl_Ref = useRef(null)
     const tl_intro = useRef(null)
 
-    const [start,setStart] = useState(false)
+    const [start, setStart] = useState(false)
 
 
-    useEffect(()=>{
-        const circles = q('.circle')
-        const squares = q('.squares')
+    useEffect(() => {
+        let ctx_confetti = gsap.context(() => {
+            const circles = q('.circle')
+            const squares = q('.squares')
 
-        const minX = 0;
-        const maxX = containerRef.current.getBoundingClientRect().width
+            const minX = 0;
+            const maxX = containerRef.current.getBoundingClientRect().width
 
-        const minY = window.innerHeight;
-        const maxY =  window.innerHeight/2;
+            const minY = window.innerHeight;
+            const maxY = window.innerHeight / 2;
 
-        const minSize = window.innerHeight/100;
-        const maxSize = window.innerHeight*4/100;
+            const minSize = window.innerHeight / 100;
+            const maxSize = window.innerHeight * 4 / 100;
 
-        const minDelay = 0;
-        const maxDelay = 2;
+            const minDelay = 0;
+            const maxDelay = 2;
 
-        const minOpacity = 1.;
-        const maxOpacity = 1.0;
+            const minOpacity = 1.;
+            const maxOpacity = 1.0;
 
-        const minDuration = 1;
-        const maxDuration = 3;
+            const minDuration = 1;
+            const maxDuration = 3;
 
-        const minRotation = 15;
-        const maxRotation = 60;
+            const minRotation = 15;
+            const maxRotation = 60;
 
 
-        circles.forEach(el=>{
-            animateCircle(el, 0);
-        })
+            circles.forEach(el => {
+                animateCircle(el, 0);
+            })
 
-        squares.forEach(el=>{
-            animateCircle(el, 1);
-        })
+            squares.forEach(el => {
+                animateCircle(el, 1);
+            })
 
-        // $(window).resize(onResize);
 
-        function animateCircle(el, sq) {
+            function animateCircle(el, sq) {
 
-            const x = random(minX, maxX);
-            const y = random(minY, maxY);
-            let sizeH, sizeW
-            if (sq) {
-                sizeW = 2*random(minSize, maxSize);
-                sizeH = random(minSize, maxSize);
-            } else {
-                sizeW = random(minSize, maxSize);
-                sizeH = random(minSize, maxSize);
+                const x = random(minX, maxX);
+                const y = random(minY, maxY);
+                let sizeH, sizeW
+                if (sq) {
+                    sizeW = 2 * random(minSize, maxSize);
+                    sizeH = random(minSize, maxSize);
+                } else {
+                    sizeW = random(minSize, maxSize);
+                    sizeH = random(minSize, maxSize);
+                }
+                const delay = random(minDelay, maxDelay);
+                const rotation = random(minRotation, maxRotation);
+                const opacity = random(minOpacity, maxOpacity);
+                const duration = random(minDuration, maxDuration);
+
+                gsap.set(el, {
+                    x: x,
+                    y: sizeW,
+                    rotation: rotation,
+                    width: sizeW,
+                    height: sizeH,
+                    autoAlpha: opacity
+                });
+
+                gsap.to(el, {
+                    duration,
+                    autoAlpha: 0,
+                    rotation: rotation,
+                    y: y,
+                    x: x,
+                    delay: delay,
+                    onComplete: animateCircle,
+                    onCompleteParams: [el]
+                });
             }
-            const delay = random(minDelay, maxDelay);
-            const rotation = random(minRotation, maxRotation);
-            const opacity = random(minOpacity, maxOpacity);
-            const duration = random(minDuration, maxDuration);
 
-            gsap.set(el, {
-                x: x,
-                y: sizeW,
-                rotation: rotation,
-                width:sizeW,
-                height: sizeH,
-                autoAlpha: opacity
-            });
-
-            gsap.to(el, {
-                duration,
-                autoAlpha: 0,
-                rotation: rotation,
-                y: y,
-                x: x,
-                delay: delay,
-                onComplete: animateCircle,
-                onCompleteParams: [el]
-            });
-        }
-
-        function random(min, max) {
-            if (max == null) { max = min; min = 0; }
-            return Math.random() * (max - min) + min;
-        }
-
-        gsap.to(".left_light1",{rotation: -10, transformOrigin: '0 0', duration: 15, repeat: -1, yoyo: true, ease: "none"})
-        gsap.to(".left_light2",{rotation: 20, transformOrigin: '0 0', duration: 17, repeat: -1, yoyo: true, ease: "none"})
-        gsap.to(".left_light3",{rotation: 10, transformOrigin: '0 0', duration: 13, repeat: -1, yoyo: true, ease: "none"})
-
-        tl_intro.current = gsap.timeline()
-            .to(q(".scene"), {scale: 2, xPercent: -80, yPercent: 20, duration: 1, ease: "back"})
-            .fromTo(q(".bg"), { yPercent: 100},{ yPercent: 0, duration: 1, ease: "back"},"<+0.2")
-            .fromTo(q(".right_top_corner"), {scale: 0, yPercent: -20, xPercent:20},
-                {scale: 1,  yPercent: 0, xPercent:0, duration: 1, ease: "power3.inOut"}, "<+=0.2")
-            .fromTo(q(".vorota"), { xPercent: 50},{ xPercent: 0, duration: 1, ease: "back"}, "<+=0.2")
-            .to(q(".scene"), {scale: 1, xPercent: 0, yPercent: 0, duration: 1, ease: "power3.inOut"})
-            .fromTo(q(".tablo"), {yPercent: -150, xPercent: -20},{yPercent: 0, xPercent: 0, duration: 1, ease: "back"},"<+=0.2")
-            .fromTo(q(".tablo_lenti"), {yPercent: -250, xPercent: -20},{ yPercent: 0, xPercent: 0, duration: 1, ease: "none"}, "<+=0.2")
-            .fromTo(q(".tablo_right_top_brizg"),
-                {opacity: 0, xPercent: -8},
-                {opacity: 1, xPercent: 0, duration: 0.5, ease: "back"}, "<+=0.2")
-            .fromTo(q(".tablo_down_brizg"),
-                {opacity: 0, yPercent: -20},
-                {opacity: 1, yPercent: 0, duration: 0.5, ease: "back"}, "<+=0.2")
-            .fromTo(q(".tablo_bg_lines"),
-                {opacity: 0, yPercent: -30},
-                {yPercent: 0, opacity: 1, duration: 1, ease: "power4.inOut"},"<+=0.2")
-            .fromTo([".left_light1",".left_light2",".left_light3"],
-                {xPercent: -100, yPercent: -100},
-                {xPercent: 0, yPercent: 0, stagger:0.2, duration: 1}, "<+=0.2")
-            .fromTo(q(".confetti"),{opacity:0},
-                {opacity: 1, duration: 3}, "<+=0.2")
-            .fromTo(q(".player"),
-                { opacity:0, rotation: -30,yPercent: 20, xPercent: -20},
-                {opacity: 1, rotation: 0, yPercent: 0, xPercent: 0, duration: 1, ease: "back"}, "<+0.2")
-            .fromTo(q(".path"), {opacity: 0},{opacity: 1, duration: 0.3, stagger: 0.1, ease:"back"}, "<+=0.2")
-            .fromTo(q(".path_left_lite"),
-                { scale:0, xPercent: -30, yPercent: 200},
-                {scale: 1, xPercent: 0, yPercent: 0, duration: 0.5, ease: "power3.Out"}, "<-=0.2")
-            .fromTo(q(".path_right_bottom"),
-                { scale:0, xPercent: 50, yPercent: 200},
-                { scale:1, xPercent: 0, yPercent: 0,duration: 0.5, ease: "power3.Out"}, "<+=0.1")
-            .fromTo(q(".ball"),
-                {opacity: 0},
-                {opacity: 1, duration: 0.3, ease: "back"}, "<+=1.3")
-            .fromTo(q(".ball_oreol"),
-                {opacity: 0},
-                {opacity: 1, duration: 0.3, ease: "back"}, "<+=0.2")
-            .fromTo(q(".vorota_uzor"),
-                {scale: 0},
-                {scale: 1, duration: 0.5, ease:"back"}, "<+=0.4")
-            .fromTo(q(".zritel"),
-                { xPercent: 30, yPercent: 30},
-                { xPercent: 0, yPercent: 0, duration: 1, ease: "back"}, "<-=0.5")
-            .fromTo(q(".goButton"),
-                {opacity:0, yPercent: 20, },
-                {opacity:1, yPercent: 0, duration: 1,ease: "back"}, "<")
-            .to('.appears', {opacity: 1, duration: 1})
-
-
-        return ()=>tl_intro.current.kill();
-    },[])
-
-    const startForm = ()=>{
-        setStart(true)
-        tl_start.current = gsap.timeline({paused:true,
-            onComplete:()=>{
-                gsap.to(".player",{y:-20, duration: 5, repeat:-1, yoyo: true, ease: "none" })
-            },
-            onReverseComplete:()=>{setStart(false)}
+            function random(min, max) {
+                if (max == null) {
+                    max = min;
+                    min = 0;
+                }
+                return Math.random() * (max - min) + min;
+            }
         })
-            .set(".player",{zIndex:10})
-            .set(".zritel",{zIndex: 0})
-            .set(".buy_wrap",{top:0})
-            .to(".buy_form_wrap",{ opacity: 1, duration: 1, ease:"power4.inOut"})
-            .to(".buy_form_wrap",{ background: 'rgba(13, 19, 53, 0.2)',
-                backdropFilter: 'blur(6px)', duration: 2, ease:"power4.inOut"}, "<")
-            .to(".middle_box",{ top: '30vh', duration: 2, ease:"power4.inOut"}, "<")
+        let ctx_l = gsap.context(() => {
+            gsap.to(".left_light1", {
+                rotation: -10,
+                transformOrigin: '0 0',
+                duration: 15,
+                repeat: -1,
+                yoyo: true,
+                ease: "none"
+            })
+            gsap.to(".left_light2", {
+                rotation: 20,
+                transformOrigin: '0 0',
+                duration: 17,
+                repeat: -1,
+                yoyo: true,
+                ease: "none"
+            })
+            gsap.to(".left_light3", {
+                rotation: 10,
+                transformOrigin: '0 0',
+                duration: 13,
+                repeat: -1,
+                yoyo: true,
+                ease: "none"
+            })
+        })
+
+        let ctx = gsap.context(() => {
+            tl_intro.current = gsap.timeline()
+                .to(q(".scene"), {scale: 2, xPercent: -80, yPercent: 20, duration: 1, ease: "back"})
+                .fromTo(q(".bg"), {yPercent: 100}, {yPercent: 0, duration: 1, ease: "back"}, "<+0.2")
+                .fromTo(q(".right_top_corner"), {scale: 0, yPercent: -20, xPercent: 20},
+                    {scale: 1, yPercent: 0, xPercent: 0, duration: 1, ease: "power3.inOut"}, "<+=0.2")
+                .fromTo(q(".vorota"), {xPercent: 50}, {xPercent: 0, duration: 1, ease: "back"}, "<+=0.2")
+                .to(q(".scene"), {scale: 1, xPercent: 0, yPercent: 0, duration: 1, ease: "power3.inOut"})
+                .fromTo(q(".tablo"), {yPercent: -150, xPercent: -20}, {
+                    yPercent: 0,
+                    xPercent: 0,
+                    duration: 1,
+                    ease: "back"
+                }, "<+=0.2")
+                .fromTo(q(".tablo_lenti"), {yPercent: -250, xPercent: -20}, {
+                    yPercent: 0,
+                    xPercent: 0,
+                    duration: 1,
+                    ease: "none"
+                }, "<+=0.2")
+                .fromTo(q(".tablo_right_top_brizg"),
+                    {opacity: 0, xPercent: -8},
+                    {opacity: 1, xPercent: 0, duration: 0.5, ease: "back"}, "<+=0.2")
+                .fromTo(q(".tablo_down_brizg"),
+                    {opacity: 0, yPercent: -20},
+                    {opacity: 1, yPercent: 0, duration: 0.5, ease: "back"}, "<+=0.2")
+                .fromTo(q(".tablo_bg_lines"),
+                    {opacity: 0, yPercent: -30},
+                    {yPercent: 0, opacity: 1, duration: 1, ease: "power4.inOut"}, "<+=0.2")
+                .fromTo([".left_light1", ".left_light2", ".left_light3"],
+                    {xPercent: -100, yPercent: -100},
+                    {xPercent: 0, yPercent: 0, stagger: 0.2, duration: 1}, "<+=0.2")
+                .fromTo(q(".confetti"), {opacity: 0},
+                    {opacity: 1, duration: 3}, "<+=0.2")
+                .fromTo(q(".player"),
+                    {opacity: 0, rotation: -30, yPercent: 20, xPercent: -20},
+                    {opacity: 1, rotation: 0, yPercent: 0, xPercent: 0, duration: 1, ease: "back"}, "<+0.2")
+                .fromTo(q(".path"), {opacity: 0}, {opacity: 1, duration: 0.3, stagger: 0.1, ease: "back"}, "<+=0.2")
+                .fromTo(q(".path_left_lite"),
+                    {scale: 0, xPercent: -30, yPercent: 200},
+                    {scale: 1, xPercent: 0, yPercent: 0, duration: 0.5, ease: "power3.Out"}, "<-=0.2")
+                .fromTo(q(".path_right_bottom"),
+                    {scale: 0, xPercent: 50, yPercent: 200},
+                    {scale: 1, xPercent: 0, yPercent: 0, duration: 0.5, ease: "power3.Out"}, "<+=0.1")
+                .fromTo(q(".ball"),
+                    {opacity: 0},
+                    {opacity: 1, duration: 0.3, ease: "back"}, "<+=1.3")
+                .fromTo(q(".ball_oreol"),
+                    {opacity: 0},
+                    {opacity: 1, duration: 0.3, ease: "back"}, "<+=0.2")
+                .fromTo(q(".vorota_uzor"),
+                    {scale: 0},
+                    {scale: 1, duration: 0.5, ease: "back"}, "<+=0.4")
+                .fromTo(q(".zritel"),
+                    {xPercent: 30, yPercent: 30},
+                    {xPercent: 0, yPercent: 0, duration: 1, ease: "back"}, "<-=0.5")
+                .fromTo(q(".goButton"),
+                    {opacity: 0, yPercent: 20,},
+                    {opacity: 1, yPercent: 0, duration: 1, ease: "back"}, "<")
+                .to('.appears', {opacity: 1, duration: 1})
+                .fromTo(q('.path'),
+                    {opacity: 0},
+                    {opacity: 1, duration: 1,stagger:0.2, repeat: -1, repeatDelay: 1}, "<")
+        });
+        return () => {
+            ctx.revert();
+            ctx_l.revert();
+            ctx_confetti.revert();
+        }
+    }, [])
+
+    const startForm = () => {
+        setStart(true)
+        tl_start.current = gsap.timeline({
+            paused: true,
+            onComplete: () => {
+                gsap.to(".player", {y: -20, duration: 5, repeat: -1, yoyo: true, ease: "none"})
+            },
+            onReverseComplete: () => {
+                setStart(false)
+            }
+        })
+            .set(".player", {zIndex: 10})
+            .set(".zritel", {zIndex: 0})
+            .set(".buy_wrap", {top: 0})
+            .to(".buy_form_wrap", {opacity: 1, duration: 1, ease: "power4.inOut"})
+            .to(".buy_form_wrap", {
+                background: 'rgba(13, 19, 53, 0.2)',
+                backdropFilter: 'blur(6px)', duration: 2, ease: "power4.inOut"
+            }, "<")
+            .to(".middle_box", {top: '30vh', duration: 2, ease: "power4.inOut"}, "<")
 
 
         tl_start.current.play()
@@ -239,8 +287,8 @@ function IntroTabletPortrait() {
         if (!langFullPanelRef.current.classList.contains("active")) {
             langFullPanelRef.current.classList.add("active")
             gsap.timeline().to(".lang_full_panel", {autoAlpha: 1, duration: 0.3})
-                .to(".panel_l", {marginTop: 0, opacity: 1, duration: 1, ease: "back"},"<")
-                .fromTo(".liLang",{opacity:0}, { opacity: 1, duration: 1, ease: "back"},"<")
+                .to(".panel_l", {marginTop: 0, opacity: 1, duration: 1, ease: "back"}, "<")
+                .fromTo(".liLang", {opacity: 0}, {opacity: 1, duration: 1, ease: "back"}, "<")
         } else {
             langFullPanelRef.current.classList.remove("active")
         }
@@ -249,7 +297,7 @@ function IntroTabletPortrait() {
     const closeLangPanel = () => {
         if (langFullPanelRef.current.classList.contains("active")) {
             gsap.timeline().to(".panel_l", {marginTop: 100, duration: 1, ease: "back"})
-                .to(".lang_full_panel", {autoAlpha: 0, duration: 1.2},"<")
+                .to(".lang_full_panel", {autoAlpha: 0, duration: 1.2}, "<")
             langFullPanelRef.current.classList.remove("active")
             langRef.current.classList.remove('active')
             tl_Ref.current.reverse()
@@ -259,7 +307,7 @@ function IntroTabletPortrait() {
     const wrapClosePanel = (e) => {
         if (e.target.classList.contains("lang_full_wrap")) {
             gsap.timeline().to(".panel_l", {marginTop: 100, duration: 1, ease: "back"})
-                .to(".lang_full_panel", {autoAlpha: 0, duration: 1.2},"<")
+                .to(".lang_full_panel", {autoAlpha: 0, duration: 1.2}, "<")
             langFullPanelRef.current.classList.remove("active")
         }
     }
@@ -299,7 +347,7 @@ function IntroTabletPortrait() {
                 <img src={path_11} className="path img" alt=""/>
                 <img src={path_12} className="path img" alt=""/>
                 <img src={path_13} className="path img" alt=""/>
-                <div className="confetti" >
+                <div className="confetti">
                     <div className="circle"></div>
                     <div className="circle"></div>
                     <div className="circle"></div>
@@ -348,11 +396,11 @@ function IntroTabletPortrait() {
                 </div>
 
                 <div className="buy_wrap">
-                    <BuyForm back_to_main={back_to_main} />
+                    <BuyForm back_to_main={back_to_main}/>
                 </div>
                 <div className="appears">
-                    <Chat />
-                    <SocialButtons />
+                    <Chat/>
+                    <SocialButtons/>
                 </div>
                 <div className="lang_panel" ref={langRef}>
                     <ul>
@@ -374,14 +422,14 @@ function IntroTabletPortrait() {
                 </div>
 
                 <div className="lang_full_panel" ref={langFullPanelRef}>
-                    <div className="lang_full_wrap"  onClick={wrapClosePanel}>
+                    <div className="lang_full_wrap" onClick={wrapClosePanel}>
                         <div className="panel_l">
                             <div className="panel_close_btn" onClick={closeLangPanel}>
                                 <span></span>
                                 <span></span>
                             </div>
                             <div className="search_pos">
-                                <SearchBar />
+                                <SearchBar/>
                             </div>
                             <div className="allLangs">
                                 <ul>
@@ -401,7 +449,6 @@ function IntroTabletPortrait() {
                         </div>
                     </div>
                 </div>
-
 
 
             </div>

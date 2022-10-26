@@ -1,18 +1,3 @@
-// import React from 'react';
-// import { LazyLoadImage } from 'react-lazy-load-image-component';
-//
-// const PreloadImage = ({ src }) => (
-//     <div>
-//         <LazyLoadImage
-//             alt='1'
-//             height='100%'
-//             src={src}
-//             width='100%' />
-//     </div>
-// );
-//
-// export default PreloadImage;
-
 import React, { useState, useEffect } from 'react';
 
 export default function PreloadImage({ src }) {

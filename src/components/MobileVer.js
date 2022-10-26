@@ -154,7 +154,7 @@ function IntroMobile() {
                     yPercent: 0,
                     xPercent: 0,
                     duration: 1,
-                    ease: "back"
+                    ease: "power3.inOut"
                 }, "<+=0.2")
                 .fromTo([".left_light1", ".left_light2", ".left_light3"],
                     {xPercent: -100, yPercent: -100},
@@ -164,7 +164,7 @@ function IntroMobile() {
                 .fromTo(q(".player"),
                     {opacity: 0, rotation: 30, yPercent: 10, xPercent: -50},
                     {opacity: 1, rotation: 0, yPercent: 0, xPercent: 0, duration: 1, ease: "power3.inOut"}, "<+0.2")
-                .fromTo(q(".path"), {opacity: 0}, {opacity: 1, duration: 0.3, stagger: 0.1, ease: "back"}, "<+=0.2")
+                .fromTo(q(".path"), {opacity: 0}, {opacity: 1, duration: 0.3, stagger: 0.1, ease: "power3.inOut"}, "<+=0.2")
                 .fromTo(q(".ball"),
                     {scale: 0},
                     {scale: 1, duration: 0.3, ease: "power3.inOut"}, "<+=1.3")

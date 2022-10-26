@@ -1,13 +1,12 @@
-import React, {useEffect} from "react";
+import React from "react";
 import './App.scss';
 import IntroDesktop from "./components/IntroDesktop";
-import IntroMobile from "./components/IntroMobile";
+import MobileVer from "./components/MobileVer";
 import {useMediaQuery} from 'react-responsive'
 import IntroTabletPortrait from "./components/IntroTabletPortrait";
 import IntroTabletLandscape from "./components/IntroTabletLandscape";
 import SocialButtons from "./components/SocialButtons";
 import Chat from "./components/Chat";
-import {gsap} from "gsap";
 
 function App() {
     const Desktop = ({children}) => {
@@ -51,7 +50,7 @@ function App() {
                 </TabletLandscape>
 
                 <Mobile>
-                    <IntroMobile/>
+                    <MobileVer/>
                     <div className="appears">
                         <Chat/>
                         <SocialButtons/>

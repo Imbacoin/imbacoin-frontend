@@ -12,10 +12,7 @@ export default function PreloadImage({ src }) {
     }, [src]);
 
     if (loading) {
-        return <div style={{width: '20px', height:'20px', background:'#f00',
-            position: 'absolute',left: '50%', top: '50%'
-
-        }}></div>;
+        return <div></div>;
     }
 
     return <img src={src} alt="" />;

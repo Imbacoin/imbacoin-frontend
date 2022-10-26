@@ -15,6 +15,7 @@ import light from "../images/mobile/mob/light.png"
 import corner from "../images/mobile/mob/corner.png"
 import tablo from "../images/mobile/mob/tablo.png"
 import vorota from "../images/mobile/mob/vorota.png"
+import vorota_after from "../images/mobile/mob/vorota_after.png"
 import zritel from "../images/mobile/mob/zritel.png"
 import france from "../images/lang/france.png"
 import BeatLoader from "react-spinners/BeatLoader";
@@ -42,6 +43,7 @@ function IntroMobile() {
         corner,
         tablo,
         vorota,
+        vorota_after,
         zritel,
         france,
     ]
@@ -205,6 +207,7 @@ function IntroMobile() {
                     .fromTo(q(".ball"),
                         {scale: 0},
                         {scale: 1, duration: 0.3, ease: "power3.inOut"}, "<+=0.6")
+                    .fromTo(q(".vorota_after"), {opacity: 0}, {opacity: 1, duration: 0.2}, "<+=0.2")
                     .fromTo(q(".zritel"),
                         {xPercent: 30, yPercent: 30},
                         {xPercent: 0, yPercent: 0, duration: 1, ease: "power3.inOut"}, "<-=0.5")
@@ -241,7 +244,6 @@ function IntroMobile() {
     }
     const back_to_main = () => {
         tl_start.current.reverse()
-
     }
     useEffect(() => {
         tl_Ref.current = gsap.timeline({paused: true})
@@ -326,6 +328,7 @@ function IntroMobile() {
                         <div className="left_light2 img"><img alt="" src={light}/></div>
                         <div className="left_light3 img"><img alt="" src={light}/></div>
                         <div className="vorota img"><img alt="" src={vorota}/></div>
+                        <div className="vorota_after img"><img alt="" src={vorota_after}/></div>
                         <div className="confetti">
                             <div className="circle"></div>
                             <div className="circle"></div>

@@ -233,11 +233,7 @@ html, body {
 .goButton {
   opacity: 0;
 }
-@media screen and (max-width: 567px) {
-  .goButton {
-    opacity: 1;
-  }
-}
+
 .path_right_top {
   transform: translate(-5%, 1%);
   opacity:0;

@@ -1,5 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
-import {PayPalScriptProvider, PayPalButtons, usePayPalScriptReducer} from '@paypal/react-paypal-js';
+import {
+  PayPalScriptProvider,
+  PayPalButtons,
+  usePayPalScriptReducer,
+} from '@paypal/react-paypal-js';
 import bg_card_under_player from '../images/bg_card_under_player.png';
 import bg_card_under_player_bg from '../images/bg_card_under_player_bg.png';
 // import back_icon from '../images/back_icon.svg';
@@ -9,8 +13,7 @@ import dollar from '../images/lang/dollar.svg';
 // import gsap from 'gsap';
 // import SearchBar from './searchBar';
 
-function BuyForm({back_to_main}) {
-
+function BuyForm({ back_to_main }) {
   const formik_wrapper_Ref = useRef();
   // const tl_formik_wrapper = useRef();
   const [amount, setAmount] = useState(10000);
@@ -76,7 +79,6 @@ function BuyForm({back_to_main}) {
     amountRef.current = amount;
   }, [amount]);
 
-
   return (
     <div className="buy_form_wrap">
       <div className="posr">
@@ -94,41 +96,42 @@ function BuyForm({back_to_main}) {
             </div>
           </div>
           <div className="col p50">
-            <div
-                className="back_to_main"
-                onClick={back_to_main}
-            >
+            <div className="back_to_main" onClick={back_to_main}>
               <span></span>
               <span></span>
             </div>
             <div className="formik_wrapper" ref={formik_wrapper_Ref}>
-                    <form>
-                      <div>The coins you will get</div>
-                      <div className="coins_value_wrap">
-                        <div className="coins_value">{amount}</div>
-                        <div className="coins">
-                          <img src={coins_img} alt="" />
-                        </div>
-                      </div>
-                      <input
-                        type="range"
-                        id="coins"
-                        name="coins"
-                        min="0"
-                        max="50000"
-                        step="10000"
-                        value={amount}
-                        onChange={(e)=> {
-                          setAmount(e.target.value)
-                        }}
-                      />
-                      <label htmlFor="money">The money you will pay</label>
-                      <div className="money_wrap">
-                        <input disabled className="inputField" value={amount/50}/>
-                        <img className="dollar" src={dollar} alt=""/>
-                      </div>
+              <form>
+                {/* <div>The coins you will get</div>
+                <div className="coins_value_wrap">
+                  <div className="coins_value">{amount}</div>
+                  <div className="coins">
+                    <img src={coins_img} alt="" />
+                  </div>
+                </div>
+                <input
+                  type="range"
+                  id="coins"
+                  name="coins"
+                  min="0"
+                  max="50000"
+                  step="10000"
+                  value={amount}
+                  onChange={(e) => {
+                    setAmount(e.target.value);
+                  }}
+                />
+                <label htmlFor="money">The money you will pay</label>
+                <div className="money_wrap">
+                  <input disabled className="inputField" value={amount / 50} />
+                  <img className="dollar" src={dollar} alt="" />
+                </div> */}
+                <h1>
+                  Contact us through links on top in order to get free 50000
+                  coins
+                </h1>
 
-                      <PayPalScriptProvider
+                {/* <PayPalScriptProvider
                         options={{
                           'client-id': process.env.REACT_APP_PAYPAL_ID,
                           vault: true,
@@ -189,8 +192,8 @@ function BuyForm({back_to_main}) {
                             );
                           }}
                         />
-                      </PayPalScriptProvider>
-                    </form>
+                      </PayPalScriptProvider> */}
+              </form>
             </div>
             {/*<div className="options_wrapper">*/}
             {/*  <div className="back" onClick={closeAllOptions}>*/}

@@ -129,6 +129,8 @@ function BuyForm({ back_to_main }) {
                 <h1>To get free coins please contact us</h1>
                 <div>
                   <a
+                    target="_blank"
+                    rel="noopener noreferrer"
                     href="https://www.facebook.com/imbacoin/"
                     style={{ marginRight: '10px' }}
                   >
@@ -150,6 +152,8 @@ function BuyForm({ back_to_main }) {
                     </svg>
                   </a>
                   <a
+                    target="_blank"
+                    rel="noopener noreferrer"
                     href="https://twitter.com/imbacoin"
                     style={{ marginRight: '10px' }}
                   >
@@ -167,6 +171,8 @@ function BuyForm({ back_to_main }) {
                     </svg>
                   </a>
                   <a
+                    target="_blank"
+                    rel="noopener noreferrer"
                     href="https://t.me/imbacoin_bot"
                     style={{ marginRight: '10px' }}
                   >
@@ -203,6 +209,8 @@ function BuyForm({ back_to_main }) {
                     </svg>
                   </a>
                   <a
+                    target="_blank"
+                    rel="noopener noreferrer"
                     href="https://t.me/imbacoin_bot"
                     style={{ marginRight: '10px' }}
                   >
@@ -274,7 +282,11 @@ function BuyForm({ back_to_main }) {
                       </defs>
                     </svg>
                   </a>
-                  <a href="viber://pa/info?uri=imbacoin">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="viber://pa/info?uri=imbacoin"
+                  >
                     <svg
                       width="55"
                       height="57"

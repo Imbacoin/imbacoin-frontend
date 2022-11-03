@@ -4,7 +4,11 @@ function SocialButtons() {
   return (
     <div className="social_buttons_wrap">
       <div className="social_position">
-        <a href="https://www.facebook.com/imbacoin/">
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.facebook.com/imbacoin/"
+        >
           <div className="social_img_wrap">
             <svg
               width="20"
@@ -18,7 +22,11 @@ function SocialButtons() {
           </div>
         </a>
 
-        <a href="https://www.instagram.com/imbacoin/">
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.instagram.com/imbacoin/"
+        >
           <div className="social_img_wrap">
             <svg
               width="20"
@@ -34,7 +42,11 @@ function SocialButtons() {
           </div>
         </a>
 
-        <a href="https://t.me/imbacoin_bot">
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://t.me/imbacoin_bot"
+        >
           <div className="social_img_wrap">
             <svg
               width="20"
@@ -54,7 +66,11 @@ function SocialButtons() {
           </div>
         </a>
 
-        <a href="https://twitter.com/imbacoin">
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://twitter.com/imbacoin"
+        >
           <div className="social_img_wrap">
             <svg
               width="20"
@@ -68,7 +84,11 @@ function SocialButtons() {
           </div>
         </a>
 
-        <a href="viber://pa/info?uri=imbacoin">
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="viber://pa/info?uri=imbacoin"
+        >
           <div className="social_img_wrap">
             <svg
               width="22"

@@ -126,9 +126,7 @@ function BuyForm({ back_to_main }) {
                   <input disabled className="inputField" value={amount / 50} />
                   <img className="dollar" src={dollar} alt="" />
                 </div> */}
-                <h1>
-                  Contact us through links in order to get free 50000 coins
-                </h1>
+                <h1>To get free coins please contact us</h1>
                 <div>
                   <a
                     href="https://www.facebook.com/imbacoin/"

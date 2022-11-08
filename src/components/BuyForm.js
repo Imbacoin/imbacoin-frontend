@@ -9,6 +9,7 @@ import bg_card_under_player_bg from '../images/bg_card_under_player_bg.png';
 // import back_icon from '../images/back_icon.svg';
 import coins_img from '../images/coins.svg';
 import dollar from '../images/lang/dollar.svg';
+import { apiService } from '../services/ApiService';
 // import paypal from '../images/paypal.png';
 // import gsap from 'gsap';
 // import SearchBar from './searchBar';
@@ -16,7 +17,26 @@ import dollar from '../images/lang/dollar.svg';
 function BuyForm({ back_to_main }) {
   const formik_wrapper_Ref = useRef();
   // const tl_formik_wrapper = useRef();
+
+  const [shopConfig, setShopConfig] = useState('');
   const [amount, setAmount] = useState(10000);
+
+  useEffect(() => {
+    // React advises to declare the async function directly inside useEffect
+    async function getShopConfig() {
+      const shopConfigFromApi = await apiService.getShopConfigByCustomerId(
+        process.env.REACT_APP_CUSTOMER_ID
+      );
+      setShopConfig(shopConfigFromApi);
+      setAmount(shopConfigFromApi.coinRate);
+    }
+
+    // You need to restrict it at some point
+    // This is just dummy code and should be replaced by actual
+    if (!shopConfig) {
+      getShopConfig();
+    }
+  }, []);
 
   useEffect(() => {
     // tl_formik_wrapper.current = gsap.timeline({ paused: true });

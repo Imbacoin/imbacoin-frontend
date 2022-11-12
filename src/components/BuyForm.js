@@ -231,7 +231,7 @@ function BuyForm({ back_to_main }) {
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="https://t.me/imbacoin_bot"
+                    href="https://www.instagram.com/imbacoin/"
                     style={{ marginRight: '10px' }}
                   >
                     <svg

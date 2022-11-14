@@ -40,6 +40,11 @@ class ApiService {
   };
 }
 
-const client = makeApolloClient(process.env.REACT_APP_MMO_URL);
+const client = makeApolloClient(
+  process.env.REACT_APP_MMO_URL,
+  null,
+  false,
+  null
+);
 const apiService = new ApiService(client);
 export { client, apiService };

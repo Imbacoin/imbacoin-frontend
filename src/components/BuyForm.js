@@ -9,7 +9,9 @@ import bg_card_under_player_bg from '../images/bg_card_under_player_bg.png';
 // import back_icon from '../images/back_icon.svg';
 import coins_img from '../images/coins.svg';
 import dollar from '../images/lang/dollar.svg';
-import { apiService } from '../services/ApiService';
+import { apiService } from '../services/ApiServiceCustomMMO';
+import SUBSRIBE_ORDER_BY_PAYMENT_ID from '../services/subscription';
+import makeApolloClient from '../services/makeApolloClient';
 // import paypal from '../images/paypal.png';
 // import gsap from 'gsap';
 // import SearchBar from './searchBar';
@@ -20,6 +22,7 @@ function BuyForm({ back_to_main }) {
 
   const [shopConfig, setShopConfig] = useState('');
   const [amount, setAmount] = useState(10000);
+  const [token, setToken] = useState('');
 
   useEffect(() => {
     // React advises to declare the async function directly inside useEffect
@@ -35,6 +38,51 @@ function BuyForm({ back_to_main }) {
     // This is just dummy code and should be replaced by actual
     if (!shopConfig) {
       getShopConfig();
+    }
+  }, []);
+
+  useEffect(() => {
+    async function getUserToken(paymentId) {
+      // token for this paymentId
+      const res = await fetch(
+        process.env.REACT_APP_PAYMENT_SERVER + 'token/' + paymentId,
+        {
+          method: 'get',
+        }
+      );
+
+      const response = await res.json();
+      setToken(response.token);
+
+      // initializing client for subscription
+      const client = makeApolloClient(
+        process.env.REACT_APP_HASURA_MMO_URL,
+        process.env.REACT_APP_HASURA_MMO_WS,
+        true,
+        response.token
+      );
+
+      // subscription
+      const observerUpdate = client.subscribe({
+        query: SUBSRIBE_ORDER_BY_PAYMENT_ID,
+        variables: {
+          paymentId,
+        },
+      });
+
+      observerUpdate.subscribe({
+        next(data) {
+          // here is the order, from this we will redirect
+          // console.log(data);
+        },
+        error(err) {
+          console.log(err);
+        },
+      });
+    }
+
+    if (!token) {
+      getUserToken('awd3g34y5');
     }
   }, []);
 
@@ -72,28 +120,6 @@ function BuyForm({ back_to_main }) {
   //   tl_formik_wrapper.current.timeScale(2).reverse();
   // };
 
-  // const payments = [
-  //   { name: 'Paypal', img: paypal },
-  //   { name: 'Paypal', img: paypal },
-  //   { name: 'Paypal', img: paypal },
-  //   { name: 'Paypal', img: paypal },
-  //   { name: 'Paypal', img: paypal },
-  //   { name: 'Paypal', img: paypal },
-  //   { name: 'Paypal', img: paypal },
-  //   { name: 'Paypal', img: paypal },
-  //   { name: 'Paypal', img: paypal },
-  //   { name: 'Paypal', img: paypal },
-  //   { name: 'Paypal', img: paypal },
-  //   { name: 'Paypal', img: paypal },
-  //   { name: 'Paypal', img: paypal },
-  //   { name: 'Paypal', img: paypal },
-  //   { name: 'Paypal', img: paypal },
-  //   { name: 'Paypal', img: paypal },
-  //   { name: 'Paypal', img: paypal },
-  //   { name: 'Paypal', img: paypal },
-  //   { name: 'Paypal', img: paypal },
-  //   { name: 'Paypal', img: paypal },
-  // ];
   const amountRef = useRef(amount);
   useEffect(() => {
     amountRef.current = amount;

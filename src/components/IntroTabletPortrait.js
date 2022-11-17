@@ -170,7 +170,7 @@ function IntroTabletPortrait() {
                 { opacity:0, rotation: -30,yPercent: 20, xPercent: -20},
                 {opacity: 1, rotation: 0, yPercent: 0, xPercent: 0, duration: 1, ease: "back"}, "<+0.2")
            // .fromTo(q(".path"), {opacity: 0},{opacity: 1, duration: 0.3, stagger: 0.1, ease:"back"}, "<+=0.2")
-           .fromTo(q("#circleMask"), {scaleX:0}, {scaleX:1,duration: 0.5}, '<+=0.3' )
+           .fromTo(q("#circleMask"), {scaleX:0}, {repeat:-1, repeatDelay:2,scaleX:1,duration: 0.4}, '<+=0.3' )
            .fromTo(q(".path_left_lite"),
                 { scale:0, xPercent: -10, yPercent:50},
                 {scale: 1, xPercent: 0, yPercent: 0, duration: 0.5, ease: "power3.Out"}, "<=0.5")

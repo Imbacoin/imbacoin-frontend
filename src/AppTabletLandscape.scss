@@ -3,7 +3,7 @@
         
       
         .scene .pp_relative {position:relative;}
-        #landscape_path {    position: absolute;top: 13%;width: 38%;left: 49%;}       
+        #landscape_path {    position: absolute;top: 13%;width: 38%;left: 49%;visibility:visible;}       
         .bg_mob.img {position:relative; width:100%;display:none;}
         .right_top_corner.img {left:57%;width:43%;}
         .vorota.img,.vorotaopen.img {left:70%;width:31.7%;top:23.2%;}
@@ -30,7 +30,7 @@
       }
 
       @media only screen and (max-device-height : 300px)  and (orientation : landscape) {
-        #landscape_path {top: -8%; width: 36%;transform: rotate(10deg);left: 49%;}
+        #landscape_path {top: -8%; width: 36%;transform: rotate(10deg);left: 49%;visibility:visible;}
         .bg.img{display:none;}
         .bg_mob.img{display:block;}
         .vorota.img,.vorotaopen.img  {top: 10.7%;}

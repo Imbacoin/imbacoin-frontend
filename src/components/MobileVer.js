@@ -316,6 +316,7 @@ function IntroMobile() {
 
     return (
         <div className="intro_wrap" ref={containerRef}>
+            
             {isLoading ? (
                     <div className="preloader">
                         <BeatLoader color="#1d275f"/>

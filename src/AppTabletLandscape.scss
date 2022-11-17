@@ -1,0 +1,56 @@
+    
+      @media only screen and (min-device-width : 300px) and (max-device-width : 1299px) and (orientation : landscape) {
+        
+      
+        .scene .pp_relative {position:relative;}
+        #landscape_path {    position: absolute;top: 13%;width: 38%;left: 49%;}       
+        .bg_mob.img {position:relative; width:100%;display:none;}
+        .right_top_corner.img {left:57%;width:43%;}
+        .vorota.img,.vorotaopen.img {left:70%;width:31.7%;top:23.2%;}
+        .vorotaopen.img  {opacity:0;}
+        .vorota_uzor.img {left:64.2%;width:39.3%;top:-3%;transform-origin: 50% 65%;}
+        .path_left_top.img {left:69.3%;width:15.8%;top:46%;}
+        .path_left_lite.img {left:51.3%;width:13.7%;top:59%;}
+        .path_right_bottom.img {left:74.3%;width:4.7%;top:76.5%;}
+        .path_right_top.img {left:83.6%;width:3.1%;top:54.1%;}
+
+        .tablo_left_top_brizg.img {top:67.6%;width:6.8%;left:2.6%;}
+        .tablo_down_brizg.img {top:73.6%;width:27.3%;left:11.9%;}
+        .tablo_bg_lines.img {top:0%;width:27.6%;left:0%;}
+        .tablo_lenti.img {top:0%;width:36.6%;left:0%;}
+        .tablo.img {top:28%;width:32.5%;left:3.8%;}
+        .player.img {top:41.1%;width:34.1%;left:15.8%;}
+        .zritel.img {top:62%;width:15.5%;left:84.5%;}
+        .left_light1.img{top:-14%;width:27.6%;left:0%;}
+        .left_light2.img{top:-10%;width:27.6%;left:10%;}
+        .left_light3.img{top:-10%;width:27.6%;left:-10%;}
+        .ball_oreol.img {top:31.7%;width:6.5%;left:84.1%;}
+        .ball.img {top:34.9%;width:1.7%;left:86.6%;}
+        .tablo_right_top_brizg.img {top:52.6%;width:2.9%;left:34.8%;}
+      }
+
+      @media only screen and (max-device-height : 300px)  and (orientation : landscape) {
+        #landscape_path {top: -8%; width: 36%;transform: rotate(10deg);left: 49%;}
+        .bg.img{display:none;}
+        .bg_mob.img{display:block;}
+        .vorota.img,.vorotaopen.img  {top: 10.7%;}
+        .vorotaopen.img  {opacity:0;}
+        .vorota_uzor.img {top:-25.9%}
+        .path_left_top.img {top: 37.1%; }
+        .path_left_lite.img {top: 50%;}
+        .path_right_bottom.img {top: 67.5%; }
+        .path_right_top.img {top: 49.1%; }
+        .tablo_right_top_brizg.img {          top: 36.6%;         width: 2.9%;         left: 28.8%;     }
+        .tablo_left_top_brizg.img {        top: 56.6%;        width: 6.8%;       left: 2.6%;   }
+        .tablo_down_brizg.img {      top: 61.6%;      width: 27.3%;      left: 7.9%;}  
+        .tablo_bg_lines.img {   top: 0%;   width: 19.6%;   left: 0%;}
+        .tablo_lenti.img { top: -16%; width: 28.6%; left: 0%;}
+        .tablo.img {  top: 16%;  width: 26.5%;;  left: 3.8%}
+        .player.img {  top: 31.1%;  width: 30.1%;  left: 14.8%;}
+        .ball_oreol.img { top: 21.7%;}
+        .ball.img {top: 25.9%;}
+        .zritel.img {  bottom: 0%;  width: 11.5%; right: 0%;}
+        .left_light1.img{top:-14%;width:17.6%;left:0%;}
+        .left_light2.img{top:-10%;width:17.6%;left:10%;}
+        .left_light3.img{top:-10%;width:17.6%;left:-10%;}
+      }

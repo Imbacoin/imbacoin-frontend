@@ -6,9 +6,7 @@ function Chat() {
 
     return (
         <div className="chat_wrap">
-            <div className="logo_trunspilot">
-                <img src={logo_trunsp} alt=""/>
-            </div>
+           
             <div className="chat">
                 <img src={chat} alt=""/>
             </div>

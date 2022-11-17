@@ -17,4 +17,3 @@ export default function PreloadImage({ src }) {
 
     return <img src={src} alt="" />;
 }
-

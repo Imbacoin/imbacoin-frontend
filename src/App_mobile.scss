@@ -1,0 +1,328 @@
+.mobile_scene, .mobile_img {
+ 
+  height: auto;
+  position: absolute;
+  top: 0%;
+  /* display: flex; */
+ /*  pointer-events: none; */
+}
+
+.mobile_scene { 
+
+  width: 100%;
+  /*height: 100%;*/
+ /* min-width: 375px;*/
+  position: relative;
+/*  will-change: transform; */
+}
+.App {position:relative;}
+.intro_scene { 
+
+width: 100%;
+/*height: 690px;*/
+background: #040b32;
+position: relative;
+
+}
+
+.mobile_confetti {
+
+position: absolute;
+width: 20vw;
+height: 415px;
+top: 0;
+left: 4%;
+opacity: 1;
+transform: rotate(170deg);
+
+
+}
+
+
+.right_top_corner {
+  transform-origin: 100% 0%;
+  width: 100%;
+  height: 12vh;
+  position: relative;
+
+}
+
+.mobile_lines { 
+
+  width: 48%;
+  top:3%;
+  left:0;
+
+} 
+
+
+.go_title {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  /* left: 50%; */
+  width: 100%;
+  /* height: 30px; */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform, opacity;
+}
+
+.goButton_mobile { 
+
+
+
+}
+
+
+
+
+.mobile_path,
+.mobile_zritel,
+.mobile_path_left_top,
+.mobile_path_left_lite,
+.mobile_path_right_bottom,
+.mobile_path_right_top,
+.mobile_right_top_corner,
+.mobile_vorota,
+.mobile_vorotaopen,
+.mobile_vorota_uzor,
+.mobile_player,
+.mobile_left_light1,
+.mobile_left_light2,
+.mobile_left_light3,
+.mobile_ball,
+.mobile_confetti_img,
+.mobile_pil,
+.mobile_tablo,
+.mobile_bg,
+.mobile_tablo_lenti,
+.mobile_lines,
+.mobile_tablo_right_top_brizg,
+.mobile_tablo_left_top_brizg,
+.mobile_tablo_down_brizg,
+.mobile_tablo_bg_lines,
+.mobile_tablo_lenti{
+will-change: transform;
+}
+
+
+.mobile_bg { 
+ width: 100%;
+ /*top: 47%;*/
+ position: relative;
+ left:0;
+}
+
+.mobile_intro_wrap {
+
+  background-color: #040b32;
+  width: 100%;
+  height: 100vh;
+  color: white;
+  overflow: hidden;
+}
+
+.appears { 
+ z-index: 22;
+ 
+}
+
+
+.mobile_tablo_wrap, 
+.mobile_player_wrap
+{ 
+  
+  position: absolute;
+  left: 2%;
+  bottom: 46%;
+  width: 59.5%;
+  z-index: 10;
+    
+}
+
+.mobile_tablo { 
+  width: 53%;
+  top: 46%;
+  left: -13%;
+}
+
+.mobile_tablo_right_top_brizg {
+  width: 4%;
+  top: 56%;
+  left: 34%;
+ }
+
+.mobile_tablo_down_brizg { 
+  width: 40%;
+  top: 72.1%;
+  left: 5%;
+ }
+
+ .mobile_tablo_bg_lines { 
+  width: 21%;
+  top: 6%;
+  left: 0%;
+ }
+
+ .mobile_tablo_lenti { 
+  width: 30%;
+  top: 14%;
+  left: 3%;
+}
+
+.mobile_player { 
+  width: 91%;
+  top: 67%;
+  left: 1%;
+}
+
+
+.mobile_vorota_wrap { 
+  position: absolute;
+  top: 34.9%;
+  left: 29%;
+  width: 68%;
+
+}
+
+
+.mobile_vorota,.mobile_vorotaopen  { 
+  width: 56%;
+  top: 30.5%;
+  left: 50%;
+}
+.mobile_vorotaopen  { opacity:0;}
+.mobile_vorota_uzor { 
+  width: 63%;
+  top: 13.8%;
+  left: 47%;
+  transform-origin: 50% 65%;
+}
+
+.mobile_ball_oreol { 
+  width: 12%;
+  top: 36.6%;
+  left: 74.5%;
+}
+
+.mobile_ball { 
+  width: 3.5%;
+  top: 38.4%;
+  left: 78.6%;
+}
+
+.mask-a {fill: #fff;}
+#circleMask {transform-origin:0% 100%;}
+    #Layer_path {
+      position: absolute;
+      width: 30%;
+      top: 44%;
+      left: 56%; }
+
+    
+      .mobile_zritel {
+        width: 27%;
+        bottom: 0%;
+        right: 0%;
+        top: unset;
+      }
+
+      .mobile_path_right_bottom {    
+        width: 5.6%;
+        top: 49%;
+        left: 85.3%;
+      }
+
+
+      .mobile_path_left_lite { 
+        width: 17%;
+        top: 47%;
+        left: 68.3%;
+    }
+    .go_button_position {
+      position: absolute;
+      bottom: 10%;
+      height: 65%;
+  }
+
+    .mobile_left_light1 {
+      max-width: 69%;
+      top: -8%;
+      left: -5%;
+        transform: rotate(20deg);
+        display: block;
+        overflow: visible;
+     
+    }
+    
+       .mobile_left_light2 {
+        max-width: 69%;
+        top: -8%;
+        left: -10%;
+          transform: rotate(-10deg);
+          display: block;
+          overflow: visible;
+       
+      }
+      
+       .mobile_left_light3 {
+
+          max-width: 69%;
+          top: -5%;
+          left:-20%;
+          transform: rotate(-10deg);
+          display: block;
+          overflow: visible;
+         
+      
+      }
+      
+
+      .chat_wrap {
+        width: auto;
+        right: 20px;
+        padding: 0;
+        height: 75vh;
+        top: unset;
+        bottom: 8.5vh;
+        display: flex;
+        will-change: transform;
+    }
+.goButton {
+  bottom:0%;
+  top:unset;
+}
+.go_title {}
+.path_right_bottom.img {
+  top: 77.8%;
+  left: 70.7%;
+  width: 5.2%;
+}
+
+.preloader {
+  
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.suspense { 
+
+
+  visibility: hidden;
+}
+
+
+@supports (-webkit-touch-callout: none) {
+.App {height:100%;}
+.chat_wrap {bottom:17%;}
+.social_buttons_wrap {  bottom: 13.5%;}
+.go_button_position {  bottom: 25%;}
+
+}
+

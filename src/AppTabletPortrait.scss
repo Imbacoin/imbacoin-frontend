@@ -1,0 +1,37 @@
+@media only screen and (min-device-width : 540px) and (max-device-width : 1200px) and (orientation : portrait) {
+     
+    #portrait_path {position:absolute;top:30.6%;width:38.8%;left:53.7%;}       
+    .scene .pp_relative {position:relative;}
+    
+    .right_top_corner.img {left:24%;width:76%;}
+    .vorota.img,.vorotaopen.img  {left:67.4%;width:32.7%;top:25%;}
+    .vorotaopen.img  {opacity:0;}
+    .vorota_uzor.img {left:59.8%;width:52.8%;top:6.4%;transform-origin: 50% 65%;}
+    .path_left_lite.img {left:51.3%;width:37.9%;top:40.8%;transform-origin:"100% 0%";}
+    .path_right_bottom.img {left:94.3%;width:4.7%;top:44.5%;}
+    .tablo_right_top_brizg.img {top:54.9%;width:41.1%;left:0%;}
+    .tablo_down_brizg.img {top:68.9%;width:37.3%;left:5.9%;}
+    .tablo_bg_lines.img {top:0%;width:33.3%;left:0%;}
+    .tablo_lenti.img {top:3.1%;width:40.6%;left:0%;}
+    .tablo.img {top:35.9%;width:39%;left:0%;}
+    .player.img {top:45.1%;width:46.5%;left:8.1%;}
+    .zritel.img {bottom: 0%;width:21.5%;left:79%;}
+    .left_light1.img{top:-14%;width:38.6%;left:2%; max-width: 38%;}
+    .left_light2.img{top:-10%;width:38.6%;left:2%; max-width: 38%;}
+    .left_light3.img{top:-10%;width:38.6%;left:-4%; max-width: 38%;}
+    .ball_oreol.img {top:30.9%;width:9.5%;left:86.2%;}
+    .ball.img {top:33%;width:2.5%;left:89.7%;}
+ .chat_wrap { height: unset;}
+ .social_buttons_wrap {   bottom: 0vh;}
+ .appears {
+    bottom: 0%;
+    position: absolute;
+}
+    }
+
+
+
+    @supports (-webkit-touch-callout: none) {
+        .go_button_position {       bottom: -10%;}
+        .social_buttons_wrap {   bottom: 5%; }
+        }

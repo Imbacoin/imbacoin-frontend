@@ -20,11 +20,9 @@ const GET_SHOP_CONFIG_BY_CUSTOMERID = gql`
 
 class ApiService {
   client;
-  
 
   constructor(client) {
     this.client = client;
-   
   }
 
   getShopConfigByCustomerId = async (customerId) => {
@@ -42,6 +40,11 @@ class ApiService {
   };
 }
 
-const client = makeApolloClient(process.env.REACT_APP_MMO_URL);
+const client = makeApolloClient(
+  process.env.REACT_APP_MMO_URL,
+  null,
+  false,
+  null
+);
 const apiService = new ApiService(client);
 export { client, apiService };

@@ -83,6 +83,12 @@ function IntroTabletLandscape() {
         const maxRotation = 60;
 
 
+        const suspenses =  q('.suspense')
+        
+        suspenses.forEach(el => {
+            el.style.setProperty('visibility', 'visible');
+       })
+
         circles.forEach(el=>{
             animateCircle(el, 0);
         })
@@ -217,11 +223,11 @@ function IntroTabletLandscape() {
         })
             .set(".player",{zIndex:10})
             .set(".zritel",{zIndex: 0})
-            .set(".buy_wrap",{left:0, zIndex: 9})
+            .set(".buy_wrap",{top:0, zIndex: 9})
             .to(".buy_form_wrap",{ opacity: 1, duration: 1, ease:"power4.inOut"})
             .to(".buy_form_wrap",{ background: 'rgba(13, 19, 53, 0.2)',
-                backdropFilter: 'blur(6px)', duration: 2, ease:"power4.inOut"}, "<")
-            .to(".middle_box",{ right: 0, duration: 2, ease:"power4.inOut"}, "<")
+                backdropFilter: 'blur(6px)', duration: 0.5, ease:"power4.inOut"}, "<")
+            .to(".middle_box",{ right: 0, duration: 1, ease:"power4.inOut"}, "<")
             .to(".goButton",{ opacity:0, ease:"power4.inOut"}, "<")
 
 

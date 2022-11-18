@@ -27,6 +27,7 @@
         .ball_oreol.img {top:31.7%;width:6.5%;left:84.1%;}
         .ball.img {top:34.9%;width:1.7%;left:86.6%;}
         .tablo_right_top_brizg.img {top:52.6%;width:2.9%;left:34.8%;}
+        .buy_form_wrap {opacity:0}
       }
 
       @media only screen and (max-device-height : 300px)  and (orientation : landscape) {
@@ -53,4 +54,5 @@
         .left_light1.img{top:-14%;width:17.6%;left:0%;}
         .left_light2.img{top:-10%;width:17.6%;left:10%;}
         .left_light3.img{top:-10%;width:17.6%;left:-10%;}
+        .buy_form_wrap {opacity:0}
       }

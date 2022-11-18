@@ -90,6 +90,12 @@ function IntroDesktop() {
             animateCircle(el, 1);
         })
 
+        const suspenses =  q('.suspense')
+        
+        suspenses.forEach(el => {
+            el.style.setProperty('visibility', 'visible');
+       })
+
 
         function animateCircle(el, sq) {
 
@@ -284,6 +290,9 @@ function IntroDesktop() {
 
     }, [])
 
+
+
+
     const startForm = () => {
         setStart(true)
         tl_start.current = gsap.timeline({
@@ -313,11 +322,14 @@ function IntroDesktop() {
             .to(".tablo_left_top_brizg", {top: '-20vh', duration: 2, ease: "power4.inOut"}, "<")
             .to(".tablo_down_brizg", {top: '-20vh', duration: 2, ease: "power4.inOut"}, "<")
             .to(".confetti", {top: '-20vh', duration: 2, ease: "power4.inOut"}, "<")
-           .to(".goButton", {zIndex: 9}, "<+=0.5")
-
+            .to(".goButton", {zIndex: 9}, "<+=0.5")
+            //.to(".go_button_wrap", {visibility:'visible'}, "<+=0")
 
         tl_start.current.play()
     }
+
+
+
 
     const back_to_main = () => {
         tl_start.current.reverse()

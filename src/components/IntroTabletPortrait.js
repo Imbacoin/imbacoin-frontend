@@ -82,6 +82,11 @@ function IntroTabletPortrait() {
         const minRotation = 15;
         const maxRotation = 60;
 
+        const suspenses =  q('.suspense')
+        
+        suspenses.forEach(el => {
+            el.style.setProperty('visibility', 'visible');
+       })
 
         circles.forEach(el=>{
             animateCircle(el, 0);

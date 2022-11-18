@@ -303,7 +303,7 @@ function IntroMobile() {
             .set(".buy_wrap", {top: 0, zIndex: 9})
             .to(".buy_form_wrap", {opacity: 1, duration: 1, ease: "power4.inOut"})
             .to(q(".middle_box"), {top: '0vh', duration: 2, ease: "power4.inOut"}, "<")
-            .to(q(".mobile_player_wrap"), {bottom: '10%', scale:1.2, left: -10, duration: 2, ease: "power4.inOut"}, "<")
+            .to(q(".mobile_player_wrap"), {bottom: '1%', scale:1.2, left: -10, duration: 2, ease: "power4.inOut"}, "<")
             .to('.chat_wrap', {top: '70vh', height: '15vh', duration: 2, ease: "power4.inOut"}, "<")
             .to('.goButton', {zIndex:0}, "<")
 

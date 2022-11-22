@@ -26,7 +26,7 @@ function BuyForm({back_to_main}) {
   let location = useLocation();
   // const tl_formik_wrapper = useRef();
   const maxCoins = 20000000
-  const minMoney = 1
+  const minMoney = 10
   const [coinAmount, setAmount] = useState(0);
   const [coinRate, setRate] = useState(0);
   const [moneyAmount, setMoneyAmount] = useState(10);
